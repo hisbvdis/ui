@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <script defer src="assets/navBtn_Click_Handler.js" type="module"></script>
+  <script defer src="assets/slider_Click_Handler.js" type="module"></script>
+  <script defer src="assets/slider_Hover_Handler.js" type="module"></script>
+  <script defer src="assets/thumb_Click_Handler.js" type="module"></script>
+</head>
+<body>
+
+<div class="carousel">
+  <div class="slider">
+    <ul class="slides">
+      <li class="slides__item  slides__item--visible">
+        <img class="slides__img" src="img/1.jpg">
+      </li>
+      <li class="slides__item">
+        <img class="slides__img" src="img/2.jpg">
+      </li>
+      <li class="slides__item">
+        <img class="slides__img" src="img/3.jpg">
+      </li>
+      <li class="slides__item">
+        <img class="slides__img" src="img/4.jpg">
+      </li>
+    </ul>
+
+    <button class="navBtn  slider__navBtn  slider__navBtn--prev" type="button">
+      <span class="navBtn__icon" aria-hidden="true">&#10094;</span>
+      <span class="navBtn__text">Предыдущий слайд</span>
+    </button>
+    <button class="navBtn  slider__navBtn  slider__navBtn--next" type="button">
+      <span class="navBtn__icon" aria-hidden="true">&#10095;</span>
+      <span class="navBtn__text">Следующий слайд</span>
+    </button>
+  </div>
+
+  <ul class="thumbs  carousel__thumbs">
+    <li class="thumbs__item  thumbs__item--active">
+      <button class="thumbs__btn">
+        <img class="thumbs__img" src="img/thumbs/1.jpg">
+        <span class="thumbs__text">Слайд 1</span>
+      </button>
+    </li>
+    <li class="thumbs__item">
+      <button class="thumbs__btn">
+        <img class="thumbs__img" src="img/thumbs/2.jpg">
+        <span class="thumbs__text">Слайд 2</span>
+      </button>
+    </li>
+    <li class="thumbs__item">
+      <button class="thumbs__btn">
+        <img class="thumbs__img" src="img/thumbs/3.jpg">
+        <span class="thumbs__text">Слайд 3</span>
+      </button>
+    </li>
+    <li class="thumbs__item">
+      <button class="thumbs__btn">
+        <img class="thumbs__img" src="img/thumbs/4.jpg">
+        <span class="thumbs__text">Слайд 4</span>
+      </button>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

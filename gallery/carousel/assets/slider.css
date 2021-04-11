@@ -1,0 +1,44 @@
+.slider {
+  position: relative;
+
+  block-size: 100%;
+  margin: 0;
+}
+
+.slider__navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider__navBtn--prev {
+  left: 20px;
+}
+
+.slider__navBtn--next {
+  right: 20px;
+}
+
+
+
+@media (hover: hover) {
+  .slider {
+    cursor: pointer;
+  }
+
+  .slider__navBtn {
+    opacity: 0;
+  }
+
+  .slider__navBtn:focus {
+    opacity: 0.5;
+  }
+
+  .slider:hover .slider__navBtn {
+    opacity: 0.5;
+  }
+
+  .slider:hover .slider__navBtn--opacity-1 {
+    opacity: 1;
+  }
+}

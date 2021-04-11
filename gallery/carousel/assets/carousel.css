@@ -1,0 +1,21 @@
+.carousel {
+  position: relative;
+  
+  inline-size: 100%;
+  block-size: 100%;
+
+  box-sizing: border-box;
+}
+
+.carousel *,
+.carousel *::before,
+.carousel *::after {
+  box-sizing: inherit;
+}
+
+.carousel__thumbs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

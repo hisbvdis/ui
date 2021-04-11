@@ -1,0 +1,414 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 15px;
+  color: #000;
+  line-height: 24px;
+}
+
+input,
+textarea {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 18px;
+}
+
+.srOnly {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+
+/* =========================
+..form
+========================= */
+.form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.form__fieldset {
+  margin: 0;
+  padding: 0 0 31px;
+
+  font-size: 17px;
+  line-height: 18px;
+  font-weight: 700;
+
+  border: none;
+}
+
+.form__fieldset:last-of-type {
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+.form__legend {
+  margin: 0;
+  padding: 0;
+
+  font-size: 17px;
+  line-height: 16px;
+  color: #63d1bb;
+
+  overflow: hidden;
+}
+
+.form__legend--waMargin {
+  margin: 0;
+}
+
+.form__legendInner {
+  position: relative;
+
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form__options {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.form__option {
+  flex-basis: 100%;
+  margin-bottom: 20px;
+}
+
+.form__option:last-child {
+  margin-bottom: 0;
+}
+
+.form__group {
+  margin-bottom: 22px;
+}
+
+.form__group:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .form__legend {
+    margin: 0 0 25px;
+  }
+
+  .form__legendInner::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 25px);
+    transform: translateY(-50%);
+
+    width: 100vw;
+    height: 1px;
+
+    background: #56c3b2;
+  }
+
+  .form__smallText {
+    display: block;
+    margin-bottom: 25px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .form__fieldset {
+    display: flex;
+    padding: 50px 0;
+
+    font-size: 19px;
+    line-height: 18px;
+  }
+
+  .form__legend {
+    width: 165px;
+    flex-shrink: 0;
+  }
+
+  .form__legendInner {
+    display: block;
+    padding-top: 1em;
+  }
+
+  .form__fields {
+    flex-basis: 100%;
+  }
+
+  .form__options {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .form__option--color {
+    flex-basis: 50%;
+  }
+
+  .form__group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .form__fieldset:last-of-type {
+    padding: 50px 0;
+  }
+
+  .form__footer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .form__legend {
+    width: 110px;
+  }
+
+  .form__option--color {
+    flex-basis: calc(100% / 3);
+  }
+
+  .form__footer {
+    padding-left: 110px;
+  }
+}
+
+
+
+/* =========================
+..option
+========================= */
+.option {
+  display: inline-flex;
+  align-items: center;
+
+  vertical-align: middle;
+}
+
+.option__mark {
+  position: relative;
+
+  flex-shrink: 0;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+
+  vertical-align: middle;
+
+  border: 2px solid #000;
+}
+
+.option__input:hover + .option__mark,
+.option__input:focus + .option__mark {
+  border-color: #56c3b2;
+}
+
+.option__input:checked + .option__mark--radio::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 40%;
+  height: 40%;
+
+  background: #56c3b2;
+  border-radius: 50%;
+}
+
+.option__mark--radio {
+  border-radius: 50%;
+}
+
+.option__input:checked + .option__mark--checkbox::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%) rotate(-45deg);
+
+  width: 65%;
+  height: 25%;
+
+  border-left: 2px solid #56c3b2;
+  border-bottom: 2px solid #56c3b2;
+}
+
+
+@media (min-width: 768px) {
+  .option__mark {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* Чтобы в Chrome при клике на элементы они не мигали, при наведении 
+на линию стилизовать курсор под "палец" только, когда используется 
+hover-указатель (hover: hover) */
+@media (hover: hover) {
+  .option {
+    cursor: pointer;
+  }
+}
+
+
+
+/* =========================
+..field
+========================= */
+.field {
+  display: block;
+}
+
+.field__label {
+  margin: 0;
+}
+
+.field__body {
+  position: relative;
+  
+  width: 100%;
+}
+
+.field__input {
+  width: 100%;
+  padding: 16px 0;
+
+  border: none;
+  border-bottom: 2px solid #000;
+}
+
+.field__input:hover,
+.field__input:focus {
+  border-bottom-color: #56c3b2;
+}
+
+.field__input::placeholder {
+  color: rgba(68, 68, 68, 0.3);
+}
+
+.field__icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+}
+
+.field__textarea {
+  display: block;
+  width: 100%;
+  min-height: 140px;
+  padding: 15px;
+
+  border: 2px solid #000;
+}
+
+.field__textarea:hover,
+.field__textarea:focus {
+  border-color: #56c3b2;
+}
+
+.field__textarea::placeholder,
+.field__textarea::placeholder {
+  color: rgba(68, 68, 68, 0.3);
+}
+
+
+
+@media (min-width: 768px) {
+  .field {
+    display: flex;
+    align-items: center;
+  }
+
+  .field__name {
+    margin-right: 30px;
+  }
+
+  .field__input {
+    padding-left: 15px;
+  }
+}
+
+
+
+/* =========================
+..btn
+========================= */
+.btn {
+  display: inline-block;
+  padding: 14px 15px;
+
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #444;
+  text-align: center;
+
+  background: #fff;
+  border: 2px solid #444;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #fff;
+
+  background: #444;
+}
+
+.btn:active {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn--brandColor {
+  color: #fff;
+
+  background: #63d1bb;
+  border-color: #63d1bb;
+}
+
+.btn--brandColor:hover,
+.btn--brandColor:focus {
+  background: #56c3b2;
+  border-color: #56c3b2;
+}
+
+
+@media (max-width: 767px) {
+  .btn {
+    width: 100%;
+  }
+}

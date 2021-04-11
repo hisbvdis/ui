@@ -1,0 +1,9 @@
+/* Удаление маркера (современный способ) */
+summary {
+  list-style: none;
+}
+
+/* Удаление маркера (для Chrome) */
+summary::-webkit-details-marker {
+  display: none;
+}

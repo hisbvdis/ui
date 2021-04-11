@@ -1,0 +1,194 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+}
+
+
+
+/* ====================
+..nav
+==================== */
+.nav__header {
+  position: relative;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.nav__logo {
+  margin: 0;
+  
+  text-align: center;
+}
+
+
+
+/* ..navBtn */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(calc(-50% + 0.5px));
+  
+  display: block;
+  inline-size: 26px;
+  block-size: 19px;
+  
+  padding: 0;
+  
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav--noJS .navBtn {
+  display: none;
+}
+
+.navBtn__line {
+  position: absolute;
+  left: 0;
+
+  display: block;
+  inline-size: 100%;
+  block-size: 3px;
+
+  background: #000;
+  transition: 0.25s;
+}
+
+.navBtn__line--1 {
+  top: 0;
+}
+
+.navBtn__line--2 {
+  top: 50%;
+  transform: translateY(calc(-50% - 0.5px));
+}
+
+.navBtn__line--3 {
+  bottom: 0;
+}
+
+
+/* .nav--opened */
+.nav--opened .navBtn__line--1,
+.nav--opened .navBtn__line--3 {
+  top: 50%;
+  left: 50%;
+}
+
+.nav--opened .navBtn__line--1 {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.nav--opened .navBtn__line--2 {
+  opacity: 0;
+}
+
+.nav--opened .navBtn__line--3 {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+
+/* ..nav__content */
+.nav__content {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.nav__link {
+  display: block;
+  padding: 30px;
+
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+
+/* Only mobile */
+@media (max-width: 767px) {
+  .nav__content {
+    display: none;
+  }
+
+  .nav--opened .nav__content {
+    display: block;
+  }
+
+  .nav__header {
+    border-bottom: 1px solid #ececec;
+  }
+
+  .nav__item {
+    border-bottom: 1px solid #ececec;
+  }
+
+  .navBtn {
+    display: block;
+  }
+
+  .nav--noJS .navBtn {
+    display: none;
+  }
+}
+
+
+/* Tablet */
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+
+    border-bottom: 1px solid #ececec;
+  }
+
+  .navBtn {
+    display: none;
+  }
+
+  .nav__content {
+    display: flex;
+  }
+
+  .nav__item {
+    flex-shrink: 0;
+  }
+}
+
+
+
+/* ====================
+main
+==================== */
+main {
+  display: flow-root;
+  min-height: 100vh;
+  padding: 0 30px;
+
+  background: #eee;
+}

@@ -1,0 +1,21 @@
+@import "assets/carousel.css";
+@import "assets/slider.css";
+@import "assets/slides.css";
+@import "assets/navBtn.css";
+@import "assets/thumbs.css";
+
+html {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+
+  min-block-size: 100vh;
+}
+
+body {
+  inline-size: 565px;
+  block-size: 350px;
+  margin: 0;
+
+  border: 5px solid red;
+}

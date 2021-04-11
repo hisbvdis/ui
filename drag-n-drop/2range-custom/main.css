@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 100vh;
+  margin: 0;
+  padding: 20px
+}
+
+.range {
+  inline-size: 100%;
+  max-inline-size: 400px;
+}
+
+.range__line {
+  position: relative;
+  block-size: 15px;
+
+  background: #E0E0E0;
+  border-radius: 5px;
+
+  /* Предотвращение перехвата браузером Drag-n-Drop события, которое
+  наступает при перемещении <img> и некоторых других элементов
+  с помощью сенсорного экрана */
+  touch-action: none;
+}
+
+/* Чтобы в Chrome при клике на элементы они не мигали, при наведении 
+на линию стилизовать курсор под "палец" только, когда используется 
+hover-указатель (hover: hover) */
+@media (pointer: fine) {
+  .range__line {
+    cursor: pointer;
+  }
+}
+
+.range__filler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  inline-size: 100px;
+  block-size: 100%;
+
+  background: lightblue;
+}
+
+.range__pin {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  transform: translateY(-50%);
+
+  display: block;
+  inline-size: 10px;
+  block-size: 170%;
+
+  background: blue;
+  border-radius: 3px;
+  cursor: pointer;
+
+  /* Предотвращение перехвата браузером Drag-n-Drop события, которое
+  наступает при перемещении <img> и некоторых других элементов
+  с помощью сенсорного экрана */
+  touch-action: none;
+}
