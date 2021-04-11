@@ -1,4 +1,4 @@
-# Шаблоны компонентов
+# Мои примеры - Компоненты
 
 - Модальное окно             ([Папка](modal) /                     [Демо](https://hisbvdis.github.io/my-samples-components/modal/index.html))
 - Форма                      ([Папка](form) /                      [Демо](https://hisbvdis.github.io/my-samples-components/form/index.html))
@@ -13,6 +13,6 @@
 
 
 # Статьи и шпаргалки
-- БЕМ-классы компонентов                           ([ссылка](https://9elements.com/bem-cheat-sheet))
-- Примеры создания популярных компонентов          ([ссылка](https://csslayout.io/patterns))
-- Чеклист от Smashing Magazine                     ([ссылка](https://www.dropbox.com/s/ve6m3ngp5rmgu74/interface-design-patterns-checklist-2020.pdf?dl=0))
+- БЕМ-классы компонентов                  ([ссылка](https://9elements.com/bem-cheat-sheet))
+- Примеры создания популярных компонентов ([ссылка](https://csslayout.io/patterns))
+- Чеклист от Smashing Magazine            ([ссылка](https://www.dropbox.com/s/ve6m3ngp5rmgu74/interface-design-patterns-checklist-2020.pdf?dl=0))
