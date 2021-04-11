@@ -1,15 +1,15 @@
 # Шаблоны компонентов
 
-- Модальное окно             ([Папка](components/modal) /                     [Демо](https://hisbvdis.github.io/my-samples-components/components/modal/index.html))
-- Форма                      ([Папка](components/form) /                      [Демо](https://hisbvdis.github.io/my-samples-components/components/form/index.html))
-- Навигация                  ([Папка](components/nav) /                       [Демо](https://hisbvdis.github.io/my-samples-components/components/nav/index.html))
+- Модальное окно             ([Папка](components/modal) /                     [Демо](https://hisbvdis.github.io/my-samples-components/modal/index.html))
+- Форма                      ([Папка](components/form) /                      [Демо](https://hisbvdis.github.io/my-samples-components/form/index.html))
+- Навигация                  ([Папка](components/nav) /                       [Демо](https://hisbvdis.github.io/my-samples-components/nav/index.html))
 - Drag-n-Drop                ([Папка](components/drag-n-drop))
-  1. Базовый пример          ([Папка](components/drag-n-drop/1base) /         [Демо](https://hisbvdis.github.io/my-samples-components/components/drag-n-drop/1base/index.html))
-  2. Range Custom            ([Папка](components/drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/my-samples-components/components/drag-n-drop/2range-custom/index.html))
+  1. Базовый пример          ([Папка](components/drag-n-drop/1base) /         [Демо](https://hisbvdis.github.io/my-samples-components/drag-n-drop/1base/index.html))
+  2. Range Custom            ([Папка](components/drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/my-samples-components/drag-n-drop/2range-custom/index.html))
 - Collapse-компоненты        ([Папка](components/collapse))
-  1. Спойлер - тег "details" ([Папка](components/collapse/1single-spoiler) /  [Демо](https://hisbvdis.github.io/my-samples-components/components/collapse/1single-spoiler/index.html))
+  1. Спойлер - тег "details" ([Папка](components/collapse/1single-spoiler) /  [Демо](https://hisbvdis.github.io/my-samples-components/collapse/1single-spoiler/index.html))
 - Gallery                    ([Папка](components/gallery))
-  1. Карусель                ([Папка](components/gallery/carousel) /          [Демо](https://hisbvdis.github.io/my-samples-components/components/gallery/carousel/index.html))
+  1. Карусель                ([Папка](components/gallery/carousel) /          [Демо](https://hisbvdis.github.io/my-samples-components/gallery/carousel/index.html))
 
 
 # Статьи и шпаргалки
