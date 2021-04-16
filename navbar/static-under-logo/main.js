@@ -1,18 +1,18 @@
-var nav = document.querySelector('.nav');
+var page = document.querySelector('.page');
 var navBtn = document.querySelector('.navBtn');
 
 
 // Для скрытия навигации в мобильной версии и определения срабатывания JS, у навигации:
-//  - удалить класс "nav--opened" для скрытия контента в мобильной версии
+//  - удалить класс "openedNav" для скрытия контента в мобильной версии
 //  - удалить класс "no-js" для определения срабатывания JS
 function navOpenedRemove() {
-  nav.classList.remove('nav--noJS');
-  nav.classList.remove('nav--opened');
+  page.classList.remove('noJS');
+  page.classList.remove('openedNav');
 }
 document.onload = navOpenedRemove();
 
 
-// При нажатии на кнопку навигации, переключать класс ".nav--opened"
+// При нажатии на кнопку навигации, переключать класс ".openedNav"
 navBtn.addEventListener('click', function(e) {
-  nav.classList.toggle('nav--opened');
+  page.classList.toggle('openedNav');
 })

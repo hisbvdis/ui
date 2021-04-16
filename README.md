@@ -2,7 +2,8 @@
 
 - Модальное окно             ([Папка](modal) /                     [Демо](https://hisbvdis.github.io/my-samples-components/modal/index.html))
 - Форма                      ([Папка](form) /                      [Демо](https://hisbvdis.github.io/my-samples-components/form/index.html))
-- Навигация                  ([Папка](nav) /                       [Демо](https://hisbvdis.github.io/my-samples-components/nav/index.html))
+- Панель навигации           ([Папка](navbar/))
+  1. Под логотипом           ([Папка](navbar/static-under-logo) /  [Демо](https://hisbvdis.github.io/my-samples-components/navbar/static-under-logo/index.html))
 - Drag-n-Drop                ([Папка](drag-n-drop))
   1. Базовый пример          ([Папка](drag-n-drop/1base) /         [Демо](https://hisbvdis.github.io/my-samples-components/drag-n-drop/1base/index.html))
   2. Range Custom            ([Папка](drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/my-samples-components/drag-n-drop/2range-custom/index.html))
