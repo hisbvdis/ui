@@ -1,0 +1,7 @@
+.carousel {
+  position: relative;
+
+  display: block;
+  inline-size: 565px;
+  block-size: 350px;
+}
