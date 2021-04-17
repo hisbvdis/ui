@@ -5,3 +5,9 @@
   inline-size: 565px;
   block-size: 350px;
 }
+
+.carousel__thumbs {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+}

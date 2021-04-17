@@ -1,4 +1,6 @@
 .slides {
+  position: relative;
+  
   display: block;
   inline-size: 100%;
   block-size: 100%;
@@ -30,4 +32,42 @@
   block-size: 100%;
   
   object-fit: cover;
+}
+
+.slides__slideBtn {
+  position: absolute;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+.slides__slideBtn--prev {
+  inset-inline-start: 20px;
+}
+
+.slides__slideBtn--next {
+  inset-inline-end: 20px;
+}
+
+
+
+@media (hover: hover) {
+  .slides {
+    cursor: pointer;
+  }
+
+  .slides__slideBtn {
+    opacity: 0;
+  }
+
+  .slides__slideBtn:focus {
+    opacity: 1;
+  }
+  
+  .slides:hover .slides__slideBtn {
+    opacity: 0.5;
+  }
+
+  .slides:hover .slides__slideBtn--opacity-1 {
+    opacity: 1;
+  }
 }

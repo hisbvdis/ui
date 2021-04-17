@@ -1,3 +1,10 @@
 .slideBtn {
-  position: absolute;
+  font-size: 35px;
+  color: #fff;
+
+  background: none;
+  border: none;
+  text-shadow: 0 0 5px #000;
+
+  cursor: pointer;
 }

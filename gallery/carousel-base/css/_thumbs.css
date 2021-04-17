@@ -1,0 +1,48 @@
+.thumbs {
+  background: #000;
+}
+
+.thumbs__list {
+  display: flex;
+  justify-content: center;;
+  margin: 0;
+  padding: 0;
+  
+  list-style: none;
+  border: 3px solid #000;
+}
+
+.thumbs__item {
+  display: flex;
+  inline-size: 75px;
+  block-size: 50px;
+
+  margin-inline-end: 3px;
+}
+
+.thumbs__btn {
+  padding: 0;
+
+  border: none;
+  cursor: pointer;
+}
+
+.thumbs__btn--active {
+  position: relative;
+}
+
+.thumbs__btn--active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border: 2px solid #11B1E7;
+}
+
+.thumbs__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+
+  object-fit: cover;
+}
