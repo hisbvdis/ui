@@ -1,21 +1,7 @@
-@import "assets/carousel.css";
-@import "assets/slider.css";
-@import "assets/slides.css";
-@import "assets/navBtn.css";
-@import "assets/thumbs.css";
-
-html {
-  display: flex;
-  justify-content: center;
-  padding-top: 50px;
-
-  min-block-size: 100vh;
-}
-
-body {
-  inline-size: 565px;
-  block-size: 350px;
-  margin: 0;
-
-  border: 5px solid red;
-}
+@import "css/_variables.css";
+@import "css/_base.css";
+@import "css/_dev-styles.css";
+@import "css/_carousel.css";
+@import "css/_slides.css";
+@import "css/_slideBtn.css";
+@import "css/_thumbs.css";

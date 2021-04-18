@@ -3,7 +3,7 @@
   
   display: block;
   inline-size: 100%;
-  block-size: 100%;
+  block-size: calc(100% - 56px);
 }
 
 .slides__list {
@@ -50,6 +50,7 @@
 
 
 
+/* Только для указателей, которые можно наводить на элементы (мышь) */
 @media (hover: hover) {
   .slides {
     cursor: pointer;
@@ -64,7 +65,7 @@
   }
   
   .slides:hover .slides__slideBtn {
-    opacity: 0.5;
+    opacity: 0.4;
   }
 
   .slides:hover .slides__slideBtn--opacity-1 {

@@ -1,70 +1,73 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css" />
+  <script src="js/slides_Hover_Handler.js" type="module"></script>
+  <script src="js/slides_Click_Handler.js" type="module"></script>
+  <script src="js/slideBtn_Click_handler.js" type="module"></script>
+  <script src="js/thumb_Click_Handler.js" type="module"></script>
   <title>Document</title>
-  <link rel="stylesheet" href="main.css">
-  <script defer src="assets/navBtn_Click_Handler.js" type="module"></script>
-  <script defer src="assets/slider_Click_Handler.js" type="module"></script>
-  <script defer src="assets/slider_Hover_Handler.js" type="module"></script>
-  <script defer src="assets/thumb_Click_Handler.js" type="module"></script>
 </head>
 <body>
 
 <div class="carousel">
-  <div class="slider">
-    <ul class="slides">
+  <div class="slides  carousel__slides">
+    <ul class="slides__list">
       <li class="slides__item  slides__item--visible">
-        <img class="slides__img" src="img/1.jpg">
+        <img class="slides__img" src="img/1.jpg" width="1800" height="1200" alt="Кот">
       </li>
       <li class="slides__item">
-        <img class="slides__img" src="img/2.jpg">
+        <img class="slides__img" src="img/2.jpg" width="960" height="640" alt="Кот">
       </li>
       <li class="slides__item">
-        <img class="slides__img" src="img/3.jpg">
+        <img class="slides__img" src="img/3.jpg" width="931" height="524" alt="Кот">
       </li>
       <li class="slides__item">
-        <img class="slides__img" src="img/4.jpg">
+        <img class="slides__img" src="img/4.jpg" width="1024" height="683" alt="Кот">
       </li>
     </ul>
 
-    <button class="navBtn  slider__navBtn  slider__navBtn--prev" type="button">
-      <span class="navBtn__icon" aria-hidden="true">&#10094;</span>
-      <span class="navBtn__text">Предыдущий слайд</span>
+    <button class="slideBtn  slides__slideBtn  slides__slideBtn--prev" type="button">
+      <span class="slideBtn__icon">&#10094;</span>
+      <span class="slideBtn__name  srOnly">Предыдущий слайд</span>
     </button>
-    <button class="navBtn  slider__navBtn  slider__navBtn--next" type="button">
-      <span class="navBtn__icon" aria-hidden="true">&#10095;</span>
-      <span class="navBtn__text">Следующий слайд</span>
+    <button class="slideBtn  slides__slideBtn  slides__slideBtn--next" type="button">
+      <span class="slideBtn__name  srOnly">Следующий слайд</span>
+      <span class="slideBtn__icon">&#10095;</span>
     </button>
   </div>
 
-  <ul class="thumbs  carousel__thumbs">
-    <li class="thumbs__item  thumbs__item--active">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/1.jpg">
-        <span class="thumbs__text">Слайд 1</span>
-      </button>
-    </li>
-    <li class="thumbs__item">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/2.jpg">
-        <span class="thumbs__text">Слайд 2</span>
-      </button>
-    </li>
-    <li class="thumbs__item">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/3.jpg">
-        <span class="thumbs__text">Слайд 3</span>
-      </button>
-    </li>
-    <li class="thumbs__item">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/4.jpg">
-        <span class="thumbs__text">Слайд 4</span>
-      </button>
-    </li>
-  </ul>
+  <div class="thumbs  carousel__thumbs">
+    <ul class="thumbs__list">
+      <li class="thumbs__item  thumbs__item--active">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/1.jpg" width="100" height="67" alt="Кот">
+          <span class="thumbs__name  srOnly">Слайд 1</span>
+        </button>
+      </li>
+      <li class="thumbs__item">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/2.jpg" width="100" height="67" alt="Кот">
+          <span class="thumbs__name  srOnly">Слайд 2</span>
+        </button>
+      </li>
+      <li class="thumbs__item">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/3.jpg" width="100" height="56" alt="Кот">
+          <span class="thumbs__name  srOnly">Слайд 3</span>
+        </button>
+      </li>
+      <li class="thumbs__item">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/4.jpg" width="100" height="67" alt="Кот">
+          <span class="thumbs__name  srOnly">Слайд 4</span>
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>
 
 </body>

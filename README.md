@@ -9,9 +9,8 @@
   2. Range Custom              ([Папка](drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/my-samples-components/drag-n-drop/2range-custom/index.html))
 - Collapse-компоненты          ([Папка](collapse))
   1. Спойлер - тег "details"   ([Папка](collapse/1single-spoiler) /  [Демо](https://hisbvdis.github.io/my-samples-components/collapse/1single-spoiler/index.html))
-- Gallery                      ([Папка](gallery))
-  1. Карусель (базовый пример) ([Папка](gallery/carousel-base) /     [Демо](https://hisbvdis.github.io/my-samples-components/gallery/carousel-base/index.html))
-  2. Карусель                  ([Папка](gallery/carousel) /          [Демо](https://hisbvdis.github.io/my-samples-components/gallery/carousel/index.html))
+- Галерея изображений          ([Папка](gallery))
+  1. Карусель                  ([Папка](gallery/carousel) /          [Демо](https://hisbvdis.github.io/my-samples-components/gallery/carousel/index.html))
 
 
 # Статьи и шпаргалки

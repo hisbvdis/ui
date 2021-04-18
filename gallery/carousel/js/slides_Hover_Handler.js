@@ -1,10 +1,10 @@
 "use strict";
 
-// Импорт функции вычисления положения курсора относительно ".slides"
+// Импорт функции вычисления положения указателя относительно ".slides"
 import { calcPointerToSlidesPos } from "./_calcPointerToSlidesPos.js";
 
 // Элемент ".slides"
-let slidesElem = document.querySelector(".slides");
+let slides = document.querySelector(".slides");
 // Кнопка "Назад"
 let slideBtnPrev = document.querySelector(".slides__slideBtn--prev");
 // // Кнопка "Вперёд"
@@ -12,19 +12,19 @@ let slideBtnNext = document.querySelector(".slides__slideBtn--next");
 
 
 // Добавить обработчик события "движение указателя над элементом"
-slidesElem.addEventListener("pointermove", slides_Pointermove_Handler);
+slides.addEventListener("pointermove", slides_Pointermove_Handler);
 
 
 // Функция-обработчик
 function slides_Pointermove_Handler(evt) {
-  let area = calcPointerToSlidesPos(evt, slidesElem);
+  let pointerArea = calcPointerToSlidesPos(evt, slides);
 
-  if (area === "prev") {
+  if (pointerArea === "prev") {
     removeOpacityModif(slideBtnNext);
     addOpacityModif(slideBtnPrev);
   }
 
-  if (area === "next") {
+  if (pointerArea === "next") {
     removeOpacityModif(slideBtnPrev);
     addOpacityModif(slideBtnNext);
   }

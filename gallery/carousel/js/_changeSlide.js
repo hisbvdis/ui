@@ -42,7 +42,7 @@ function calcNextIndex(index) {
   if (index > slides.length) return 1;
 
   // 1.2. Если полученный индекс меньше нуля, вернуть "индекс последнего слайда"
-  if (index < 0) return slides.length;
+  if (index < 1) return slides.length;
 
   // 1.3. Иначе - вернуть индекс в исходном виде
   return index;
@@ -62,7 +62,7 @@ function changeSlide(nextIndex) {
 // 3. Сменить эскиз
 function changeThumb(nextIndex) {
   // 3.1. Убрать отметку с элемента текущего эскиза
-  currentThumbElem.classList.remove("thumbs__item--activef");
+  currentThumbElem.classList.remove("thumbs__item--active");
 
   // 3.2. Пометить элемент эскиза с заданным индексом
   thumbs[nextIndex - 1].classList.add("thumbs__item--active");

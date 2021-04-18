@@ -1,15 +1,14 @@
 .thumbs {
-  background: #000;
+  background: var(--thumbsBg);
 }
 
 .thumbs__list {
   display: flex;
   justify-content: center;;
   margin: 0;
-  padding: 0;
+  padding: 3px;
   
   list-style: none;
-  border: 3px solid #000;
 }
 
 .thumbs__item {
@@ -20,23 +19,23 @@
   margin-inline-end: 3px;
 }
 
-.thumbs__btn {
-  padding: 0;
-
-  border: none;
-  cursor: pointer;
-}
-
-.thumbs__btn--active {
+.thumbs__item--active {
   position: relative;
 }
 
-.thumbs__btn--active::before {
+.thumbs__item--active::before {
   content: "";
   position: absolute;
   inset: 0;
 
   border: 2px solid #11B1E7;
+}
+
+.thumbs__btn {
+  padding: 0;
+
+  border: none;
+  cursor: pointer;
 }
 
 .thumbs__img {

@@ -1,6 +1,6 @@
 .slideBtn {
   font-size: 35px;
-  color: #fff;
+  color: var(--slideBtnColor);
 
   background: none;
   border: none;
