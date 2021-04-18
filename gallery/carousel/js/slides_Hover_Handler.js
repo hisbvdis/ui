@@ -33,11 +33,11 @@ function slides_Pointermove_Handler(evt) {
 
 // Добавить класс-модификатор прозрачности к кнопке
 function addOpacityModif(slideBtn) {
-  slideBtn.classList.add("slides__slideBtn--opacity-1");
+  slideBtn.classList.add("slides__slideBtn--highlight");
 }
 
 
 // Удалить класс-модификатор прозрачности у кнопки
 function removeOpacityModif(slideBtn) {
-  slideBtn.classList.remove("slides__slideBtn--opacity-1");
+  slideBtn.classList.remove("slides__slideBtn--highlight");
 }

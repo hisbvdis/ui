@@ -68,7 +68,7 @@
     opacity: 0.4;
   }
 
-  .slides:hover .slides__slideBtn--opacity-1 {
+  .slides:hover .slides__slideBtn--highlight {
     opacity: 1;
   }
 }
