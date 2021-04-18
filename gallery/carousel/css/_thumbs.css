@@ -1,10 +1,11 @@
 .thumbs {
+  display: flex;
+  justify-content: center;
   background: var(--thumbsBg);
 }
 
 .thumbs__list {
   display: flex;
-  justify-content: center;;
   margin: 0;
   padding: 3px;
   
