@@ -1,0 +1,18 @@
+{
+  "name": "static-under-logo",
+  "version": "1.0.0",
+  "description": "Панель со статическим позиционированием, которая в мобильной версии отображается под логотипом",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0"
+  }
+}

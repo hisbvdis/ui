@@ -1,7 +1,7 @@
 "use strict";
 
 // Импорт функции вычисления положения указателя относительно ".slides"
-import { calcPointerToSlidesPos } from "./_calcPointerToSlidesPos.js";
+import { calcPointerToSlidesPos } from "./export-calcPointerToSlidesPos.js";
 
 // Элемент ".slides"
 let slides = document.querySelector(".slides");

@@ -41,7 +41,7 @@
   - *CSS*
     - В файле `_slides.css` с помощью медиа-запроса `@media(hover: hover)` задаются обычные стили для кнопок
   - *JavaScript*
-    - `_calcPointerToSlidesPos.js` - вычисление положения указателя относительно элемента `.slides`
+    - `export-calcPointerToSlidesPos.js` - вычисление положения указателя относительно элемента `.slides`
     - `slides_Hover_Handler.js` - стилизация кнопок переключения слайдов в зависимости от положения указателя относительно `.slides`
 
 
@@ -51,7 +51,7 @@
     - Все элементы с классом `.slides__item` по умолчанию скрыты с помощью `display: none`
     - У первого элемента `.slides__item` дополнительно задан модификатор `.slides__item--visible`, в котором отображение включено с помощью `display: block`
   - *JavaScript*
-    - `_changeSlide.js` - функции смены отображаемой картинки
+    - `export-changeSlide.js` - функции смены отображаемой картинки
 
 - **Обработка действий пользователя**
   - `slides_Click_Handler.js` - 
