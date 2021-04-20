@@ -20,24 +20,24 @@ function slides_Pointermove_Handler(evt) {
   let pointerArea = calcPointerToSlidesPos(evt, slides);
 
   if (pointerArea === "prev") {
-    removeOpacityModif(slideBtnNext);
-    addOpacityModif(slideBtnPrev);
+    removeHighlightModificator(slideBtnNext);
+    addHighlightModificator(slideBtnPrev);
   }
 
   if (pointerArea === "next") {
-    removeOpacityModif(slideBtnPrev);
-    addOpacityModif(slideBtnNext);
+    removeHighlightModificator(slideBtnPrev);
+    addHighlightModificator(slideBtnNext);
   }
 }
 
 
 // Добавить класс-модификатор прозрачности к кнопке
-function addOpacityModif(slideBtn) {
+function addHighlightModificator(slideBtn) {
   slideBtn.classList.add("slides__slideBtn--highlight");
 }
 
 
 // Удалить класс-модификатор прозрачности у кнопки
-function removeOpacityModif(slideBtn) {
+function removeHighlightModificator(slideBtn) {
   slideBtn.classList.remove("slides__slideBtn--highlight");
 }
