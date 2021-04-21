@@ -4,6 +4,7 @@ const gulp = require("gulp");
 const browserSync = require("browser-sync").create();
 const sass = require("gulp-sass");
 const sourcemaps = require("gulp-sourcemaps");
+const devip = require("dev-ip");
 
 
 // ===================================
@@ -11,9 +12,9 @@ const sourcemaps = require("gulp-sourcemaps");
 // ===================================
 // Dev server
 gulp.task("dev", function() {
-  browserSync.init({
+browserSync.init({
     server: "src",
-    host: "192.168.0.196", // From "dev-ip" extension
+    host: devip(), // From "dev-ip" extension
     reloadDelay: 0,
     reloadDebounce: 100,
     notify: false,
