@@ -17,3 +17,4 @@
 - БЕМ-классы компонентов                  ([ссылка](https://9elements.com/bem-cheat-sheet))
 - Примеры создания популярных компонентов ([ссылка](https://csslayout.io/patterns))
 - Чеклист от Smashing Magazine            ([ссылка](https://www.dropbox.com/s/ve6m3ngp5rmgu74/interface-design-patterns-checklist-2020.pdf?dl=0))
+- Компоненты популярных дизайн-систем     ([ссылка](https://component.gallery/))
