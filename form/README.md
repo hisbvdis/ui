@@ -25,7 +25,6 @@
 - **`ul.form__options`** – блок опций (checkbox или radio)
 - **`li.option  form__option`** – отдельная опция
   - **`label.option__label`** – название опции
-  - **`p.option__mark`** - блок кастомного индикатора
     - **`input.option__input`** - сам "input" (checkbox или radio)
     - **`span.option__customMark`** - кастомный индикатор (если таковой есть)
   - **`p.option__info`** - дополнительный элемент "подсказка" (если нужно)
@@ -33,8 +32,8 @@
 - **`div.form__fields`** - блок полей (input или textarea)
 - **`div.field  form__field`** - отдельное поле
   - **`label.field__label`** - название поля
-  - **`input.field__input`** - сам "input"
-  - **`textarea.field__input  field__input--textarea`** - сам "textarea"
+    - **`input.field__input`** - сам "input"
+    - **`textarea.field__input  field__input--textarea`** - сам "textarea"
   - **`p.field__info`** - дополнительный элемент "подсказка" (если нужно)
   - **`p.field__warn`** - дополнительный элемент "предупреждение" (если нужно)
 - **`button.form__submit`** - кнопка отправки формы.
