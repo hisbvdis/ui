@@ -11,7 +11,7 @@ const devip = require("dev-ip");
 // SERVER
 // ===================================
 // Dev server
-gulp.task("dev", function() {
+gulp.task("default", function() {
 browserSync.init({
     server: "src",
     host: devip(), // From "dev-ip" extension

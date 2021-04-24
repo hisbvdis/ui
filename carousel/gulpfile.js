@@ -10,7 +10,7 @@ const sourcemaps = require("gulp-sourcemaps");
 // SERVER
 // ===================================
 // Dev server
-gulp.task("dev", function() {
+gulp.task("default", function() {
   browserSync.init({
     server: "src",
     host: "192.168.0.196", // From "dev-ip" extension

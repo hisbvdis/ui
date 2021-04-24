@@ -1,16 +1,16 @@
 # Мои примеры - Компоненты
 
-- Модальное окно               ([Папка](modal) /                     [Демо](https://hisbvdis.github.io/my-samples-components/modal/index.html))
-- Форма                        ([Папка](form) /                      [Демо](https://hisbvdis.github.io/my-samples-components/form/index.html))
+- Модальное окно               ([Папка](modal) /                     [Демо](https://hisbvdis.github.io/components/modal/index.html))
+- Форма                        ([Папка](form) /                      [Демо](https://hisbvdis.github.io/components/form/index.html))
 - Панель навигации             ([Папка](nav/))
-  1. Под логотипом             ([Папка](nav/static-under-logo) /     [Демо](https://hisbvdis.github.io/my-samples-components/nav/static-under-logo/src/index.html))
+  1. Под логотипом             ([Папка](nav/static-under-logo) /     [Демо](https://hisbvdis.github.io/components/nav/static-under-logo/src/index.html))
 - Drag-n-Drop                  ([Папка](drag-n-drop))
-  1. Базовый пример            ([Папка](drag-n-drop/1base) /         [Демо](https://hisbvdis.github.io/my-samples-components/drag-n-drop/1base/index.html))
-  2. Range Custom              ([Папка](drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/my-samples-components/drag-n-drop/2range-custom/index.html))
+  1. Базовый пример            ([Папка](drag-n-drop/1base) /         [Демо](https://hisbvdis.github.io/components/drag-n-drop/1base/index.html))
+  2. Ползунок                  ([Папка](drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/components/drag-n-drop/2range-custom/index.html))
 - Collapse-компоненты          ([Папка](collapse))
-  1. Спойлер - тег "details"   ([Папка](collapse/1single-spoiler) /  [Демо](https://hisbvdis.github.io/my-samples-components/collapse/1single-spoiler/index.html))
-- Галерея изображений          ([Папка](gallery))
-  1. Карусель                  ([Папка](gallery/carousel) /          [Демо](https://hisbvdis.github.io/my-samples-components/gallery/carousel/src/index.html))
+  1. Спойлер - тег "details"   ([Папка](collapse/1single-spoiler) /  [Демо](https://hisbvdis.github.io/components/collapse/1single-spoiler/index.html))
+- Карусель                     ([Папка](carousel/) /                 [Демо](https://hisbvdis.github.io/components/carousel/src/index.html))
+  
 
 
 # Статьи и шпаргалки
