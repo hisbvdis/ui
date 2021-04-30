@@ -1,3 +1,6 @@
 # **Collapse components**
 
-Примеры разных collapse-компонентов из Bootstrap: https://getbootstrap.com/docs/4.0/components/collapse/
+## **Best practices / Checklist**
+**Доступность**
+- Заголовок
+  - Должен быть заголовок (можно скрытый ".srOnly") для быстрого поиска по заголовкам

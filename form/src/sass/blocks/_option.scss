@@ -10,13 +10,17 @@
 
   flex-shrink: 0;
   display: inline-block;
-  width: 40px;
+  inline-size: 40px;
   height: 40px;
   margin-right: 20px;
 
   vertical-align: middle;
 
   border: 2px solid #000;
+}
+
+.option__mark--radio {
+  border-radius: 50%;
 }
 
 .option__input:hover + .option__mark,
@@ -31,14 +35,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 40%;
+  inline-size: 40%;
   height: 40%;
 
   background: #56c3b2;
-  border-radius: 50%;
-}
-
-.option__mark--radio {
   border-radius: 50%;
 }
 
@@ -49,19 +49,13 @@
   left: 50%;
   transform: translate(-50%, -70%) rotate(-45deg);
 
-  width: 65%;
+  inline-size: 65%;
   height: 25%;
 
   border-left: 2px solid #56c3b2;
   border-bottom: 2px solid #56c3b2;
 }
 
-@media (min-width: 768px) {
-  .option__mark {
-    width: 52px;
-    height: 52px;
-  }
-}
 
 /* Чтобы в Chrome при клике на элементы они не мигали, при наведении 
 на линию стилизовать курсор под "палец" только, когда используется 

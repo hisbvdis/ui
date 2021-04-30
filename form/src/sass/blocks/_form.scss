@@ -1,5 +1,5 @@
 .form {
-  max-width: 800px;
+  max-inline-size: 800px;
   margin: 0 auto;
   padding: 30px;
 }
@@ -8,38 +8,24 @@
   margin: 0;
   padding: 0 0 31px;
 
-  font-size: 17px;
-  line-height: 18px;
-  font-weight: 700;
-
   border: none;
 }
 
-.form__fieldset:last-of-type {
-  margin-bottom: 15px;
-  padding: 0;
-}
-
 .form__legend {
-  margin: 0;
+  inline-size: 100%;
+  margin: 0 0 10px;
   padding: 0;
 
-  font-size: 17px;
-  line-height: 16px;
-  color: #63d1bb;
+  font-size: 1.1em;
+  color: #26c5aa;
 
-  overflow: hidden;
+  float: left;
 }
 
-.form__legend--waMargin {
-  margin: 0;
-}
-
-.form__legendInner {
-  position: relative;
-
-  font-weight: 700;
-  text-transform: uppercase;
+.form__legendClearfix {
+  block-size: 0;
+  
+  clear: both;
 }
 
 .form__options {
@@ -54,102 +40,11 @@
   margin-bottom: 20px;
 }
 
-.form__option:last-child {
-  margin-bottom: 0;
+.form__field + .form__field {
+  margin-block-start: 10px;
 }
 
-.form__group {
-  margin-bottom: 22px;
-}
-
-.form__group:last-child {
-  margin-bottom: 0;
-}
-
-@media (max-width: 767px) {
-  .form__legend {
-    margin: 0 0 25px;
-  }
-
-  .form__legendInner::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 25px);
-    transform: translateY(-50%);
-
-    width: 100vw;
-    height: 1px;
-
-    background: #56c3b2;
-  }
-
-  .form__smallText {
-    display: block;
-    margin-bottom: 25px;
-  }
-}
-
-@media (min-width: 768px) {
-  .form__fieldset {
-    display: flex;
-    padding: 50px 0;
-
-    font-size: 19px;
-    line-height: 18px;
-  }
-
-  .form__legend {
-    width: 165px;
-    flex-shrink: 0;
-  }
-
-  .form__legendInner {
-    display: block;
-    padding-top: 1em;
-  }
-
-  .form__fields {
-    flex-basis: 100%;
-  }
-
-  .form__options {
-    flex-grow: 1;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .form__option--color {
-    flex-basis: 50%;
-  }
-
-  .form__group {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .form__fieldset:last-of-type {
-    padding: 50px 0;
-  }
-
-  .form__footer {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-
-@media (min-width: 1024px) {
-  .form__legend {
-    width: 110px;
-  }
-
-  .form__option--color {
-    flex-basis: calc(100% / 3);
-  }
-
-  .form__footer {
-    padding-left: 110px;
-  }
+.form__small {
+  display: block;
+  margin-bottom: 25px;
 }

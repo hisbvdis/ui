@@ -39,8 +39,8 @@
 }
 
 
-@media (max-width: 767px) {
+@media (max-inline-size: 767px) {
   .btn {
-    width: 100%;
+    inline-size: 100%;
   }
 }
