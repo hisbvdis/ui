@@ -1,52 +1,36 @@
 # Мои примеры - Компоненты
 
-## Всплывающие элементы
-### Modal / Dialog
-**Модальное окно** – блокирующее остальной интерфейс
-- Обычно имеет затемнённую полупрозрачную "подложку" – *Scrim*
-
-*Моя реализация*
-- Пример 1 ([Папка](modal) / [Демо](https://hisbvdis.github.io/components/modal/index.html))
-
-### Popup / Popover / Popper
-**Всплывающее окно** – не блокирующее остальной интерфейс
-- Может содержать подробную информацию (заголовок, текст) и элементы управления (кнопки)
-- Обычно закрываются при повторном нажатии на вызвавший элемент или за пределами всплывающего окна
-
-### Tooltip
-**Высплывающая подсказка** – содержит краткий текст и отображаются при наведении на элемент курсора, попадании фокуса или удержании пальца
-
-
-## Элементы формы
-### Form
-**Форма** – 
-
-*Моя реализация*
-- Форма ([Папка](form) / [Демо](https://hisbvdis.github.io/components/form/index.html))
-
-
-## Другие (расформировать)
+- Модальное окно
+  - Пример ([Папка](modal) / [Демо](https://hisbvdis.github.io/components/modal/index.html))
+- Форма
+  - Пример ([Папка](form) / [Демо](https://hisbvdis.github.io/components/form/index.html))
 - Панель навигации ([Папка](nav/))
-  1. Под логотипом ([Папка](nav/static-under-logo) / [Демо](https://hisbvdis.github.io/components/nav/static-under-logo/src/index.html))
+  - Пример ([Папка](nav/static-under-logo) / [Демо](https://hisbvdis.github.io/components/nav/static-under-logo/src/index.html))
 - Drag-n-Drop ([Папка](drag-n-drop))
-  1. Базовый пример ([Папка](drag-n-drop/1base) / [Демо](https://hisbvdis.github.io/components/drag-n-drop/1base/index.html))
-  2. Ползунок ([Папка](drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/components/drag-n-drop/2range-custom/index.html))
+  - Базовый пример ([Папка](drag-n-drop/1base) / [Демо](https://hisbvdis.github.io/components/drag-n-drop/1base/index.html))
+  - Ползунок ([Папка](drag-n-drop/2range-custom) / [Демо](https://hisbvdis.github.io/components/drag-n-drop/2range-custom/index.html))
 - Collapse-компоненты ([Папка](collapse))
-  1. Спойлер - тег "details" ([Папка](collapse/1single-spoiler) / [Демо](https://hisbvdis.github.io/components/collapse/1single-spoiler/index.html))
-- Карусель ([Папка](carousel/) / [Демо](https://hisbvdis.github.io/components/carousel/src/index.html))
+  - Спойлер - тег "details" ([Папка](collapse/1single-spoiler) / [Демо](https://hisbvdis.github.io/components/collapse/1single-spoiler/index.html))
+- Карусель
+  - Пример ([Папка](carousel/) / [Демо](https://hisbvdis.github.io/components/carousel/src/index.html))
 
 
 ## Источники
-### Примеры компонентов
+### Примеры компонентов и статьи
 Подробрки
 - Material Design - "Компоненты" ([ссылка](https://material.io/components))
 - CSSLayout - "Паттерны компонентов" ([ссылка](https://csslayout.io/patterns))
 - Component Gallery - "Компоненты дизайн-систем" ([ссылка](https://component.gallery/))
+- Semantic UI ([ссылка](https://semantic-ui.com/introduction/getting-started.html))
 
-Header (шапка сайта)
+Секционные элементы: Header / Footer / Main / Nav
 - Ahmad Shadeed – "17 примеров &lt;header&gt;" ([ссылка](https://headers-css.vercel.app/))
 
-### Шпаргалки
+Элементы управления (Контролы): Toggle / Checkbox / Radio
+- Kitty Giraudel - "Доступный toggle" ([ссылка](https://habr.com/ru/company/otus/blog/557006/))
+- Sara Soueidan – "Inclusively Hiding & Styling Checkboxes and Radio Buttons" ([ссылка](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/))
+
+### Другие шпаргалки
 - БЕМ-классы компонентов ([ссылка](https://9elements.com/bem-cheat-sheet))
 - Чеклист от Smashing Magazine ([ссылка](https://www.dropbox.com/s/ve6m3ngp5rmgu74/interface-design-patterns-checklist-2020.pdf?dl=0))
 - Yoksel - "CSS-классы элементов" ([ссылка](https://github.com/yoksel/common-words))
