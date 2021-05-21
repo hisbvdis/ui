@@ -1,4 +1,4 @@
-# Мои примеры - Компоненты
+# Мои примеры: UI-элементы
 
 - Модальное окно
   - Пример ([Папка](modal) / [Демо](https://hisbvdis.github.io/components/modal/index.html))
