@@ -6,30 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="css/main.css">
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
   <script src="main.js" defer></script>
 </head>
 
 <body>
-<form class="form" action="#" method="POST" >
-  <h2 class="form__heading  srOnly" id="form__heading">Форма заказа</h2>
+<form class="form" action="#" method="POST" aria-labelledby="form__title">
+  <h2 class="form__title  srOnly" id="form__title">Форма заказа</h2>
 
   <fieldset class="form__fieldset">
     <legend class="form__legend">Тип</legend>
     <div class="form__legendClearfix"></div>
     <ul class="form__options">
-      <li class="form__option">
-        <label class="option">
-          <input class="option__input  srOnly" type="radio" name="type" value="accessories" checked>
-          <span class="option__mark  option__mark--radio"></span>
-          <span class="option__title">Аксессуар для интерьера</span>
+      <li class="radio  form__option">
+        <label class="radio__label">
+          <input class="radio__input  srOnly" type="radio" name="type" value="accessories" checked>
+          <span class="radio__mark"></span>
+          <span class="radio__title">Аксессуар для интерьера</span>
         </label>
       </li>
-      <li class="form__option">
-        <label class="option">
-          <input class="option__input  srOnly" type="radio" name="type" value="toys">
-          <span class="option__mark  option__mark--radio"></span>
-          <span class="option__name">Детская игрушка</span>
+      <li class="radio  form__option">
+        <label class="radio">
+          <input class="radio__input  srOnly" type="radio" name="type" value="toys">
+          <span class="radio__mark"></span>
+          <span class="radio__name">Детская игрушка</span>
         </label>
       </li>
     </ul>
@@ -39,18 +39,18 @@
     <legend class="form__legend">Цвет</legend>
     <div class="form__legendClearfix"></div>
     <ul class="form__options">
-      <li class="form__option">
-        <label class="option">
-          <input class="option__input  srOnly" type="checkbox" name="color" value="white" checked />
-          <span class="option__mark  option__mark--checkbox"></span>
-          <span class="option__name">Белый</span>
+      <li class="checkbox  form__option">
+        <label class="checkbox">
+          <input class="checkbox__input  srOnly" type="checkbox" name="color" value="white" checked />
+          <span class="checkbox__mark"></span>
+          <span class="checkbox__name">Белый</span>
         </label>
       </li>
       <li class="form__option">
-        <label class="option">
-          <input class="option__input  srOnly" type="checkbox" name="color" value="gray" />
-          <span class="option__mark  option__mark--checkbox"></span>
-          <span class="option__name">Серый</span>
+        <label class="checkbox">
+          <input class="checkbox__input  srOnly" type="checkbox" name="color" value="gray" />
+          <span class="checkbox__mark"></span>
+          <span class="checkbox__name">Серый</span>
         </label>
       </li>
     </ul>
