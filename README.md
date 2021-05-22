@@ -31,10 +31,10 @@
 - Collapse ([Папка](collapse/1collapse) / [Демо](https://hisbvdis.github.io/elements/collapse/1collapse/index.html))
 
 **Carousel**
-- Пример ([Папка](carousel/) / [Демо](https://hisbvdis.github.io/elements/carousel/src/index.html))
+- Пример ([Папка](carousel/) / [Демо](https://hisbvdis.github.io/elements/carousel/index.html))
 
 **Navbar**
-- Пример ([Папка](nav/static-under-logo) / [Демо](https://hisbvdis.github.io/elements/nav/static-under-logo/src/index.html))
+- Пример ([Папка](nav/1static-under-logo) / [Демо](https://hisbvdis.github.io/elements/nav/1static-under-logo/index.html))
 
 
 ## Источники
