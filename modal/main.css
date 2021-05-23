@@ -46,7 +46,7 @@ body {
  * Нельзя использовать сам ".modal", так как он "fixed" и при нажатии 
  * на скролл тоже происходит клик
 */
-.modal__wrapper {
+.modal__scrim {
   display: flex;
   min-height: 100vh;
   padding: 20px;
