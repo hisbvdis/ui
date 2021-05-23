@@ -10,7 +10,7 @@ body {
 }
 
 /* Отключение прокрутки у тега <body> */
-.body--modalOpened {
+.modalOpened {
   overflow-y: hidden;
 }
 

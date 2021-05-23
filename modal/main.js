@@ -1,16 +1,14 @@
 "use strict";
 
 /* Значение атрибута "data-trigger" для кнопки, вызывающей модальное окно */
-const DATA_TRIGGER_ATTR = "modal";
-
 let openedModal = null;
-let actionBtn = null;
 let closeBtn = null;
+let actionBtn = null;
 let enterBtn = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
-document.addEventListener("click", forTrigger_Document_Click_Handler);
+document.addEventListener("click", forModalTrigger_Document_Click_Handler);
 // - открытие модального окна при нажатии "назад/вперёд"
 window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 
@@ -22,16 +20,16 @@ window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 // Открыть модальное окно
 function openModal(modal) {
   modal.classList.add("modal--opened");
-  document.body.classList.add("body--modalOpened");
+  document.body.classList.add("modalOpened");
 
   // Добавление новой записи в историю при открытии окна
   history.pushState({fromSite: true}, "", "");
   
-  // Назначение глобальных переменных для окна и его элементом
+  // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
-  actionBtn = modal.querySelector(".js-modalActionBtn");
-  closeBtn = modal.querySelector(".js-modalCloseBtn");
+  closeBtn = modal.querySelector("[data-close-btn]");
   enterBtn = modal.querySelector(".js-modalByEnterCloseBtn");
+  actionBtn = modal.querySelector(".js-modalActionBtn");
   
   // Добавление обработчиков модального окна
   modal.addEventListener("click", modal_Outer_Click_Handler);
@@ -79,8 +77,8 @@ function closeModal(modal) {
 // =================================================================
 // Если нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
-function forTrigger_Document_Click_Handler(evt) {
-  if (evt.target.dataset.trigger !== DATA_TRIGGER_ATTR) return;
+function forModalTrigger_Document_Click_Handler(evt) {
+  if (evt.target.dataset.trigger !== "modal") return;
   
   let modalId = evt.target.dataset.target;
   let modal = document.querySelector("#" + modalId);

@@ -11,7 +11,7 @@
 
 <div class="placeholder-70vh"></div>
 
-<a href="modal.html" data-trigger="modal" data-target="modal1">Окно №1 (маленькое)</a>
+<a href="#" data-trigger="modal" data-target="modal1">Окно №1 (маленькое)</a>
 <br />
 <br />
 <a href="modal.html" data-trigger="modal" data-target="modal2">Окно №2 (большое)</a>
@@ -23,7 +23,8 @@
     <div class="modal__content">
       <h3>Modal №1</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam qui excepturi dolorem nulla voluptatem, maxime laborum sit assumenda tenetur dolorum, molestias quisquam est amet ullam dicta ex autem praesentium? Quisquam atque accusantium ad numquam, deleniti ut impedit reprehenderit fugit quae rerum obcaecati dolores nobis. Cumque, quia? Itaque hic minima sit obcaecati eum architecto quisquam nemo quo illum libero animi repellendus fuga unde nobis ab eligendi aliquid, dignissimos officia alias a at saepe quam eaque eius. Voluptas reprehenderit enim sapiente eligendi! Quae fuga repellendus maxime soluta. Repellendus rem beatae atque amet accusantium voluptate hic non dolore quos est nulla, id neque?</p>
-      <button class="btn  js-modalCloseBtn  js-modalByEnterCloseBtn" type="button">ОК (Enter)</button>
+      <!-- <button class="btn  js-modalCloseBtn  js-modalByEnterCloseBtn" type="button">ОК (Enter)</button> -->
+      <button type="button" data-close-btn  data-enter-btn>ОК (Enter)</button>
     </div>
   </div>
 </section>
@@ -36,7 +37,7 @@
       <p>Окно не закрывается по "Enter"</p>
       <p><textarea></textarea></p>
       <a class="js-modalActionBtn" href="http://google.com">Кнопка для Ctrl+Enter</a>
-      <button class="btn  js-modalCloseBtn" type="button">Закрыть</button>
+      <button type="button" data-close-btn>Закрыть</button>
     </div>
   </div>
 </section>
