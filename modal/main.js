@@ -3,9 +3,10 @@
 /* Значение атрибута "data-trigger" для кнопки, вызывающей модальное окно */
 let openedModal = null;
 let closeBtn = null;
-let actionBtn = null;
+let ctrlEnterBtn = null;
 let enterBtn = null;
-let modalScrim = null;
+let scrim = null;
+let mousedownTargetIsScrim = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -28,26 +29,25 @@ function openModal(modal) {
   
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
-  modalScrim = modal.querySelector(".modal__scrim");
+  scrim = modal.querySelector(".modal__scrim");
   closeBtn = modal.querySelector("[data-close-btn]");
   enterBtn = modal.querySelector("[data-enter-btn]");
-  actionBtn = modal.querySelector(".js-modalActionBtn");
+  ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
   
   // Добавление обработчиков модального окна
-  modalScrim.addEventListener("click", modalScrim_Click_Handler);
+  scrim.addEventListener("mousedown", scrim_Mousedown_Handler);
+  scrim.addEventListener("click", scrim_Click_Handler);
   closeBtn.addEventListener("click", closeBtn_Click_Handler);
   document.addEventListener("keydown", forModal_Document_Keydown_Escape_Handler);
+  document.addEventListener("keydown", forModal_Document_Keydown_Enter_Handler);
   document.addEventListener("keydown", forModal_Document_Keydown_CtrlEnter_Handler);
-  if (enterBtn !== null) {
-    document.addEventListener("keydown", forModal_Document__Keydown_Enter_Handler);
-  }
 }
 
 
 // Закрыть модальное окно
 function closeModal(modal) {
   modal.classList.remove("modal--opened");
-  document.body.classList.remove("body--modalOpened");
+  document.body.classList.remove("modalOpened");
 
   // Переход назад или удаление хеша (в зав-ти от наличия "объекта состояния")
   if (history.state === null) {
@@ -57,19 +57,19 @@ function closeModal(modal) {
   }
 
   // Удаление обработчиков модального окна
-  modal.removeEventListener("click", modalScrim_Click_Handler);
-  modal.removeEventListener("click", closeBtn_Click_Handler);
+  scrim.removeEventListener("click", scrim_Click_Handler);
+  scrim.removeEventListener("mousedown", scrim_Mousedown_Handler);
+  closeBtn.removeEventListener("click", closeBtn_Click_Handler);
   document.removeEventListener("keydown", forModal_Document_Keydown_Escape_Handler);
+  document.removeEventListener("keydown", forModal_Document_Keydown_Enter_Handler);
   document.removeEventListener("keydown", forModal_Document_Keydown_CtrlEnter_Handler);
-  if (enterBtn !== null) {
-    document.removeEventListener("keydown", forModal_Document__Keydown_Enter_Handler, {once: true});
-  }
 
   // Удаление глобальных переменных для окна и его элементом
   openedModal = null;
-  actionBtn = null;
+  scrim = null;
   closeBtn = null;
   enterBtn = null;
+  ctrlEnterBtn = null;
 }
 
 
@@ -80,7 +80,7 @@ function closeModal(modal) {
 // Если нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forModalOpener_Document_Click_Handler(evt) {
-  if (("modalOpener" in evt.target.dataset) === false) return;
+  if ( !evt.target.dataset.hasOwnProperty("modalOpener") ) return;
   
   let modalId = evt.target.dataset.target;
   let modal = document.querySelector("#" + modalId);
@@ -90,12 +90,32 @@ function forModalOpener_Document_Click_Handler(evt) {
 }
 
 
-// Если в открытом модальном окне нажали "Ctrl+Enter"
-//    =>  Нажать кнопку действия модального окна
-// ??? Не очень хорошая реализация вроде
-function forModal_Document_Keydown_CtrlEnter_Handler(evt) {
-  if (evt.ctrlKey && evt.code === "Enter" || evt.code === "NumpadEnter") {
-    actionBtn.click();
+// Если нажали Назад/Вперёд в браузере
+//    =>  Показать/скрыть модальное окно
+function forModal_Window_Popstate_Handler() {
+  if (openedModal !== null) {
+    closeModal(openedModal);
+  }
+}
+
+
+// Если надавили ЛКМ
+//    => Проверить и записать, является ли целевой элемент подложкой
+function scrim_Mousedown_Handler(evt) {
+  if (evt.which !== 1) return;
+
+  mousedownTargetIsScrim = evt.target.classList.contains("modal__scrim");
+}
+
+
+// Если нажали указателем на внешней области модального окна
+//    =>  Закрыть модальное окно
+function scrim_Click_Handler(evt) {
+  if (evt.which !== 1) return;
+  if (!mousedownTargetIsScrim) return;
+
+  if (evt.target.classList.contains("modal__scrim")) {
+    closeModal(openedModal);
   }
 }
 
@@ -116,28 +136,19 @@ function forModal_Document_Keydown_Escape_Handler(evt) {
 }
 
 
-// Если нажали указателем на внешней области модального окна
-//    =>  Закрыть модальное окно
-function modalScrim_Click_Handler(evt) {
-  // Если был клик мышью, но не ЛКМ, остановить дальнейшее выполнение
-  if (evt.which !== 1) return;
-  
-  closeModal(openedModal);
-}
-
 // Если нажали Enter (а в модалке есть кнопка ".js-modalByEnterCloseBtn")
 //    =>  Закрыть модальное окно
-function forModal_Document__Keydown_Enter_Handler(evt) {
+function forModal_Document_Keydown_Enter_Handler(evt) {
   if (evt.type === "keydown" && evt.code === "Enter" || evt.code === "NumpadEnter") {
-    closeModal(openedModal);
+    enterBtn?.click();
   }
 }
 
 
-// Если нажали Назад/Вперёд в браузере
-//    =>  Показать/скрыть модальное окно
-function forModal_Window_Popstate_Handler() {
-  if (openedModal !== null) {
-    closeModal(openedModal);
+// Если в открытом модальном окне нажали "Ctrl+Enter"
+//    =>  Нажать кнопку действия модального окна
+function forModal_Document_Keydown_CtrlEnter_Handler(evt) {
+  if (evt.ctrlKey && evt.code === "Enter" || evt.code === "NumpadEnter") {
+    ctrlEnterBtn?.click();
   }
 }
