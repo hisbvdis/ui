@@ -3,7 +3,7 @@
 let openedModal = null;
 let actionBtn = null;
 let closeBtn = null;
-let enterCloseBtn = null;
+let enterBtn = null;
 
 // Обработчики для функционирования модального окна
 document.addEventListener("click", modalOpener_Click_Handler);
@@ -26,14 +26,14 @@ function openModal(modal) {
   openedModal = modal;
   actionBtn = modal.querySelector(".js-modalActionBtn");
   closeBtn = modal.querySelector(".js-modalCloseBtn");
-  enterCloseBtn = modal.querySelector(".js-modalByEnterCloseBtn");
+  enterBtn = modal.querySelector(".js-modalByEnterCloseBtn");
   
   // Добавление обработчиков модального окна
   modal.addEventListener("click", modal_Outer_Click_Handler);
   modal.addEventListener("click", modal_CloseBtn_Click_Handler);
   document.addEventListener("keydown", forModal_Document_Keydown_Escape_Handler);
   document.addEventListener("keydown", forModal_Document_Keydown_CtrlEnter_Handler);
-  if (enterCloseBtn !== null) {
+  if (enterBtn !== null) {
     document.addEventListener("keydown", forModal_Document_Enter_Handler);
   }
 }
@@ -56,7 +56,7 @@ function closeModal(modal) {
   modal.removeEventListener("click", modal_CloseBtn_Click_Handler);
   document.removeEventListener("keydown", forModal_Document_Keydown_Escape_Handler);
   document.removeEventListener("keydown", forModal_Document_Keydown_CtrlEnter_Handler);
-  if (enterCloseBtn !== null) {
+  if (enterBtn !== null) {
     document.removeEventListener("keydown", forModal_Document_Enter_Handler, {once: true});
   }
 
@@ -64,7 +64,7 @@ function closeModal(modal) {
   openedModal = null;
   actionBtn = null;
   closeBtn = null;
-  enterCloseBtn = null;
+  enterBtn = null;
 }
 
 
