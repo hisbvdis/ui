@@ -1,12 +1,17 @@
 "use strict";
 
+/* Значение атрибута "data-trigger" для кнопки, вызывающей модальное окно */
+const DATA_TRIGGER_ATTR = "modal";
+
 let openedModal = null;
 let actionBtn = null;
 let closeBtn = null;
 let enterBtn = null;
 
-// Обработчики для функционирования модального окна
-document.addEventListener("click", modalOpener_Click_Handler);
+// Обработчики для функционирования модального окна:
+// - нажатие на кнопки, открывающие модальное окно
+document.addEventListener("click", forTrigger_Document_Click_Handler);
+// - открытие модального окна при нажатии "назад/вперёд"
 window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 
 
@@ -74,14 +79,14 @@ function closeModal(modal) {
 // =================================================================
 // Если нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
-function modalOpener_Click_Handler(evt) {
-  if (evt.target.classList.contains("js-modalOpener")) {
-    evt.preventDefault();
-    let modalId = evt.target.dataset.targetModal;
-    let modal = document.querySelector("." + modalId);
+function forTrigger_Document_Click_Handler(evt) {
+  if (evt.target.dataset.trigger !== DATA_TRIGGER_ATTR) return;
+  
+  let modalId = evt.target.dataset.target;
+  let modal = document.querySelector("#" + modalId);
 
-    openModal(modal);
-  }
+  evt.preventDefault();
+  openModal(modal);
 }
 
 
