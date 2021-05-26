@@ -1,11 +1,9 @@
 "use strict";
 
-/* Значение атрибута "data-trigger" для кнопки, вызывающей модальное окно */
 let openedModal = null;
-let closeBtn = null;
-let ctrlEnterBtn = null;
-let enterBtn = null;
 let scrim = null;
+let enterBtn = null;
+let ctrlEnterBtn = null;
 let mousedownTargetIsScrim = null;
 
 // Обработчики для функционирования модального окна:
@@ -30,17 +28,16 @@ function openModal(modal) {
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
   scrim = modal.querySelector(".modal__scrim");
-  closeBtn = modal.querySelector("[data-close-btn]");
   enterBtn = modal.querySelector("[data-enter-btn]");
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
   
   // Добавление обработчиков модального окна
   scrim.addEventListener("mousedown", scrim_Mousedown_Handler);
   scrim.addEventListener("click", scrim_Click_Handler);
-  closeBtn.addEventListener("click", closeBtn_Click_Handler);
-  document.addEventListener("keydown", forModal_Document_Keydown_Escape_Handler);
-  document.addEventListener("keydown", forModal_Document_Keydown_Enter_Handler);
-  document.addEventListener("keydown", forModal_Document_Keydown_CtrlEnter_Handler);
+  modal.addEventListener("click", forCloseBtn_Modal_Click_Handler);
+  document.addEventListener("keydown", forCloseBtn_Document_Keydown_Escape_Handler);
+  document.addEventListener("keydown", forEnterBtn_Document_Keydown_Enter_Handler);
+  document.addEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
 }
 
 
@@ -57,17 +54,16 @@ function closeModal(modal) {
   }
 
   // Удаление обработчиков модального окна
-  scrim.removeEventListener("click", scrim_Click_Handler);
   scrim.removeEventListener("mousedown", scrim_Mousedown_Handler);
-  closeBtn.removeEventListener("click", closeBtn_Click_Handler);
-  document.removeEventListener("keydown", forModal_Document_Keydown_Escape_Handler);
-  document.removeEventListener("keydown", forModal_Document_Keydown_Enter_Handler);
-  document.removeEventListener("keydown", forModal_Document_Keydown_CtrlEnter_Handler);
+  scrim.removeEventListener("click", scrim_Click_Handler);
+  modal.removeEventListener("click", forCloseBtn_Modal_Click_Handler);
+  document.removeEventListener("keydown", forCloseBtn_Document_Keydown_Escape_Handler);
+  document.removeEventListener("keydown", forEnterBtn_Document_Keydown_Enter_Handler);
+  document.removeEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
 
   // Удаление глобальных переменных для окна и его элементом
   openedModal = null;
   scrim = null;
-  closeBtn = null;
   enterBtn = null;
   ctrlEnterBtn = null;
 }
@@ -122,14 +118,16 @@ function scrim_Click_Handler(evt) {
 
 // Если в открытом модальном окне кликнули на кнопку "Закрыть"
 //    =>  Закрыть модальное окно
-function closeBtn_Click_Handler(evt) {
+function forCloseBtn_Modal_Click_Handler(evt) {
+  if (evt.target.dataset.closeBtn === undefined) return;
+
   closeModal(openedModal);
 }
 
 
 // Если при открытом модальном окне нажали "Escape"
 //   =>  Закрыть модальное окно
-function forModal_Document_Keydown_Escape_Handler(evt) {
+function forCloseBtn_Document_Keydown_Escape_Handler(evt) {
   if (evt.code === "Escape") {
     closeModal(openedModal);
   }
@@ -138,7 +136,7 @@ function forModal_Document_Keydown_Escape_Handler(evt) {
 
 // Если нажали Enter (а в модалке есть кнопка ".js-modalByEnterCloseBtn")
 //    =>  Закрыть модальное окно
-function forModal_Document_Keydown_Enter_Handler(evt) {
+function forEnterBtn_Document_Keydown_Enter_Handler(evt) {
   if (evt.type === "keydown" && evt.code === "Enter" || evt.code === "NumpadEnter") {
     enterBtn?.click();
   }
@@ -147,7 +145,7 @@ function forModal_Document_Keydown_Enter_Handler(evt) {
 
 // Если в открытом модальном окне нажали "Ctrl+Enter"
 //    =>  Нажать кнопку действия модального окна
-function forModal_Document_Keydown_CtrlEnter_Handler(evt) {
+function forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler(evt) {
   if (evt.ctrlKey && evt.code === "Enter" || evt.code === "NumpadEnter") {
     ctrlEnterBtn?.click();
   }
