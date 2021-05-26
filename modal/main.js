@@ -82,8 +82,8 @@ function closeModal(modal) {
 function forModalOpener_Document_Click_Handler(evt) {
   if ( !evt.target.dataset.hasOwnProperty("modalOpener") ) return;
   
-  let modalId = evt.target.dataset.target;
-  let modal = document.querySelector("#" + modalId);
+  let selector = evt.target.dataset.target;
+  let modal = document.querySelector(selector);
 
   evt.preventDefault();
   openModal(modal);
