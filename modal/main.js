@@ -1,10 +1,10 @@
 "use strict";
 
 let openedModal = null;
-let scrim = null;
+let backdrop = null;
 let enterBtn = null;
 let ctrlEnterBtn = null;
-let mousedownTargetIsScrim = null;
+let mousedownTargetIsBackdrop = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -27,13 +27,13 @@ function openModal(modal) {
   
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
-  scrim = modal.querySelector(".modal__scrim");
+  backdrop = modal.querySelector(".modal__backdrop");
   enterBtn = modal.querySelector("[data-enter-btn]");
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
   
   // Добавление обработчиков модального окна
-  scrim.addEventListener("mousedown", scrim_Mousedown_Handler);
-  scrim.addEventListener("click", scrim_Click_Handler);
+  backdrop.addEventListener("mousedown", backdrop_Mousedown_Handler);
+  backdrop.addEventListener("click", backdrop_Click_Handler);
   modal.addEventListener("click", forCloseBtn_Modal_Click_Handler);
   document.addEventListener("keydown", forCloseBtn_Document_Keydown_Escape_Handler);
   document.addEventListener("keydown", forEnterBtn_Document_Keydown_Enter_Handler);
@@ -54,8 +54,8 @@ function closeModal(modal) {
   }
 
   // Удаление обработчиков модального окна
-  scrim.removeEventListener("mousedown", scrim_Mousedown_Handler);
-  scrim.removeEventListener("click", scrim_Click_Handler);
+  backdrop.removeEventListener("mousedown", backdrop_Mousedown_Handler);
+  backdrop.removeEventListener("click", backdrop_Click_Handler);
   modal.removeEventListener("click", forCloseBtn_Modal_Click_Handler);
   document.removeEventListener("keydown", forCloseBtn_Document_Keydown_Escape_Handler);
   document.removeEventListener("keydown", forEnterBtn_Document_Keydown_Enter_Handler);
@@ -63,7 +63,7 @@ function closeModal(modal) {
 
   // Удаление глобальных переменных для окна и его элементом
   openedModal = null;
-  scrim = null;
+  backdrop = null;
   enterBtn = null;
   ctrlEnterBtn = null;
 }
@@ -97,20 +97,20 @@ function forModal_Window_Popstate_Handler() {
 
 // Если надавили ЛКМ
 //    => Проверить и записать, является ли целевой элемент подложкой
-function scrim_Mousedown_Handler(evt) {
+function backdrop_Mousedown_Handler(evt) {
   if (evt.which !== 1) return;
 
-  mousedownTargetIsScrim = evt.target.classList.contains("modal__scrim");
+  mousedownTargetIsBackdrop = evt.target.classList.contains("modal__backdrop");
 }
 
 
 // Если нажали указателем на внешней области модального окна
 //    =>  Закрыть модальное окно
-function scrim_Click_Handler(evt) {
+function backdrop_Click_Handler(evt) {
   if (evt.which !== 1) return;
-  if (!mousedownTargetIsScrim) return;
+  if (!mousedownTargetIsBackdrop) return;
 
-  if (evt.target.classList.contains("modal__scrim")) {
+  if (evt.target.classList.contains("modal__backdrop")) {
     closeModal(openedModal);
   }
 }

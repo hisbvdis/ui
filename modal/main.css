@@ -15,7 +15,7 @@ body {
 }
 
 .placeholder-70vh {
-  height: 70vh;
+  block-size: 70vh;
 
   background: #ccc;
 }
@@ -25,16 +25,12 @@ body {
 /* МОДАЛЬНОЕ ОКНО */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   z-index: 1;
 
   display: none;
-  width: 100%;
-  height: 100%;
   
   overflow-y: scroll;
-  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal--opened {
@@ -42,21 +38,21 @@ body {
 }
 
 /* 
- * Обёртка, которая будет ловить нажатия
+ * Фон, которая будет ловить нажатия
  * Нельзя использовать сам ".modal", так как он "fixed" и при нажатии 
  * на скролл тоже происходит клик
 */
-.modal__scrim {
+.modal__backdrop {
   display: flex;
-  min-height: 100vh;
+  min-block-size: 100vh;
   padding: 20px;
 
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal__content {
-  width: 100%;
-  max-width: 600px;
+  inline-size: 100%;
+  max-inline-size: 600px;
   padding: 20px;
   margin: auto;
 
