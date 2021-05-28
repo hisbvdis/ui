@@ -5,19 +5,20 @@
   box-sizing: border-box;
 }
 
+.placeholder-70vh {
+  block-size: 70vh;
+  margin-block-end: 20px;
+
+  background: #ccc;
+}
+
+/* Отключение прокрутки у тега <body> */
 body { 
   overflow-y: scroll;
 }
 
-/* Отключение прокрутки у тега <body> */
 .modalOpened {
   overflow-y: hidden;
-}
-
-.placeholder-70vh {
-  block-size: 70vh;
-
-  background: #ccc;
 }
 
 
@@ -29,25 +30,14 @@ body {
   z-index: 1;
 
   display: none;
+  padding: 20px;
   
+  background: rgba(0, 0, 0, 0.6);
   overflow-y: scroll;
 }
 
 .modal--opened {
-  display: block;
-}
-
-/* 
- * Фон, которая будет ловить нажатия
- * Нельзя использовать сам ".modal", так как он "fixed" и при нажатии 
- * на скролл тоже происходит клик
-*/
-.modal__backdrop {
   display: flex;
-  min-block-size: 100vh;
-  padding: 20px;
-
-  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal__content {
