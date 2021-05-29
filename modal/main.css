@@ -30,7 +30,7 @@ body {
   z-index: 1;
 
   display: none;
-  padding: 20px;
+  padding: 10px;
   
   background: rgba(0, 0, 0, 0.6);
   overflow-y: scroll;

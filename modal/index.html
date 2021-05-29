@@ -5,32 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="main.css" />
   <script src="main.js" defer></script>
-  <title>Modal</title>
+  <title>Document</title>
 </head>
 <body>
 
 <div class="placeholder-70vh"></div>
 
-<a href="modal.html" data-modal-opener  data-target="#modal1">Окно №1 (маленькое)</a>
+<button data-modal="modal1" aria-haspopup="true">Окно №1 (маленькое)</button>
 <br />
 <br />
-<a href="modal.html" data-modal-opener  data-target="#modal2">Окно №2 (большое)</a>
+<a href="modal.html" data-modal="modal2" aria-haspopup="true">Окно №2 (большое)</a>
 
 <div class="placeholder-70vh"></div>
 
-<section class="modal" id="modal1">
+<section class="modal" id="modal1" aria-modal="true" role="dialog" aria-labelledby="modal1__title" aria-describedby="modal1__desc">
   <div class="modal__content">
-    <h3>Modal №1</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, nostrum.</p>
+    <h3 class="modal__title" id="modal1__title">Modal №1</h3>
+    <p class="modal__desc" id="modal1__desc">Modal №1 description</p>
     <input type="checkbox" />
-    <button type="button" data-close-btn data-enter-btn>ОК (Enter)</button>
+    <button type="button">ОК (Enter)</button>
     <button type="button" data-close-btn>Закрыть</button>
   </div>
 </section>
 
-<section class="modal" id="modal2">
+<section class="modal" id="modal2" aria-modal="true" role="dialog" aria-labelledby="modal2__title" aria-describedby="modal2__desc">
   <div class="modal__content">
-    <h3>Modal №2</h3>
+    <h3 class="modal__title" id="modal2__title">Modal №2</h3>
+    <p class="modal__desc" id="modal1__desc">Modal №2 description</p>
     <div class="placeholder-70vh"></div>
     <div class="placeholder-70vh"></div>
     <p>В окне нет кнопки для "Enter"</p>

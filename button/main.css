@@ -1,0 +1,6 @@
+/* СЛУЖЕБНЫЕ СТИЛИ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

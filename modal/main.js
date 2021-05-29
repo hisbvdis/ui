@@ -1,7 +1,6 @@
 "use strict";
 
 let openedModal = null;
-let enterBtn = null;
 let ctrlEnterBtn = null;
 let mousedownOnBackdrop = null;
 
@@ -22,11 +21,10 @@ function openModal(modal) {
   document.body.classList.add("modalOpened");
 
   // Добавление новой записи в историю при открытии окна
-  history.pushState({fromSite: true}, "", "");
+  history.pushState("", "");
   
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
-  enterBtn = modal.querySelector("[data-enter-btn]");
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
   
   // Добавление обработчиков модального окна
@@ -34,7 +32,6 @@ function openModal(modal) {
   modal.addEventListener("click", backdrop_Click_Handler);
   modal.addEventListener("click", forCloseBtn_Modal_Click_Handler);
   document.addEventListener("keydown", document_Keydown_Escape_Handler);
-  document.addEventListener("keydown", forEnterBtn_Document_Keydown_Enter_Handler);
   document.addEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
 }
 
@@ -56,12 +53,10 @@ function closeModal(modal) {
   modal.removeEventListener("click", backdrop_Click_Handler);
   modal.removeEventListener("click", forCloseBtn_Modal_Click_Handler);
   document.removeEventListener("keydown", document_Keydown_Escape_Handler);
-  document.removeEventListener("keydown", forEnterBtn_Document_Keydown_Enter_Handler);
   document.removeEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
 
   // Удаление глобальных переменных для окна и его элементом
   openedModal = null;
-  enterBtn = null;
   ctrlEnterBtn = null;
 }
 
@@ -73,18 +68,18 @@ function closeModal(modal) {
 // Если нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forModalOpener_Document_Click_Handler(evt) {
-  if ( !evt.target.dataset.hasOwnProperty("modalOpener") ) return;
-  
-  let selector = evt.target.dataset.target;
-  let modal = document.querySelector(selector);
-
+  if (!evt.target.dataset.modal) return;
   evt.preventDefault();
+  
+  let id = evt.target.dataset.modal;
+  let modal = document.querySelector("#" + id);
+
   openModal(modal);
 }
 
 
-// Если нажали Назад/Вперёд в браузере
-//    =>  Показать/скрыть модальное окно
+// Если нажали "Назад" в браузере
+//    =>  Закрыть модальное окно
 function forModal_Window_Popstate_Handler() {
   if (openedModal === null) return;
   
@@ -130,19 +125,11 @@ function document_Keydown_Escape_Handler(evt) {
 }
 
 
-// Если нажали Enter
-//    =>  Нажать кнопку "Enter Button"
-function forEnterBtn_Document_Keydown_Enter_Handler(evt) {
-  if (evt.type === "keydown" && evt.code === "Enter" || evt.code === "NumpadEnter") {
-    enterBtn?.click();
-  }
-}
-
-
 // Если в открытом модальном окне нажали "Ctrl+Enter"
 //    =>  Нажать кнопку "Ctrl+Enter Button"
 function forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler(evt) {
   if (evt.ctrlKey && evt.code === "Enter" || evt.code === "NumpadEnter") {
+    evt.preventDefault();
     ctrlEnterBtn?.click();
   }
 }
