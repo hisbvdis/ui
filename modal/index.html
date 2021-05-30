@@ -4,36 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="main.css" />
-  <script src="main.js" defer></script>
+  <script src="main.js" type="module"></script>
   <title>Document</title>
 </head>
 <body>
 
-<div class="placeholder-70vh"></div>
+<div class="placeholder-70"></div>
 
 <button data-modal="modal1" aria-haspopup="true">Окно №1 (маленькое)</button>
 <br />
 <br />
-<a href="modal.html" data-modal="modal2" aria-haspopup="true">Окно №2 (большое)</a>
+<button data-modal="modal2" aria-haspopup="true">Окно №2 (маленькое)</button>
+<br />
+<br />
+<a href="modal.html" data-modal="modal3" aria-haspopup="true">Окно №3 (большое)</a>
 
-<div class="placeholder-70vh"></div>
+<div class="placeholder-70"></div>
 
-<section class="modal" id="modal1" aria-modal="true" role="dialog" aria-labelledby="modal1__title" aria-describedby="modal1__desc">
+<section class="modal  modal--hidden" id="modal1" aria-modal="true" role="dialog" aria-labelledby="modal1__title" aria-describedby="modal1__desc">
   <div class="modal__content">
     <h3 class="modal__title" id="modal1__title">Modal №1</h3>
-    <p class="modal__desc" id="modal1__desc">Modal №1 description</p>
-    <input type="checkbox" />
-    <button type="button">ОК (Enter)</button>
+    <p class="modal__desc" id="modal1__desc">Без интерактивных элементов – в фокусе кнопка "Ok"</p>
+    <button type="button" data-close-btn>Закрыть</button>
+    <button type="button" data-focus>ОК (Focus)</button>
+  </div>
+</section>
+
+<section class="modal  modal--hidden" id="modal2" aria-modal="true" role="dialog" aria-labelledby="modal2__title" aria-describedby="modal2__desc">
+  <div class="modal__content">
+    <h3 class="modal__title" id="modal2__title">Modal №2</h3>
+    <p class="modal__desc" id="modal2__desc">В фокусе кнопка чекбокс</p>
+    <input type="checkbox" />Интерактивный элемент (в фокусе)
+    <button type="button">ОК</button>
     <button type="button" data-close-btn>Закрыть</button>
   </div>
 </section>
 
-<section class="modal" id="modal2" aria-modal="true" role="dialog" aria-labelledby="modal2__title" aria-describedby="modal2__desc">
+<section class="modal  modal--hidden" id="modal3" aria-modal="true" role="dialog" aria-labelledby="modal3__title" aria-describedby="modal3__desc">
   <div class="modal__content">
-    <h3 class="modal__title" id="modal2__title">Modal №2</h3>
-    <p class="modal__desc" id="modal1__desc">Modal №2 description</p>
-    <div class="placeholder-70vh"></div>
-    <div class="placeholder-70vh"></div>
+    <h3 class="modal__title" id="modal3__title">Modal №3</h3>
+    <p class="modal__desc" id="modal3__desc">Modal №3 description</p>
+    <div class="placeholder-70"></div>
+    <div class="placeholder-70"></div>
     <p>В окне нет кнопки для "Enter"</p>
     <p><textarea></textarea></p>
     <a class="js-modalActionBtn" href="http://google.com" data-ctrl-enter-btn>Кнопка для Ctrl+Enter</a>

@@ -2,7 +2,11 @@
 
 let openedModal = null;
 let ctrlEnterBtn = null;
-let mousedownOnBackdrop = null;
+let mousedownOnBackdrop = false;
+let modalTrigger = null;
+let modalElems = null;
+let firstModalElem = null;
+let lastModalElem = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -11,26 +15,43 @@ document.addEventListener("click", forModalOpener_Document_Click_Handler);
 window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 
 
-
 // =================================================================
 // ФУНКЦИИ
 // =================================================================
 // Открыть модальное окно
-function openModal(modal) {
-  modal.classList.add("modal--opened");
+function openModal(modal, trigger) {
+  // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
-
-  // Добавление новой записи в историю при открытии окна
-  history.pushState("", "");
   
+  // Показать подальное окно
+  modal.setAttribute("aria-hidden", "false");
+  modal.setAttribute("tabindex", "0");
+  modal.classList.remove("modal--hidden");
+
+  // Работа с фокусом окна
+  modalElems = getModalElems(modal);
+  firstModalElem = modalElems[0];
+  lastModalElem = modalElems[modalElems.length - 1];
+  if (onlyButtons(modalElems)) {
+    focusOn(modal.querySelector("[data-focus]"));
+  } else {
+    focusOn(firstModalElem);
+  }
+  
+  // Добавить в историю браузера новую запись с определённым названием
+  history.pushState("fromSite", "");
+
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
+  modalTrigger = trigger;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
-  
+
   // Добавление обработчиков модального окна
   modal.addEventListener("mousedown", backdrop_Mousedown_Handler);
   modal.addEventListener("click", backdrop_Click_Handler);
   modal.addEventListener("click", forCloseBtn_Modal_Click_Handler);
+  firstModalElem.addEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
+  lastModalElem.addEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
   document.addEventListener("keydown", document_Keydown_Escape_Handler);
   document.addEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
 }
@@ -38,27 +59,70 @@ function openModal(modal) {
 
 // Закрыть модальное окно
 function closeModal(modal) {
-  modal.classList.remove("modal--opened");
+  // У <body> удалить класс модального окна
   document.body.classList.remove("modalOpened");
+  
+  // Скрыть модальное окно
+  modal.setAttribute("aria-hidden", "true");
+  modal.setAttribute("tabindex", "-1");
+  modal.classList.add("modal--hidden");
+  
+  // Переход "назад" в истории так, чтобы не создавать дубликаты в истории
+  history.state ? history.back() : history.replaceState(null, "");
 
-  // Переход назад или удаление хеша (в зав-ти от наличия "объекта состояния")
-  if (history.state === null) {
-    history.replaceState(null, "", " ");
-  } else {
-    history.back();
-  }
+  // Фокус на элементе, вызвавшем модальное окно
+  modalTrigger.focus();
 
   // Удаление обработчиков модального окна
   modal.removeEventListener("mousedown", backdrop_Mousedown_Handler);
   modal.removeEventListener("click", backdrop_Click_Handler);
   modal.removeEventListener("click", forCloseBtn_Modal_Click_Handler);
+  firstModalElem.removeEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
+  lastModalElem.removeEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
   document.removeEventListener("keydown", document_Keydown_Escape_Handler);
   document.removeEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
 
   // Удаление глобальных переменных для окна и его элементом
   openedModal = null;
   ctrlEnterBtn = null;
+  modalTrigger = null;
+  modalElems = null;
+  firstModalElem = null;
+  lastModalElem = null;
 }
+
+
+function getModalElems(modal) {
+  let selectors = [
+    'a[href]',
+    'area[href]',
+    'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+    'select:not([disabled]):not([aria-hidden])',
+    'textarea:not([disabled]):not([aria-hidden])',
+    'button:not([disabled]):not([aria-hidden])',
+    'iframe',
+    'object',
+    'embed',
+    '[contenteditable]',
+    '[tabindex]:not([tabindex^="-"])',
+  ];
+
+  let elems = modal.querySelectorAll(selectors);
+  elems = Array.from(elems);
+
+  return elems;
+}
+
+
+function focusOn(elem) {
+  elem?.focus({preventScroll:true});
+}
+
+
+function onlyButtons(elems) {
+  return elems.every(elem => elem.tagName === "BUTTON");
+}
+
 
 
 
@@ -74,7 +138,7 @@ function forModalOpener_Document_Click_Handler(evt) {
   let id = evt.target.dataset.modal;
   let modal = document.querySelector("#" + id);
 
-  openModal(modal);
+  openModal(modal, evt.target);
 }
 
 
@@ -100,7 +164,7 @@ function backdrop_Mousedown_Handler(evt) {
 //    =>  Закрыть модальное окно
 function backdrop_Click_Handler(evt) {
   if (evt.which !== 1) return;
-  if (!mousedownOnBackdrop) return;
+  if (mousedownOnBackdrop === false) return;
   if (!evt.target.classList.contains("modal")) return;
 
   closeModal(openedModal);
@@ -128,8 +192,31 @@ function document_Keydown_Escape_Handler(evt) {
 // Если в открытом модальном окне нажали "Ctrl+Enter"
 //    =>  Нажать кнопку "Ctrl+Enter Button"
 function forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler(evt) {
-  if (evt.ctrlKey && evt.code === "Enter" || evt.code === "NumpadEnter") {
-    evt.preventDefault();
-    ctrlEnterBtn?.click();
-  }
+  if (!evt.ctrlKey) return;
+  if (evt.code !== "Enter" && evt.code !== "NumpadEnter") return;
+
+  evt.preventDefault();
+  ctrlEnterBtn?.click();
+}
+
+
+// Если на первом элементе формы нажали Shift+Tab
+//    =>  Фокус на последний элемент
+function firstModalElem_Keydown_Tab_Handler(evt) {
+  if (evt.code !== "Tab") return;
+  if (!evt.shiftKey) return;
+  evt.preventDefault();
+
+  focusOn(lastModalElem);
+}
+
+
+// Если на последнем элементе формы нажали Tab
+//    =>  Фокус на первый элемент
+function lastModalElem_Keydown_ShiftTab_Handler(evt) {
+  if (evt.code !== "Tab") return;
+  if (evt.shiftKey) return;
+  evt.preventDefault();
+
+  focusOn(firstModalElem);
 }
