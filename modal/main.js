@@ -108,9 +108,8 @@ function getModalElems(modal) {
   ];
 
   let elems = modal.querySelectorAll(selectors);
-  elems = Array.from(elems);
 
-  return elems;
+  return Array.from(elems);
 }
 
 
