@@ -7,6 +7,7 @@ let modalTrigger = null;
 let modalElems = null;
 let firstModalElem = null;
 let lastModalElem = null;
+let onCloseActions = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -19,7 +20,7 @@ window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Открыть модальное окно
-function openModal(modal, trigger) {
+function openModal(modal, trigger, onClose) {
   // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
   
@@ -44,6 +45,7 @@ function openModal(modal, trigger) {
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
   modalTrigger = trigger;
+  onCloseActions = onClose;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // Добавление обработчиков модального окна
@@ -89,6 +91,9 @@ function closeModal(modal) {
   modalElems = null;
   firstModalElem = null;
   lastModalElem = null;
+
+  // Выполнение команд закрытия окна, которые были переданы при его открытии
+  onCloseActions?.forEach(action => action);
 }
 
 
