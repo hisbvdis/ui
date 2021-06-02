@@ -1,3 +1,5 @@
+"use strict";
+
 // Drago (draggable object) - перетаскиваемый объект
 let drago = document.querySelector(".drago");
 // DragArea - допустимая область перетаскивания
