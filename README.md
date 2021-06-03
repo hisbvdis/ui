@@ -24,9 +24,9 @@
 
 ## Разное
 **Drag-n-Drop**
-- Базовый пример (кастомный) ([Папка](drag-n-drop/1base-custom) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/1base-custom/index.html))
+- Базовый пример (события указателя) ([Папка](drag-n-drop/1base-pointer-events) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/1base-pointer-events/index.html))
 - Базовый пример (Drag & Drop API) ([Папка](drag-n-drop/2base-dnd-api) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/2base-dnd-api/index.html))
-- Ползунок ([Папка](drag-n-drop/3range-custom) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/3range-custom/index.html))
+- Ползунок ([Папка](drag-n-drop/3range-pointer-events) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/3range-pointer-events/index.html))
 
 **Collapse-элементы**
 - Collapse ([Папка](collapse/1collapse) / [Демо](https://hisbvdis.github.io/ui-elements/collapse/1collapse/index.html))
