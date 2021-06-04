@@ -24,14 +24,14 @@ document.addEventListener("pointerdown", drago_Pointerdown_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Подготовиться к перемещению
-function prepareToDrag(evt) {
+function prepareDrag(evt) {
   // Определить глобальные переменные
   drago = evt.target;
   dragArea = document.querySelector("#" + evt.target.dataset.dragArea);
   dragoClickX = drago.offsetWidth / 2;
   dragoClickY = drago.offsetHeight / 2;
   
-  // Вычислить границы области перемещения
+  // Вычислить границы области перемещения (с учётом размеров Drago)
   calcBoundaries();
   
   // Вычислить место клика внутри Drago
@@ -40,8 +40,9 @@ function prepareToDrag(evt) {
   // Подготовить Drago к перемещению
   prepareDrago();
 
-  // Перенести Drago под курсор (чтобы при начале перемещения не было "скачка")
-  updateDragoPosition(evt.pageX, evt.pageY);
+  // Переместить Drago под курсор
+  // Вызывается сразу, чтобы при начале перемещения не было "скачка"
+  drag(evt.pageX, evt.pageY);
 
   // Захватить Drago
   // Все события указателя будут перенаправляться на Drago, пока не разорвётся
@@ -55,8 +56,8 @@ function prepareToDrag(evt) {
 }
 
 
-// Переместить Drago
-function updateDragoPosition(pageX, pageY) {
+// Переместить Drago под курсор
+function drag(pageX, pageY) {
   // Рассчитать координаты, в которые нужно переместить Drago
   let [x, y] = calcDestCoords(pageX, pageY);
 
@@ -74,7 +75,7 @@ function endDrag() {
 }
 
 
-// Вычислить границы области перемещения с учётом размеров Drago
+// Вычислить границы области перемещения (с учётом размеров Drago)
 function calcBoundaries() {
   if (!dragArea) return;
 
@@ -107,9 +108,6 @@ function prepareDrago() {
   // Разместить Drago поверх всего остального
   drago.style.zIndex = "1000";
 
-  // Убрать смещение элемента, ранее заданное через "transform"
-  drago.style.transform = "translate(0)";
-
   // Переместить Drago в body, чтобы среди предков не было "position: relative"
   document.body.append(drago);
 }
@@ -117,18 +115,18 @@ function prepareDrago() {
 
 // Рассчитать координаты места, куда нужно переместить Drago
 function calcDestCoords(pageX, pageY) {
-  // Координата, в которую нужно переместить Drago (сохранив позицию при клике):
-  // - Чтобы Drago оставался под курсором в месте клика, нужно из координат
-  //   курсора (относительно документа) вычесть расстояние от края Drago
-  //   до точки клика на него
+  // 1. Координата, в которую переместить Drago (сохранив позицию под курсором):
+  // 1.1 Чтобы Drago оставался под курсором в месте клика, нужно из координат
+  //     курсора (относительно документа) вычесть расстояние от края Drago
+  //     до точки клика на него
   let destX = pageX - dragoClickX;
   let destY = pageY - dragoClickY;
 
-  // Проверить, находится ли курсор в пределах области перетаскивания
-  // Если не определены границы области перетаскивания, остановить функцию
-  // ..то есть, не выполнять проверку курсора в границах DragArea
+  // 2. Проверить, находится ли курсор в пределах области перетаскивания
+  // 2.1 Если не определены границы области перетаскивания, остановить функцию
+  //     то есть, не выполнять проверку курсора в границах DragArea
   if (!boundaries) return [ destX, destY ];
-  // ..если границы определены, задать для Drago положение у границы области
+  // 2.2 Если границы определены, задать для Drago положение у границы области
   if (destY < boundaries.top)    destY = boundaries.top;
   if (destX > boundaries.right)  destX = boundaries.right;
   if (destY > boundaries.bottom) destY = boundaries.bottom;
@@ -155,13 +153,15 @@ function moveDragoTo(x, y) {
 function drago_Pointerdown_Handler(evt) {
   // Если нажали мышью, но не ЛКМ, остановить обработчик
   if (evt.which !== 1) return;
+
   // Если нет атрибута "drago", остановить обработчик
   if (evt.target.dataset.drago === undefined) return;
+  
   // Предотвратить стандартное выделение элементов при зажатой ЛКМ
   evt.preventDefault();
 
   // Подготовиться к перемещению
-  prepareToDrag(evt);
+  prepareDrag(evt);
 }
 
 
@@ -173,10 +173,9 @@ function drago_Dragstart_Handler() {
 
 
 // Перемещение указателя
-//    =>  Переместить Drago
+//    =>  Переместить Drago под курсор
 function drago_Pointermove_Handler(evt) {
-  // Рассчитать координаты места назначения и переместить Drago
-  updateDragoPosition(evt.pageX, evt.pageY);
+  drag(evt.pageX, evt.pageY);
 }
 
 

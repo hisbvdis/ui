@@ -2,7 +2,7 @@
 
 let openedModal = null;
 let ctrlEnterBtn = null;
-let mousedownOnBackdrop = false;
+let downOnBackdrop = false;
 let modalTrigger = null;
 let modalElems = null;
 let firstModalElem = null;
@@ -49,7 +49,7 @@ function openModal(modal, trigger, onClose) {
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // Добавление обработчиков модального окна
-  modal.addEventListener("mousedown", backdrop_Mousedown_Handler);
+  modal.addEventListener("pointerdown", backdrop_Pointerdown_Handler);
   modal.addEventListener("click", backdrop_Click_Handler);
   modal.addEventListener("click", forCloseBtn_Modal_Click_Handler);
   firstModalElem.addEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
@@ -76,7 +76,7 @@ function closeModal(modal) {
   modalTrigger.focus();
 
   // Удаление обработчиков модального окна
-  modal.removeEventListener("mousedown", backdrop_Mousedown_Handler);
+  modal.removeEventListener("pointerdown", backdrop_Pointerdown_Handler);
   modal.removeEventListener("click", backdrop_Click_Handler);
   modal.removeEventListener("click", forCloseBtn_Modal_Click_Handler);
   firstModalElem.removeEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
@@ -157,10 +157,10 @@ function forModal_Window_Popstate_Handler() {
 
 // Если надавили ЛКМ
 //    => Проверить и записать, является ли целевой элемент подложкой
-function backdrop_Mousedown_Handler(evt) {
+function backdrop_Pointerdown_Handler(evt) {
   if (evt.which !== 1) return;
 
-  mousedownOnBackdrop = evt.target.classList.contains("modal");
+  downOnBackdrop = evt.target.classList.contains("modal");
 }
 
 
@@ -168,7 +168,7 @@ function backdrop_Mousedown_Handler(evt) {
 //    =>  Закрыть модальное окно
 function backdrop_Click_Handler(evt) {
   if (evt.which !== 1) return;
-  if (mousedownOnBackdrop === false) return;
+  if (downOnBackdrop === false) return;
   if (!evt.target.classList.contains("modal")) return;
 
   closeModal(openedModal);
