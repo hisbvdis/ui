@@ -24,7 +24,7 @@ document.addEventListener("pointerdown", drago_Pointerdown_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Подготовиться к перемещению
-function prepareDrag(evt) {
+function prepareToDrag(evt) {
   // Определить глобальные переменные
   drago = evt.target;
   dragArea = document.querySelector("#" + evt.target.dataset.dragArea);
@@ -34,7 +34,7 @@ function prepareDrag(evt) {
   // Вычислить границы области перемещения (с учётом размеров Drago)
   calcBoundaries();
   
-  // Вычислить место клика внутри Drago
+  // Вычислить координаты клика "относительно Drago"
   calcDragoClickCoords(evt.clientX, evt.clientY);
 
   // Подготовить Drago к перемещению
@@ -72,6 +72,13 @@ function endDrag() {
   drago.removeEventListener("dragstart", drago_Dragstart_Handler);
   drago.removeEventListener("pointermove", drago_Pointermove_Handler);
   drago.removeEventListener("pointerup", drago_Pointerup_Handler);
+
+  // Удаление глобальных переменных
+  drago = null;
+  dragArea = null;
+  dragoClickX = null;
+  dragoClickY = null;
+  boundaries = null;
 }
 
 
@@ -88,15 +95,13 @@ function calcBoundaries() {
 }
 
 
-// Вычислить место клика внутри Drago
+// Вычислить координаты клика "относительно Drago"
 function calcDragoClickCoords(clientX, clientY) {
-  // Расстояние от левого края Drago до места клика на Drago
-  // Из координаты клика вычесть координату левого края Drago
+  // Из координаты X клика вычесть координату левого края Drago
   dragoClickX = clientX - drago.getBoundingClientRect().left;
 
-  // Расстояние от верхнего края Drago до места клика на Drago
-  // Из координаты клика вычесть координату верхнего края Drago
-  dragoClickY = clientY - drago.getBoundingClientRect().top;  
+  // Из координаты Y клика вычесть координату верхнего края Drago
+  dragoClickY = clientY - drago.getBoundingClientRect().top;
 }
 
 
@@ -105,38 +110,42 @@ function prepareDrago() {
   // Разместить Drago в абсолютных координатах
   drago.style.position = "absolute";
 
-  // Разместить Drago поверх всего остального
-  drago.style.zIndex = "1000";
+  // Поднять Drago выше всего остального
+  // Не обязательно
+  // drago.style.zIndex = "1000";
 
   // Переместить Drago в body, чтобы среди предков не было "position: relative"
-  document.body.append(drago);
+  // Не обязательно. Может быть полезно, если область перемещения не ограничена
+  // document.body.append(drago);
 }
 
 
-// Рассчитать координаты места, куда нужно переместить Drago
+// Рассчитать координаты, в которые нужно переместить Drago
 function calcDestCoords(pageX, pageY) {
-  // 1. Координата, в которую переместить Drago (сохранив позицию под курсором):
-  // 1.1 Чтобы Drago оставался под курсором в месте клика, нужно из координат
-  //     курсора (относительно документа) вычесть расстояние от края Drago
-  //     до точки клика на него
+  // 1. Координата, в которую переместить Drago (сохранив позицию под курсором)
+  // 1.1 Из координаты X клика "относительно документа" вычесть координату
+  //     клика "относительно Drago"
   let destX = pageX - dragoClickX;
+  // 1.2 Из координаты Y клика "относительно документа" вычесть  координату
+  //      клика "относительно Drago"
   let destY = pageY - dragoClickY;
 
-  // 2. Проверить, находится ли курсор в пределах области перетаскивания
-  // 2.1 Если не определены границы области перетаскивания, остановить функцию
-  //     то есть, не выполнять проверку курсора в границах DragArea
+  // 2. Проверить, выходит ли курсор за пределы области перетаскивания
+  //    Если не определены границы области перетаскивания, остановить
+  //    функцию и вернуть координаты только с учётом позиции под курсором
   if (!boundaries) return [ destX, destY ];
-  // 2.2 Если границы определены, задать для Drago положение у границы области
-  if (destY < boundaries.top)    destY = boundaries.top;
-  if (destX > boundaries.right)  destX = boundaries.right;
-  if (destY > boundaries.bottom) destY = boundaries.bottom;
-  if (destX < boundaries.left)   destX = boundaries.left;
 
+  // 3. Если границы определены, задать для Drago координаты положения, 
+  //    не выходящего за границы области перемещения
+  if (destY < boundaries.top)    destY = boundaries.top;
+  if (destY > boundaries.bottom) destY = boundaries.bottom;
+  if (destX > boundaries.right)  destX = boundaries.right;
+  if (destX < boundaries.left)   destX = boundaries.left;
   return [ destX, destY ];
 }
 
 
-// Переместить Drago к указанным координатам курсора
+// Переместить Drago в указанные координаты курсора
 function moveDragoTo(x, y) {
   // Перемещение Drago в новую позицию путём задания позиции через стили
   drago.style.left = x + "px";
@@ -144,11 +153,10 @@ function moveDragoTo(x, y) {
 }
 
 
-
 // =================================================================
 // ОБРАБОТЧИКИ
 // =================================================================
-// Коснулись Drago
+// Нажали на Drago
 //    =>  Подготовиться к перемещению
 function drago_Pointerdown_Handler(evt) {
   // Если нажали мышью, но не ЛКМ, остановить обработчик
@@ -161,7 +169,7 @@ function drago_Pointerdown_Handler(evt) {
   evt.preventDefault();
 
   // Подготовиться к перемещению
-  prepareDrag(evt);
+  prepareToDrag(evt);
 }
 
 
