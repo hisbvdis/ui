@@ -7,7 +7,7 @@ let dragArea;
 
 // Расстояние от края Drago до точки клика на него
 // - По умолчанию задаётся половина размера Drago
-// - Это нужно, чтобы при нажатии за пределами Drago, 
+// - Это нужно, чтобы при нажатии за пределами Drago,
 //   при его переносе под курсор, под курсором оказывался центр Drago
 let dragoClickX;
 let dragoClickY;
@@ -30,10 +30,10 @@ function prepareToDrag(evt) {
   dragArea = document.querySelector("#" + evt.target.dataset.dragArea);
   dragoClickX = drago.offsetWidth / 2;
   dragoClickY = drago.offsetHeight / 2;
-  
+
   // Вычислить границы области перемещения (с учётом размеров Drago)
   calcBoundaries();
-  
+
   // Вычислить координаты клика "относительно Drago"
   calcDragoClickCoords(evt.clientX, evt.clientY);
 
@@ -73,7 +73,7 @@ function endDrag() {
   drago.removeEventListener("pointermove", drago_Pointermove_Handler);
   drago.removeEventListener("pointerup", drago_Pointerup_Handler);
 
-  // Удаление глобальных переменных
+  // Удалить глобальные переменные
   drago = null;
   dragArea = null;
   dragoClickX = null;
@@ -135,7 +135,7 @@ function calcDestCoords(pageX, pageY) {
   //    функцию и вернуть координаты только с учётом позиции под курсором
   if (!boundaries) return [ destX, destY ];
 
-  // 3. Если границы определены, задать для Drago координаты положения, 
+  // 3. Если границы определены, задать для Drago координаты положения,
   //    не выходящего за границы области перемещения
   if (destY < boundaries.top)    destY = boundaries.top;
   if (destY > boundaries.bottom) destY = boundaries.bottom;
@@ -164,7 +164,7 @@ function drago_Pointerdown_Handler(evt) {
 
   // Если нет атрибута "drago", остановить обработчик
   if (evt.target.dataset.drago === undefined) return;
-  
+
   // Предотвратить стандартное выделение элементов при зажатой ЛКМ
   evt.preventDefault();
 

@@ -9,7 +9,9 @@
 - Semantic UI ([ссылка](https://semantic-ui.com/introduction/getting-started.html))
 
 Секционные элементы: Header / Footer / Main / Nav
+**Header**
 - Ahmad Shadeed – "17 примеров &lt;header&gt;" ([ссылка](https://headers-css.vercel.app/))
+- Вадим Макеев - "Адаптивная шапка с выпадающим меню на гридах" ([ссылка](https://youtu.be/o7A0e4PkSAQ))
 
 Элементы управления (Контролы): Toggle / Checkbox / Radio
 - Kitty Giraudel - "Доступный toggle" ([ссылка](https://habr.com/ru/company/otus/blog/557006/))

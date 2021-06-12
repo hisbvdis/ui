@@ -15,7 +15,7 @@
 
 
 /* Отключение прокрутки у тега <body> */
-body { 
+body {
   overflow-y: scroll;
 }
 
@@ -34,7 +34,7 @@ body {
 
   display: flex;
   padding: 10px;
-  
+
   background: rgba(0, 0, 0, 0.6);
   overflow-y: scroll;
 }

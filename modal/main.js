@@ -23,7 +23,7 @@ window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 function openModal(modal, trigger, onClose) {
   // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
-  
+
   // Показать подальное окно
   modal.setAttribute("aria-hidden", "false");
   modal.setAttribute("tabindex", "0");
@@ -38,7 +38,7 @@ function openModal(modal, trigger, onClose) {
   } else {
     focusOn(firstModalElem);
   }
-  
+
   // Добавить в историю браузера новую запись с определённым названием
   history.pushState("fromSite", "");
 
@@ -63,12 +63,12 @@ function openModal(modal, trigger, onClose) {
 function closeModal(modal) {
   // У <body> удалить класс модального окна
   document.body.classList.remove("modalOpened");
-  
+
   // Скрыть модальное окно
   modal.setAttribute("aria-hidden", "true");
   modal.setAttribute("tabindex", "-1");
   modal.classList.add("modal--hidden");
-  
+
   // Переход "назад" в истории так, чтобы не создавать дубликаты в истории
   history.state ? history.back() : history.replaceState(null, "");
 
@@ -138,7 +138,7 @@ function onlyButtons(elems) {
 function forModalOpener_Document_Click_Handler(evt) {
   if (!evt.target.dataset.modal) return;
   evt.preventDefault();
-  
+
   let id = evt.target.dataset.modal;
   let modal = document.querySelector("#" + id);
 
@@ -150,7 +150,7 @@ function forModalOpener_Document_Click_Handler(evt) {
 //    =>  Закрыть модальное окно
 function forModal_Window_Popstate_Handler() {
   if (openedModal === null) return;
-  
+
   closeModal(openedModal);
 }
 
@@ -188,7 +188,7 @@ function forCloseBtn_Modal_Click_Handler(evt) {
 //   =>  Закрыть модальное окно
 function document_Keydown_Escape_Handler(evt) {
   if (evt.code !== "Escape") return;
- 
+
   closeModal(openedModal);
 }
 
