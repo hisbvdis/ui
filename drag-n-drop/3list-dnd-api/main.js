@@ -2,14 +2,13 @@
 
 // Drago (draggable object) - перетаскиваемый объект
 let drago;
-// Идентификатор группы перетаскиваемых элементов
-let dragGroup;
-// Элемент, нада которым перетаскивается Drago
-let covered;
+// Lower - элемент, нада которым перетаскивается Drago
+let lower;
 // Центр элемента, над которым перетаскивается Drago
-let coveredCenterY;
-// Идентификатор элемента, являющегося допустимой "зоной сброса"
-let dropzone;
+let lowerCenterY;
+// Идентификатор "зон сброса", в которые можно сбрасывать элемент
+let targetDropzoneName;
+
 
 document.addEventListener("dragstart", drago_Dragstart_Handler);
 
@@ -22,29 +21,28 @@ document.addEventListener("dragstart", drago_Dragstart_Handler);
 function prepareToDrag(evt) {
   // Определить глобальные переменные
   drago = evt.target;
-  dragGroup = drago.dataset.dragGroup;
-  dropzone = drago.dataset.dropzone;
+  targetDropzoneName = drago.dataset.targetDropzone;
 
   // Добавить Drago класс перемещения
   drago.classList.add("draggable");
 
   // Добавить обработчики перемещения
   document.addEventListener("dragover", forDropzone_onDocument_Dragover_Handler);
-  document.addEventListener("drop", forDropzone_onDocument_Drop_Handler);
   drago.addEventListener("dragend", drago_Dragend_Handler);
 }
 
 
 //
 function drag(evt) {
-  // Определить элемент, над которым перетаскивается Drago
-  covered = evt.target;
+  // Определить элемент, над которым находится Drago
+  lower = evt.target;
 
-  // Вычислить центр элемента "covered"
-  calcCoveredCenter();
+  // Вычислить центр элемента "lower"
+  calcLowerCenter();
 
-  // Переместить Drago перед/после Covered (в зависимости от положения курсора)
-  relocateDrago(evt);
+    // Если курсор выше/ниже центра Lower, переместить Drago перед/после Lower
+  if (evt.clientY < lowerCenterY) insertBeforeLower();
+  if (evt.clientY > lowerCenterY) insertAfterLower();
 }
 
 
@@ -55,28 +53,45 @@ function endDrag() {
 
   // Удалить обработчики перемещения
   document.removeEventListener("dragover", forDropzone_onDocument_Dragover_Handler);
-  document.removeEventListener("drop", forDropzone_onDocument_Drop_Handler);
   drago.removeEventListener("dragend", drago_Dragend_Handler);
 
   // Удалить глобальные переменные
   drago = null;
-  covered = null;
-  coveredCenterY = null;
+  lower = null;
+  lowerCenterY = null;
+  targetDropzoneName = null;
 }
 
 
 // Вычислить центр элемента, над которым находится перетаскиваемый элемент
-function calcCoveredCenter() {
-  let metrics = covered.getBoundingClientRect();
+function calcLowerCenter() {
+  let metrics = lower.getBoundingClientRect();
 
-  coveredCenterY = metrics.top + metrics.height / 2;
+  lowerCenterY = metrics.top + metrics.height / 2;
 }
 
 
-// Переместить Drago перед/после Covered (в зависимости от положения курсора)
-function relocateDrago(evt) {
-  if (evt.clientY < coveredCenterY) covered.before(drago);
-  if (evt.clientY > coveredCenterY) covered.after(drago);
+// Переместить Drago перед Lower
+function insertBeforeLower() {
+  // Если курсор над самим Drago, не добавлять
+  if (lower === drago) return;
+
+  // Если Drago уже находится перед Lower, не добавлять
+  if (lower.previousElementSibling === drago) return;
+
+  lower.before(drago);
+}
+
+
+// Переместить Drago после Lower
+function insertAfterLower() {
+  // Если курсор над самим Drago, не добавлять
+  if (lower === drago) return;
+
+  // Если Drago уже находится после Lower, не добавлять
+  if (lower.nextElementSibling === drago) return;
+
+  lower.after(drago);
 }
 
 
@@ -87,6 +102,7 @@ function relocateDrago(evt) {
 // Потянули Drago
 //    =>  Начать перемещение
 function drago_Dragstart_Handler(evt) {
+  // Если перетаскивается не "draggable" элемент, остановить обработчик
   if (!evt.target.draggable) return;
 
   prepareToDrag(evt);
@@ -95,27 +111,16 @@ function drago_Dragstart_Handler(evt) {
 
 // Перемещение Drago над "зоной сброса"
 function forDropzone_onDocument_Dragover_Handler(evt) {
-  // Предотвратить поведение (чтобы позволить сбрасывать элементы в эту область)
+  // Найти допустимую "зону сброса" под указателем или среди предков
+  let dropzone = evt.target.closest(`[data-dropzone="${targetDropzoneName}"]`);
+
+  // Если допустимую "зону сброса" найти не удалось, остановить обработчик
+  if (!dropzone) return;
+
+  // Позволить сброс (меняется курсор и разрешает событие "drop")
   evt.preventDefault();
-
-  // Если указатель не над зоной сброса, остановить обработчик
-  if (evt.target.dataset.dropzone !== dropzone) return;
-
-  // Если указатель над Drago, остановить обработчик
-  if (evt.target === drago) return;
-
-  // Если указатель не над другим элементом из той же группы
-  // ..перетаскиваемых элементов, остановить обработчик
-  if (evt.target.dataset.dragGroup !== dragGroup) return;
 
   drag(evt);
-}
-
-
-// Отпустили Drago над "зоной сброса"
-function forDropzone_onDocument_Drop_Handler(evt) {
-  // Предотвратить поведение (чтобы позволить сбрасывать элементы в эту область)
-  evt.preventDefault();
 }
 
 
