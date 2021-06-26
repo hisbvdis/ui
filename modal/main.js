@@ -16,6 +16,7 @@ document.addEventListener("click", forModalOpener_Document_Click_Handler);
 window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 
 
+
 // =================================================================
 // ФУНКЦИИ
 // =================================================================
@@ -129,17 +130,20 @@ function onlyButtons(elems) {
 
 
 
-
 // =================================================================
 // ОБРАБОТЧИКИ
 // =================================================================
 // Если нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forModalOpener_Document_Click_Handler(evt) {
-  if (!evt.target.dataset.modal) return;
+  // Получить целевой элемент или его предка, содержащего атрибут "data-modal"
+  let target = evt.target.closest("[data-modal]");
+  // Если такого элемента нет, остановить обработчик
+  if (!target) return;
+
   evt.preventDefault();
 
-  let id = evt.target.dataset.modal;
+  let id = target.dataset.modal;
   let modal = document.querySelector("#" + id);
 
   openModal(modal, evt.target);
