@@ -7,13 +7,14 @@ let modalTrigger = null;
 let modalElems = null;
 let firstModalElem = null;
 let lastModalElem = null;
-let onCloseActions = null;
+let openActions = null;
+let closeActions = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
-document.addEventListener("click", forModalOpener_Document_Click_Handler);
+document.addEventListener("click", forTrigger_onDocument_onClick_Handler);
 // - открытие модального окна при нажатии "назад/вперёд" в браузере
-window.addEventListener("popstate", forModal_Window_Popstate_Handler);
+window.addEventListener("popstate", forModal_onWindow_onPopstate_Handler);
 
 
 
@@ -21,7 +22,7 @@ window.addEventListener("popstate", forModal_Window_Popstate_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Открыть модальное окно
-function openModal(modal, trigger, onClose) {
+export function openModal(modal, trigger, onOpen, onClose) {
   // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
 
@@ -46,17 +47,21 @@ function openModal(modal, trigger, onClose) {
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
   modalTrigger = trigger;
-  onCloseActions = onClose;
+  openActions = onOpen;
+  closeActions = onClose;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // Добавление обработчиков модального окна
   modal.addEventListener("pointerdown", backdrop_Pointerdown_Handler);
   modal.addEventListener("click", backdrop_Click_Handler);
-  modal.addEventListener("click", forCloseBtn_Modal_Click_Handler);
+  modal.addEventListener("click", forCloseBtn_onModal_Click_Handler);
   firstModalElem.addEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
   lastModalElem.addEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
   document.addEventListener("keydown", document_Keydown_Escape_Handler);
-  document.addEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
+  document.addEventListener("keydown", forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler);
+
+  // Выполнение команд открытия окна, которые были переданы при его открытии
+  openActions?.forEach(action => action());
 }
 
 
@@ -79,11 +84,11 @@ function closeModal(modal) {
   // Удаление обработчиков модального окна
   modal.removeEventListener("pointerdown", backdrop_Pointerdown_Handler);
   modal.removeEventListener("click", backdrop_Click_Handler);
-  modal.removeEventListener("click", forCloseBtn_Modal_Click_Handler);
+  modal.removeEventListener("click", forCloseBtn_onModal_Click_Handler);
   firstModalElem.removeEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
   lastModalElem.removeEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
   document.removeEventListener("keydown", document_Keydown_Escape_Handler);
-  document.removeEventListener("keydown", forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler);
+  document.removeEventListener("keydown", forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler);
 
   // Удаление глобальных переменных для окна и его элементом
   openedModal = null;
@@ -94,7 +99,7 @@ function closeModal(modal) {
   lastModalElem = null;
 
   // Выполнение команд закрытия окна, которые были переданы при его открытии
-  onCloseActions?.forEach(action => action);
+  closeActions?.forEach(action => action());
 }
 
 
@@ -135,24 +140,20 @@ function onlyButtons(elems) {
 // =================================================================
 // Если нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
-function forModalOpener_Document_Click_Handler(evt) {
-  // Получить целевой элемент или его предка, содержащего атрибут "data-modal"
-  let target = evt.target.closest("[data-modal]");
-  // Если такого элемента нет, остановить обработчик
-  if (!target) return;
-
+function forTrigger_onDocument_onClick_Handler(evt) {
+  let trigger = evt.target.closest("[data-trigger='true']");
+  if (!trigger) return;
   evt.preventDefault();
 
-  let id = target.dataset.modal;
-  let modal = document.querySelector("#" + id);
+  let modal = document.querySelector("#" + trigger.dataset.modal);
 
-  openModal(modal, evt.target);
+  openModal(modal, trigger);
 }
 
 
 // Если нажали "Назад" в браузере
 //    =>  Закрыть модальное окно
-function forModal_Window_Popstate_Handler() {
+function forModal_onWindow_onPopstate_Handler() {
   if (openedModal === null) return;
 
   closeModal(openedModal);
@@ -181,7 +182,7 @@ function backdrop_Click_Handler(evt) {
 
 // Если в открытом модальном окне кликнули на кнопку "Закрыть"
 //    =>  Закрыть модальное окно
-function forCloseBtn_Modal_Click_Handler(evt) {
+function forCloseBtn_onModal_Click_Handler(evt) {
   if (evt.target.dataset.closeBtn === undefined) return;
 
   closeModal(openedModal);
@@ -199,7 +200,7 @@ function document_Keydown_Escape_Handler(evt) {
 
 // Если в открытом модальном окне нажали "Ctrl+Enter"
 //    =>  Нажать кнопку "Ctrl+Enter Button"
-function forCtrlEnterBtn_Document_Keydown_CtrlEnter_Handler(evt) {
+function forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler(evt) {
   if (!evt.ctrlKey) return;
   if (evt.code !== "Enter" && evt.code !== "NumpadEnter") return;
 
