@@ -19,7 +19,7 @@ body {
   border: 1px solid #000;
   border-radius: 50%;
   cursor: pointer;
-  
+
   /* Предотвращение перехвата браузером Drag-n-Drop события, которое
   наступает при перемещении <img> и некоторых других элементов
   с помощью сенсорного экрана */
@@ -29,6 +29,6 @@ body {
 .dragArea {
   inline-size: 100%;
   block-size: 400px;
-  
+
   border: 1px solid #000;
 }

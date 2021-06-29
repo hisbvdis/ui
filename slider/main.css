@@ -3,20 +3,18 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-block-size: 100vh;
   margin: 0;
   padding: 20px
 }
 
-.range {
+.slider {
   inline-size: 100%;
   max-inline-size: 400px;
+  margin-block-end: 50px;
 }
 
-.range__line {
+.slider__line {
   position: relative;
   block-size: 15px;
 
@@ -29,27 +27,27 @@ body {
   touch-action: none;
 }
 
-/* Чтобы в Chrome при клике на элементы они не мигали, при наведении 
-на линию стилизовать курсор под "палец" только, когда используется 
+/* Чтобы в Chrome при клике на элементы они не мигали, при наведении
+на линию стилизовать курсор под "палец" только, когда используется
 hover-указатель (hover: hover) */
 @media (pointer: fine) {
-  .range__line {
+  .slider__line {
     cursor: pointer;
   }
 }
 
-.range__filler {
+.slider__filler {
   position: absolute;
   top: 0;
   left: 0;
-  
+
   inline-size: 100px;
   block-size: 100%;
 
   background: lightblue;
 }
 
-.range__pin {
+.slider__pin {
   position: absolute;
   top: 50%;
   left: 100px;

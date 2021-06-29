@@ -2,6 +2,8 @@
 let drago;
 // DragArea - допустимая область перетаскивания
 let dragArea;
+// Filler - заполнитель полосы диапазона
+let filler;
 
 // Расстояние от края Drago до точки клика на него
 // - По умолчанию задаётся половина размера Drago
@@ -14,7 +16,8 @@ let dragoClickY;
 let boundaries;
 
 
-document.addEventListener("pointerdown", drago_Pointerdown_Handler);
+document.addEventListener("pointerdown", forDrago_onDocument_Pointerdown_Handler);
+document.addEventListener("pointerdown", forDragarea_onDocument_Pointerdown_Handler);
 
 
 
@@ -22,16 +25,18 @@ document.addEventListener("pointerdown", drago_Pointerdown_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Подготовиться к перемещению
-function prepareToDrag(evt) {
+function prepareToDrag(evt, clickMode) {
   // Определить глобальные переменные
   dragoClickX = drago.offsetWidth / 2;
   dragoClickY = drago.offsetHeight / 2;
 
   // Вычислить границы области перемещения (с учётом размеров Drago)
-  calcBoundaries();
+  calcBoundariesCoords();
 
-  // Вычислить координаты клика "относительно Drago"
-  calcDragoClickCoords(evt.clientX, evt.clientY);
+  // Если нажатие было на Drago, вычислить координаты клика "относительно Drago"
+  if (clickMode === "drago") {
+    calcDragoClickCoords(evt.clientX, evt.clientY);
+  }
 
   // Подготовить Drago к перемещению
   prepareDrago();
@@ -59,6 +64,9 @@ function drag(pageX, pageY) {
 
   // Переместить Drago в координаты
   moveDragoTo(x, y);
+
+  // Обновить ширину полосы диапазона
+  updateFillerWidth(x, y);
 }
 
 
@@ -79,14 +87,14 @@ function endDrag() {
 
 
 // Вычислить границы области перемещения (с учётом размеров Drago)
-function calcBoundaries() {
+function calcBoundariesCoords() {
   if (!dragArea) return;
 
   boundaries = {
+    left:   dragArea.getBoundingClientRect().left,
     top:    dragArea.getBoundingClientRect().top,
     right:  dragArea.getBoundingClientRect().right - drago.offsetWidth,
     bottom: dragArea.getBoundingClientRect().bottom - drago.offsetHeight,
-    left:   dragArea.getBoundingClientRect().left,
   }
 }
 
@@ -136,7 +144,13 @@ function calcDestCoords(pageX, pageY) {
     if (destX < boundaries.left)   destX = boundaries.left;
   }
 
-  // 3. Вернуть вычисленные координаты положения Drago
+  // 3. Если определены границы области перетаскивания, значит в CSS для
+  //    Drago задаются координаты относительно этой области и нужно
+  //    скорректировать их, отняв координаты её начала
+  destX = destX - dragArea.getBoundingClientRect().left;
+  destY = destY - dragArea.getBoundingClientRect().top;
+
+  // 4. Вернуть вычисленные координаты положения Drago
   return [ destX, destY ];
 }
 
@@ -145,7 +159,13 @@ function calcDestCoords(pageX, pageY) {
 function moveDragoTo(x, y) {
   // Перемещение Drago в новую позицию путём задания позиции через стили
   drago.style.left = x + "px";
-  drago.style.top = y + "px";
+  // drago.style.top = y + "px";
+}
+
+
+// Обновить ширину полосы диапазона
+function updateFillerWidth(x, y) {
+  filler.style.width = x + "px";
 }
 
 
@@ -154,20 +174,38 @@ function moveDragoTo(x, y) {
 // =================================================================
 // Нажали на Drago
 //    =>  Подготовиться к перемещению
-function drago_Pointerdown_Handler(evt) {
+function forDrago_onDocument_Pointerdown_Handler(evt) {
   // Если нажали не ЛКМ, остановить обработчик
   if (evt.which !== 1) return;
-
   // Если нет атрибута "drago", остановить обработчик
   if (evt.target.dataset.drago === undefined) return;
-
   // Предотвратить стандартное выделение элементов при зажатой ЛКМ
   evt.preventDefault();
 
   drago = evt.target;
-  dragArea = document.querySelector("#" + evt.target.dataset.dragarea);
+  dragArea = document.querySelector("#" + drago.dataset.targetDragarea);
+  filler = dragArea.querySelector("[data-filler]");
+
   // Подготовиться к перемещению
-  prepareToDrag(evt);
+  prepareToDrag(evt, "drago");
+}
+
+
+// Нажали на Dragarea
+//    =>  Подготовиться к перемещению
+function forDragarea_onDocument_Pointerdown_Handler(evt) {
+  // Если нажали не ЛКМ, остановить обработчик
+  if (evt.which !== 1) return;
+  // Если нет атрибута "drago", остановить обработчик
+  if (evt.target.dataset.dragarea === undefined) return;
+  // Предотвратить стандартное выделение элементов при зажатой ЛКМ
+  evt.preventDefault();
+
+  dragArea = evt.target;
+  drago = dragArea.querySelector("[data-drago]");
+  filler = dragArea.querySelector("[data-filler]");
+
+  prepareToDrag(evt, "dragarea");
 }
 
 

@@ -23,10 +23,12 @@
 
 
 ## Разное
+**Slider (ползунок)**
+- Пример (с помощью pointer events) ([Папка](drag-n-drop/slider) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/slider/index.html))
+
 **Drag-n-Drop**
-- Перемещение в области (события указателя) ([Папка](drag-n-drop/1dragarea-pointer-events) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/1dragarea-pointer-events/index.html))
-- Ползунок (события указателя) ([Папка](drag-n-drop/2range-pointer-events) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/2range-pointer-events/index.html))
-- Список (Drag & Drop API) ([Папка](drag-n-drop/3list-dnd-api) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/3list-dnd-api/index.html))
+- Перемещение в области (pointer events) ([Папка](drag-n-drop/1dragarea-pointer-events) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/1dragarea-pointer-events/index.html))
+- Список (HTML Drag & Drop API) ([Папка](drag-n-drop/2list-dnd-api) / [Демо](https://hisbvdis.github.io/ui-elements/drag-n-drop/2list-dnd-api/index.html))
 
 **Collapse-элементы**
 - Collapse ([Папка](collapse/1collapse) / [Демо](https://hisbvdis.github.io/ui-elements/collapse/1collapse/index.html))
