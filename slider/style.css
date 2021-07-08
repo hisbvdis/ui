@@ -27,6 +27,10 @@ body {
   touch-action: none;
 }
 
+.slider__filler {
+  pointer-events: none;
+}
+
 /* Чтобы в Chrome при клике на элементы они не мигали, при наведении
 на линию стилизовать курсор под "палец" только, когда используется
 hover-указатель (hover: hover) */

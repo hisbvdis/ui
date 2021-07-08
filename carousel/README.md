@@ -55,7 +55,7 @@
     - `export-changeSlide.js` - функции смены отображаемой картинки
 
 - **Обработка действий пользователя**
-  - `slides_Click_Handler.js` - 
+  - `slides_Click_Handler.js` -
   - `slideBtn_Click_handler.js` - нажатия на кнопки переключения слайдов
   - `thumb_Click_Handler.js` - нажатия на эскиз
 
