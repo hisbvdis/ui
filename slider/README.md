@@ -38,5 +38,6 @@
 
 
 ## Источники (литература)
-- [Learn.JavaScript.ru - Drag'n'Drop с событиями мыши](https://learn.javascript.ru/mouse-drag-and-drop)
-- [Библиотека noUiSlider](https://refreshless.com/nouislider/)
+- [x] [Learn.JavaScript.ru - Drag'n'Drop с событиями мыши](https://learn.javascript.ru/mouse-drag-and-drop)
+- [x] [Библиотека noUiSlider](https://refreshless.com/nouislider/)
+- [ ] Стилизуем слайдер input range для всех популярных браузеров [ссылка1](https://habr.com/ru/post/567058/), [ссылка2](https://toughengineer.github.io/demo/slider-styler/slider-styler.html)
