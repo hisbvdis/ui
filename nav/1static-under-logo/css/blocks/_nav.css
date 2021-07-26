@@ -26,7 +26,7 @@
     display: none;
   }
 
-  .openedNav .nav {
+  .navOpened .nav {
     display: block;
   }
 

@@ -1,10 +1,10 @@
 .navBtn {
   position: relative;
-  
+
   inline-size: 26px;
   block-size: 19px;
   padding: 0;
-  
+
   background: none;
   border: none;
   cursor: pointer;
@@ -40,17 +40,17 @@
 
 
 
-/* .openedNav */
-.openedNav .navBtn__line--1 {
+/* .navOpened */
+.navOpened .navBtn__line--1 {
   inset-block-start: 50%;
   transform: translateY(-50%) rotate(45deg);
 }
 
-.openedNav .navBtn__line--2 {
+.navOpened .navBtn__line--2 {
   opacity: 0;
 }
 
-.openedNav .navBtn__line--3 {
+.navOpened .navBtn__line--3 {
   inset-block-end: 50%;
   transform: translateY(50%) rotate(-45deg);
 }
