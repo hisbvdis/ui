@@ -32,15 +32,16 @@ body {
   inset: 0;
   z-index: 3;
 
-  display: flex;
+  /* display: flex; */
+  display: none;
   padding: 10px;
 
   background: rgba(0, 0, 0, 0.6);
   overflow-y: scroll;
 }
 
-.modal--hidden {
-  display: none
+.modal--opened {
+  display: flex;
 }
 
 .modal__content {

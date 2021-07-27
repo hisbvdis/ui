@@ -41,7 +41,7 @@ export function openModal(modal, params) {
   // Показать подальное окно
   modal.setAttribute("aria-hidden", "false");
   modal.setAttribute("tabindex", "0");
-  modal.classList.remove("modal--hidden");
+  modal.classList.add("modal--opened");
 
   // Работа с фокусом окна
   modalElems = getModalElems(modal);
@@ -74,11 +74,13 @@ export function openModal(modal, params) {
 function closeModal(modal) {
   // У <body> удалить класс модального окна
   document.body.classList.remove("modalOpened");
+  // Если был задан дополнительный класс, удалить его у <body> тоже
+  if (bodyClass) document.body.classList.remove(bodyClass);
 
   // Скрыть модальное окно
   modal.setAttribute("aria-hidden", "true");
   modal.setAttribute("tabindex", "-1");
-  modal.classList.add("modal--hidden");
+  modal.classList.remove("modal--opened");
 
   // Переход "назад" в истории так, чтобы не создавать дубликаты в истории
   history.state ? history.back() : history.replaceState(null, "");
