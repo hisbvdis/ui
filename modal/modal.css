@@ -25,25 +25,59 @@ body {
 }
 
 
-
-/* МОДАЛЬНОЕ ОКНО */
+/* ============================= */
+/* ====== МОДАЛЬНОЕ ОКНО ======= */
+/* ============================= */
+/* Стили "Скрыть окно" (srOnly + visibility) */
 .modal {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  visibility: hidden;
+}
+
+/* Сброс стилей "Скрыть окно" (srOnly + visibility) к исходным значения */
+.modal--opened {
+  position: initial;
+
+  width: initial;
+  height: initial;
+  margin: initial;
+  padding: initial;
+
+  white-space: initial;
+
+  border: initial;
+  overflow: initial;
+  clip: initial;
+  clip-path: initial;
+  visibility: visible;
+}
+
+/* Стилизация модального окна */
+.modal--opened {
   position: fixed;
   inset: 0;
   z-index: 3;
 
-  /* display: flex; */
-  display: none;
+  display: flex;
   padding: 10px;
 
   background: rgba(0, 0, 0, 0.6);
   overflow-y: scroll;
 }
 
-.modal--opened {
-  display: flex;
-}
-
+/* Стилизация блока содержимого модального окна */
 .modal__content {
   inline-size: 100%;
   max-inline-size: 600px;
