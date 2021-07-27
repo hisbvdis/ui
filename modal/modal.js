@@ -2,7 +2,6 @@ let openedModal = null;
 
 let trigger = null;
 let ctrlEnterBtn = null;
-let bodyClass = null;
 let openActions = null;
 let closeActions = null;
 
@@ -30,13 +29,10 @@ export function openModal(modal, params) {
   trigger = params.trigger;
   openActions = params.openActions;
   closeActions = params.closeActions;
-  bodyClass = params.bodyClass;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
-  // Если задан дополнительный класс, добавить его к <body> тоже
-  if (bodyClass) document.body.classList.add(bodyClass);
 
   // Показать подальное окно
   modal.setAttribute("aria-hidden", "false");
@@ -74,8 +70,6 @@ export function openModal(modal, params) {
 function closeModal(modal) {
   // У <body> удалить класс модального окна
   document.body.classList.remove("modalOpened");
-  // Если был задан дополнительный класс, удалить его у <body> тоже
-  if (bodyClass) document.body.classList.remove(bodyClass);
 
   // Скрыть модальное окно
   modal.setAttribute("aria-hidden", "true");
@@ -105,7 +99,6 @@ function closeModal(modal) {
 
   trigger = null;
   ctrlEnterBtn = null;
-  bodyClass = null;
   openActions = null;
   closeActions = null;
 
