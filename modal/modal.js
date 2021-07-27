@@ -1,13 +1,16 @@
 let openedModal = null;
+
+let trigger = null;
 let ctrlEnterBtn = null;
-let downOnBackdrop = false;
-let modalElems = null;
-let firstModalElem = null;
-let lastModalElem = null;
+let bodyClass = null;
 let openActions = null;
 let closeActions = null;
 
-let trigger = null;
+let modalElems = null;
+let firstModalElem = null;
+let lastModalElem = null;
+let clickOnLayout = false;
+
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -22,15 +25,18 @@ window.addEventListener("popstate", forModal_onWindow_onPopstate_Handler);
 // =================================================================
 // Открыть модальное окно
 export function openModal(modal, params) {
-  // Разбор параметров и назначение глобальных переменных
+  // Разобрать параметры и назначить глобальные переменные
   openedModal = modal;
   trigger = params.trigger;
   openActions = params.openActions;
   closeActions = params.closeActions;
+  bodyClass = params.bodyClass;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
+  // Если задан дополнительный класс, добавить его к <body> тоже
+  if (bodyClass) document.body.classList.add(bodyClass);
 
   // Показать подальное окно
   modal.setAttribute("aria-hidden", "false");
@@ -89,16 +95,22 @@ function closeModal(modal) {
   document.removeEventListener("keydown", document_Keydown_Escape_Handler);
   document.removeEventListener("keydown", forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler);
 
-  // Удаление глобальных переменных для окна и его элементом
+  // Выполнение команд закрытия окна, которые были переданы при его открытии
+  closeActions?.forEach(action => action());
+
+  // Удалить глобальные переменные
   openedModal = null;
-  ctrlEnterBtn = null;
+
   trigger = null;
+  ctrlEnterBtn = null;
+  bodyClass = null;
+  openActions = null;
+  closeActions = null;
+
   modalElems = null;
   firstModalElem = null;
   lastModalElem = null;
-
-  // Выполнение команд закрытия окна, которые были переданы при его открытии
-  closeActions?.forEach(action => action());
+  clickOnLayout = false;
 }
 
 
@@ -164,7 +176,7 @@ function forModal_onWindow_onPopstate_Handler() {
 function backdrop_Pointerdown_Handler(evt) {
   if (evt.which !== 1) return;
 
-  downOnBackdrop = evt.target.classList.contains("modal");
+  clickOnLayout = evt.target.classList.contains("modal");
 }
 
 
@@ -172,7 +184,7 @@ function backdrop_Pointerdown_Handler(evt) {
 //    =>  Закрыть модальное окно
 function backdrop_Click_Handler(evt) {
   if (evt.which !== 1) return;
-  if (downOnBackdrop === false) return;
+  if (clickOnLayout === false) return;
   if (!evt.target.classList.contains("modal")) return;
 
   closeModal(openedModal);
