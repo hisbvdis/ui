@@ -1,5 +1,3 @@
-"use strict";
-
 let openedModal = null;
 let ctrlEnterBtn = null;
 let downOnBackdrop = false;
