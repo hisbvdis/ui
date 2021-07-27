@@ -21,9 +21,13 @@ window.addEventListener("popstate", forModal_onWindow_onPopstate_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Открыть модальное окно
-export function openModal(modal, triggerEl, onOpen, onClose) {
+export function openModal(modal, params) {
   // Разбор параметров и назначение глобальных переменных
-  trigger = triggerEl;
+  openedModal = modal;
+  trigger = params.trigger;
+  openActions = params.openActions;
+  closeActions = params.closeActions;
+  ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
@@ -45,13 +49,6 @@ export function openModal(modal, triggerEl, onOpen, onClose) {
 
   // Добавить в историю браузера новую запись с определённым названием
   history.pushState("fromSite", "");
-
-  // Назначение глобальных переменных для окна и его элементов
-  openedModal = modal;
-
-  openActions = onOpen;
-  closeActions = onClose;
-  ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // Добавление обработчиков модального окна
   modal.addEventListener("pointerdown", backdrop_Pointerdown_Handler);
@@ -149,7 +146,7 @@ function forTrigger_onDocument_onClick_Handler(evt) {
 
   let modal = document.querySelector("#" + trigger.dataset.modal);
 
-  openModal(modal, trigger);
+  openModal(modal, {trigger});
 }
 
 
