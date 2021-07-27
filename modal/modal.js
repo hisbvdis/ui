@@ -1,12 +1,13 @@
 let openedModal = null;
 let ctrlEnterBtn = null;
 let downOnBackdrop = false;
-let modalTrigger = null;
 let modalElems = null;
 let firstModalElem = null;
 let lastModalElem = null;
 let openActions = null;
 let closeActions = null;
+
+let trigger = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -20,7 +21,10 @@ window.addEventListener("popstate", forModal_onWindow_onPopstate_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Открыть модальное окно
-export function openModal(modal, trigger, onOpen, onClose) {
+export function openModal(modal, triggerEl, onOpen, onClose) {
+  // Разбор параметров и назначение глобальных переменных
+  trigger = triggerEl;
+
   // У <body> задать класс модального окна (прокрутка и отступ)
   document.body.classList.add("modalOpened");
 
@@ -44,7 +48,7 @@ export function openModal(modal, trigger, onOpen, onClose) {
 
   // Назначение глобальных переменных для окна и его элементов
   openedModal = modal;
-  modalTrigger = trigger;
+
   openActions = onOpen;
   closeActions = onClose;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
@@ -77,7 +81,7 @@ function closeModal(modal) {
   history.state ? history.back() : history.replaceState(null, "");
 
   // Фокус на элементе, вызвавшем модальное окно
-  modalTrigger.focus();
+  trigger.focus();
 
   // Удаление обработчиков модального окна
   modal.removeEventListener("pointerdown", backdrop_Pointerdown_Handler);
@@ -91,7 +95,7 @@ function closeModal(modal) {
   // Удаление глобальных переменных для окна и его элементом
   openedModal = null;
   ctrlEnterBtn = null;
-  modalTrigger = null;
+  trigger = null;
   modalElems = null;
   firstModalElem = null;
   lastModalElem = null;
