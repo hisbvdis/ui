@@ -16,8 +16,6 @@ function thumbs_Click_Handler(evt) {
   // Если нажатие было мышью, но не левой кнопкой, остановить обработчик
   if (evt.pointerType === "mouse" && evt.which !== 1) return;
 
-  console.log( evt.target );
-
   // Список DOM-элементов эксизов преобразовать в массив
   let thumbsList = Array.from(thumbs.children);
   // Определить DOM-элемент текущего эскиза
