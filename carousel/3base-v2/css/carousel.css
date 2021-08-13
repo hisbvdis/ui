@@ -1,0 +1,11 @@
+.carousel {
+  display: grid;
+  grid-template-rows: calc(100% - 56px) 56px;
+  inline-size: 100%;
+  block-size: 100%;
+  box-sizing: border-box;
+}
+
+.carousel * {
+  box-sizing: inherit;
+}

@@ -1,0 +1,7 @@
+.slideBtn {
+  background: none;
+  border: none;
+  fill: #fff;
+  filter: drop-shadow(0 0 5px #000);
+  cursor: pointer;
+}

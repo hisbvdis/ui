@@ -1,0 +1,28 @@
+.thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin: 0;
+  padding: 3px;
+  
+  background: rgb(0 0 0 / 0.8);
+  list-style: none;
+}
+
+.thumbs__item {
+  
+}
+
+.thumbs__btn {
+  block-size: 100%;
+  padding: 0;
+  border: none;
+}
+
+.thumbs__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+
+  object-fit: cover;
+}

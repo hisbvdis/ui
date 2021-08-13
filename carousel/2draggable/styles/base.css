@@ -1,0 +1,41 @@
+/* ПЕРВОЕ ПО ПОРЯДКУ */
+/* Удалить браузерные стили, для всех свойств, кроме "display" */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+  all: unset;
+  display: revert;
+}
+
+
+/* Box-sizing */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+/* Ограничение ширины изображений */
+img {
+  max-width: 100%;
+}
+
+
+/* Курсор "пальчик" для активных кнопок */
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+
+/* "1rem=1px" для размеров шрифта */
+:root { font-size: 6.25% }
+body  { font-size: 14rem }
+
+
+/* Всегда включённый скролл у body */
+body {
+  overflow-y: scroll;
+}
