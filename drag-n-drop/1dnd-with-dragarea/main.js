@@ -169,7 +169,7 @@ function forDrago_onDocument_Pointerdown_Handler(evt) {
   evt.preventDefault();
 
   drago = evt.target;
-  dragArea = document.querySelector("#" + evt.target.dataset.dragarea);
+  dragArea = document.querySelector("#" + evt.target.dataset.targetArea);
   axis = evt.target.dataset.axis ?? false;
   // Подготовиться к перемещению
   prepareToDrag(evt);
