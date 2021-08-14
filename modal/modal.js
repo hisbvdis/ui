@@ -144,20 +144,20 @@ function onlyButtons(elems) {
 // =================================================================
 // ОБРАБОТЧИКИ
 // =================================================================
-// Если нажали на кнопку открытия модального окна
+// Нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forTrigger_onDocument_onClick_Handler(evt) {
-  let trigger = evt.target.closest("[data-trigger='true']");
+  let trigger = evt.target.closest("[data-trigger='modal']");
   if (!trigger) return;
   evt.preventDefault();
 
-  let modal = document.querySelector("#" + trigger.dataset.modal);
+  let modal = document.querySelector("#" + trigger.dataset.targetModal);
 
   openModal(modal, {trigger});
 }
 
 
-// Если нажали "Назад" в браузере
+// Нажали "Назад" в браузере
 //    =>  Закрыть модальное окно
 function forModal_onWindow_onPopstate_Handler() {
   if (openedModal === null) return;
@@ -166,7 +166,7 @@ function forModal_onWindow_onPopstate_Handler() {
 }
 
 
-// Если надавили ЛКМ
+// Надавили указатель (ЛКМ)
 //    => Проверить и записать, является ли целевой элемент подложкой
 function backdrop_Pointerdown_Handler(evt) {
   if (evt.which !== 1) return;
@@ -175,7 +175,7 @@ function backdrop_Pointerdown_Handler(evt) {
 }
 
 
-// Если нажали на фон модального окна
+// Нажали на фон модального окна
 //    =>  Закрыть модальное окно
 function backdrop_Click_Handler(evt) {
   if (evt.which !== 1) return;
@@ -186,7 +186,7 @@ function backdrop_Click_Handler(evt) {
 }
 
 
-// Если в открытом модальном окне кликнули на кнопку "Закрыть"
+// В открытом модальном окне кликнули на кнопку "Закрыть"
 //    =>  Закрыть модальное окно
 function forCloseBtn_onModal_Click_Handler(evt) {
   if (evt.target.dataset.closeBtn === undefined) return;
@@ -195,7 +195,7 @@ function forCloseBtn_onModal_Click_Handler(evt) {
 }
 
 
-// Если при открытом модальном окне нажали "Escape"
+// При открытом модальном окне нажали "Escape"
 //   =>  Закрыть модальное окно
 function document_Keydown_Escape_Handler(evt) {
   if (evt.code !== "Escape") return;
@@ -204,7 +204,7 @@ function document_Keydown_Escape_Handler(evt) {
 }
 
 
-// Если в открытом модальном окне нажали "Ctrl+Enter"
+// В открытом модальном окне нажали "Ctrl+Enter"
 //    =>  Нажать кнопку "Ctrl+Enter Button"
 function forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler(evt) {
   if (!evt.ctrlKey) return;
@@ -215,7 +215,7 @@ function forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler(evt) {
 }
 
 
-// Если на первом элементе формы нажали Shift+Tab
+// На первом элементе формы нажали Shift+Tab
 //    =>  Фокус на последний элемент
 function firstModalElem_Keydown_Tab_Handler(evt) {
   if (evt.code !== "Tab") return;
@@ -226,7 +226,7 @@ function firstModalElem_Keydown_Tab_Handler(evt) {
 }
 
 
-// Если на последнем элементе формы нажали Tab
+// На последнем элементе формы нажали Tab
 //    =>  Фокус на первый элемент
 function lastModalElem_Keydown_ShiftTab_Handler(evt) {
   if (evt.code !== "Tab") return;
