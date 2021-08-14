@@ -13,7 +13,7 @@ slides.addEventListener("click", slides_Click_Handler);
 
 // Функция-обработчик нажатий
 function slides_Click_Handler(evt) {
-  // Если было нажатие мышью, но не левой кнопкой, отменить прекратить обработчик
+  // Если нажатие было мышью, но не левой кнопкой, остановить обработчик
   if (evt.pointerType === "mouse" && evt.which !== 1) return;
 
   // Определить положение указателя относительно ".slides"
