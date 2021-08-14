@@ -1,7 +1,5 @@
-// Drago (draggable object) - перетаскиваемый объект
-let drago;
-// DragArea - допустимая область перетаскивания
-let dragArea;
+// Axis - ось, в которой можно перемещать Drago
+let axis;
 
 // Расстояние от края Drago до точки клика на него
 // - По умолчанию задаётся половина размера Drago
@@ -14,7 +12,7 @@ let dragoClickY;
 let boundaries;
 
 
-document.addEventListener("pointerdown", drago_Pointerdown_Handler);
+document.addEventListener("pointerdown", forDrago_onDocument_Pointerdown_Handler);
 
 
 
@@ -22,7 +20,7 @@ document.addEventListener("pointerdown", drago_Pointerdown_Handler);
 // ФУНКЦИИ
 // =================================================================
 // Подготовиться к перемещению
-function prepareToDrag(evt) {
+export function prepareToDrag(evt) {
   // Определить глобальные переменные
   dragoClickX = drago.offsetWidth / 2;
   dragoClickY = drago.offsetHeight / 2;
@@ -57,8 +55,10 @@ function drag(pageX, pageY) {
   // Рассчитать координаты, в которые нужно переместить Drago
   let [x, y] = calcDestCoords(pageX, pageY);
 
-  // Переместить Drago в координаты
-  moveDragoTo(x, y);
+  // Определить допустимые оси и переместить Drago
+  if (axis === "x") moveDragoTo(x);
+  else if (axis === "y") moveDragoTo(null, y);
+  else moveDragoTo(x, y);
 }
 
 
@@ -81,7 +81,7 @@ function endDrag() {
 // Вычислить границы области перемещения (с учётом размеров Drago)
 function calcBoundaries() {
   if (!dragArea) return;
-
+  
   boundaries = {
     top:    dragArea.getBoundingClientRect().top,
     right:  dragArea.getBoundingClientRect().right - drago.offsetWidth,
@@ -154,7 +154,7 @@ function moveDragoTo(x, y) {
 // =================================================================
 // Нажали на Drago
 //    =>  Подготовиться к перемещению
-function drago_Pointerdown_Handler(evt) {
+function forDrago_onDocument_Pointerdown_Handler(evt) {
   // Если нажали не ЛКМ, остановить обработчик
   if (evt.which !== 1) return;
 
@@ -166,6 +166,7 @@ function drago_Pointerdown_Handler(evt) {
 
   drago = evt.target;
   dragArea = document.querySelector("#" + evt.target.dataset.dragarea);
+  axis = evt.target.dataset.axis ?? false;
   // Подготовиться к перемещению
   prepareToDrag(evt);
 }

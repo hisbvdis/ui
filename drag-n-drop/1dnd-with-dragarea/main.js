@@ -16,7 +16,7 @@ let dragoClickY;
 let boundaries;
 
 
-document.addEventListener("pointerdown", drago_Pointerdown_Handler);
+document.addEventListener("pointerdown", forDrago_onDocument_Pointerdown_Handler);
 
 
 
@@ -158,7 +158,7 @@ function moveDragoTo(x, y) {
 // =================================================================
 // Нажали на Drago
 //    =>  Подготовиться к перемещению
-function drago_Pointerdown_Handler(evt) {
+function forDrago_onDocument_Pointerdown_Handler(evt) {
   // Если нажали не ЛКМ, остановить обработчик
   if (evt.which !== 1) return;
 
