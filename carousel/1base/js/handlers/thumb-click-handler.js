@@ -1,7 +1,5 @@
-"use strict";
-
 // Импорт функции переключения слайда
-import { showSlide } from "./export-changeSlide.js";
+import { showSlide } from "./change-slide.js";
 
 // Элемент ".thumbs"
 let thumbs = document.querySelector(".thumbs__list");

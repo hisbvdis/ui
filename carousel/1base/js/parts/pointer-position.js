@@ -1,5 +1,3 @@
-"use strict";
-
 // Вычисление положения указателя относительно элемента `.slides`
 export function calcPointerToSlidesPos(evt, slides) {
   // Координата указателя по оси "X" относительно документа

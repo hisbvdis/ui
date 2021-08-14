@@ -1,5 +1,7 @@
 .slides {
   position: relative;
+
+  cursor: pointer;
 }
 
 .slides__list {
@@ -31,6 +33,20 @@
   position: absolute;
   inset-block-start: 50%;
   transform: translateY(-50%);
+
+  opacity: 0;
+}
+
+.slides__slideBtn {
+  opacity: 0;
+}
+
+.slides:hover .slides__slideBtn {
+  opacity: 0.4;
+}
+
+.slides:hover .slides__slideBtn--highlight {
+  opacity: 1;
 }
 
 .slides__slideBtn--prev {

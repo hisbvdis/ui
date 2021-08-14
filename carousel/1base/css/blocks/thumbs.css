@@ -17,6 +17,10 @@
   
 }
 
+.thumbs__item--current {
+  outline: 2px solid #11B1E7;
+}
+
 .thumbs__btn {
   block-size: 100%;
   padding: 0;

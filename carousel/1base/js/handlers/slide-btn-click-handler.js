@@ -1,7 +1,5 @@
-"use strict";
-
 // Импорт двух функций переключения слайдов
-import { prevSlide, nextSlide } from "./export-changeSlide.js";
+import { prevSlide, nextSlide } from "./change-slide.js";
 
 // Кнопка "Назад"
 let prevBtn = document.querySelector(".slides__slideBtn--prev");

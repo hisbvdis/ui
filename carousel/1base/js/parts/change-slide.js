@@ -1,5 +1,3 @@
-"use strict";
-
 // Список элементов "слайдов"
 let slides = document.querySelector(".slides__list").children;
 // Список элементов "эскизов"
@@ -29,10 +27,11 @@ export function nextSlide() {
 
 // 0. Собирательная функция "Переключить слайд"
 export function showSlide(index) {
-  let nextIndex = calcNextIndex(index); /* Функция 1:  Вычислить следующий индекс */
-  changeSlide(nextIndex);               /* Функция 2:  Сменить слайд */
-  changeThumb(nextIndex);               /* Функция 3:  Сменить эскиз */
-  updateThings(nextIndex);              /* Функция 4:  Обновить значения и переменные */
+  let nextIndex = calcNextIndex(index); /* Вычислить следующий индекс  (Функция 1) */
+
+  changeSlide(nextIndex);               /* Сменить слайд  (Функция 2) */
+  changeThumb(nextIndex);               /* Сменить эскиз  (Функция 3) */
+  updateThings(nextIndex);              /* Обновить значения и переменные  (Функция 4) */
 }
 
 
@@ -41,7 +40,7 @@ function calcNextIndex(index) {
   // 1.1. Если полученный индекс больше количества слайдов, вернуть "1"
   if (index > slides.length) return 1;
 
-  // 1.2. Если полученный индекс меньше нуля, вернуть "индекс последнего слайда"
+  // 1.2. Если полученный индекс меньше единицы, вернуть "индекс последнего слайда"
   if (index < 1) return slides.length;
 
   // 1.3. Иначе - вернуть индекс в исходном виде
@@ -62,10 +61,10 @@ function changeSlide(nextIndex) {
 // 3. Сменить эскиз
 function changeThumb(nextIndex) {
   // 3.1. Убрать отметку с элемента текущего эскиза
-  currentThumbElem.classList.remove("thumbs__item--active");
+  currentThumbElem.classList.remove("thumbs__item--current");
 
   // 3.2. Пометить элемент эскиза с заданным индексом
-  thumbs[nextIndex - 1].classList.add("thumbs__item--active");
+  thumbs[nextIndex - 1].classList.add("thumbs__item--current");
 }
 
 

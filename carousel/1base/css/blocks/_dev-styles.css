@@ -1,6 +1,0 @@
-/* Images without required attributes */
-img:not([alt]),
-img:not([width]),
-img:not([height]) {
-  outline: 2px solid red;
-}
