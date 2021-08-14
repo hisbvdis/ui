@@ -1,3 +1,7 @@
+// Drago (draggable object) - перетаскиваемый объект
+let drago;
+// DragArea - допустимая область перетаскивания
+let dragArea;
 // Axis - ось, в которой можно перемещать Drago
 let axis;
 
@@ -20,7 +24,7 @@ document.addEventListener("pointerdown", forDrago_onDocument_Pointerdown_Handler
 // ФУНКЦИИ
 // =================================================================
 // Подготовиться к перемещению
-export function prepareToDrag(evt) {
+function prepareToDrag(evt) {
   // Определить глобальные переменные
   dragoClickX = drago.offsetWidth / 2;
   dragoClickY = drago.offsetHeight / 2;
@@ -159,13 +163,13 @@ function forDrago_onDocument_Pointerdown_Handler(evt) {
   if (evt.which !== 1) return;
 
   // Если нет атрибута "drago", остановить обработчик
-  if (evt.target.dataset.drago === undefined) return;
+  if (evt.target.dataset.isDrago === undefined) return;
 
   // Предотвратить стандартное выделение элементов при зажатой ЛКМ
   evt.preventDefault();
 
   drago = evt.target;
-  dragArea = document.querySelector("#" + evt.target.dataset.dragarea);
+  dragArea = document.querySelector("#" + evt.target.dataset.targetDragarea);
   axis = evt.target.dataset.axis ?? false;
   // Подготовиться к перемещению
   prepareToDrag(evt);
