@@ -1,8 +1,8 @@
-@import url("css/base.css");
-@import url("css/carousel.css");
-@import url("css/slides.css");
-@import url("css/thumbs.css");
-@import url("css/slideBtn.css");
+@import url("base/base.css");
+@import url("blocks/carousel.css");
+@import url("blocks/slides.css");
+@import url("blocks/thumbs.css");
+@import url("blocks/slideBtn.css");
 
 
 /*  Body имитирует контейнер, в который будет вставляться "carousel"  */
@@ -12,6 +12,5 @@ body {
   margin-inline: auto;
   margin-block: 50px 0;
 
-  border: 1px solid red;
   overflow-y: scroll
 }

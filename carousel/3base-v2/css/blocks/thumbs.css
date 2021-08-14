@@ -1,11 +1,15 @@
 .thumbs {
+  background: rgb(0 0 0 / 0.8);
+}
+
+.thumbs__list {
   display: flex;
   justify-content: center;
   gap: 3px;
+  block-size: 100%;
   margin: 0;
   padding: 3px;
   
-  background: rgb(0 0 0 / 0.8);
   list-style: none;
 }
 
@@ -16,7 +20,9 @@
 .thumbs__btn {
   block-size: 100%;
   padding: 0;
+
   border: none;
+  cursor: pointer;
 }
 
 .thumbs__img {

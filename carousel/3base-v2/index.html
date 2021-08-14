@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <title>Document</title>
 </head>
 <body>
@@ -26,42 +26,48 @@
       </li>
     </ul>
 
-    <button class="slideBtn" type="button">
-      <svg width="20" height="36" alt="">
+    <button class="slideBtn  slides__slideBtn  slides__slideBtn--prev" type="button">
+      <svg width="17" height="30" alt="">
         <use xlink:href="img/sprite.svg#prev" />
       </svg>
       <span class="srOnly">Предыдущий слайд</span>
     </button>
-    <button class="slideBtn" type="button">
-      <svg width="20" height="36" alt="">
+    <button class="slideBtn  slides__slideBtn  slides__slideBtn--next" type="button">
+      <svg width="17" height="30" alt="">
         <use xlink:href="img/sprite.svg#next" />
       </svg>
       <span class="srOnly">Следующий слайд</span>
     </button>
   </div>
 
-  <ul class="thumbs">
-    <li class="thumbs__item">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/1.webp" width="100" height="67" alt="Рыжий кот лежит с закрытыми глазами" />
-      </button>
-    </li>
-    <li class="thumbs__item">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/2.webp" width="100" height="67" alt="Чёрный котёнок с белыми лапами" />
-      </button>
-    </li>
-    <li class="thumbs__item">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/3.webp" width="100" height="56" alt="Рыжий кот лежит с закрытыми глазами" />
-      </button>
-    </li>
-    <li class="thumbs__item">
-      <button class="thumbs__btn">
-        <img class="thumbs__img" src="img/thumbs/4.webp" width="100" height="67" alt="Рыжий кот лежит с закрытыми глазами" />
-      </button>
-    </li>
-  </ul>
+  <div class="thumbs">
+    <ul class="thumbs__list">
+      <li class="thumbs__item">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/1.webp" width="100" height="67" alt="Рыжий кот лежит с закрытыми глазами" />
+          <span class="srOnly">Слайд 1</span>
+        </button>
+      </li>
+      <li class="thumbs__item">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/2.webp" width="100" height="67" alt="Чёрный котёнок с белыми лапами" />
+          <span class="srOnly">Слайд 2</span>
+        </button>
+      </li>
+      <li class="thumbs__item">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/3.webp" width="100" height="56" alt="Рыжий кот лежит с закрытыми глазами" />
+          <span class="srOnly">Слайд 3</span>
+        </button>
+      </li>
+      <li class="thumbs__item">
+        <button class="thumbs__btn" type="button">
+          <img class="thumbs__img" src="img/thumbs/4.webp" width="100" height="67" alt="Рыжий кот лежит с закрытыми глазами" />
+          <span class="srOnly">Слайд 4</span>
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>
 
 </body>
