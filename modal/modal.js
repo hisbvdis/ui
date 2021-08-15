@@ -147,7 +147,7 @@ function onlyButtons(elems) {
 // Нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forTrigger_onDocument_onClick_Handler(evt) {
-  let trigger = evt.target.closest("[data-trigger='modal']");
+  let trigger = evt.target.closest("[data-modal-trigger='true']");
   if (!trigger) return;
   evt.preventDefault();
 
