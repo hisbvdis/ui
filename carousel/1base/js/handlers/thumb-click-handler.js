@@ -1,5 +1,5 @@
 // Импорт функции переключения слайда
-import { showSlide } from "./change-slide.js";
+import { showSlide } from "../parts/change-slide.js";
 
 // Элемент ".thumbs"
 let thumbs = document.querySelector(".thumbs__list");

@@ -1,5 +1,5 @@
 // Импорт двух функций переключения слайдов
-import { prevSlide, nextSlide } from "./change-slide.js";
+import { prevSlide, nextSlide } from "../parts/change-slide.js";
 
 // Кнопка "Назад"
 let prevBtn = document.querySelector(".slides__slideBtn--prev");
