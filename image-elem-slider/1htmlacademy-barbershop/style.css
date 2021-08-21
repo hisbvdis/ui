@@ -1,0 +1,16 @@
+@media (min-width: 0) and (max-width: 600px) {
+  .slider__item {
+    display: none;
+  }
+
+  .slider__item--visible {
+    display: block;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .slider__buttons {
+    display: none;
+  }
+}
