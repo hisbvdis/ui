@@ -1,0 +1,12 @@
+/* Base */
+@import "base/service.css";
+
+/* Common */
+@import "blocks/srOnly.css";
+@import "blocks/userpic.css";
+@import "blocks/btn.css";
+
+/* Blocks */
+@import "blocks/chat.css";
+@import "blocks/msg.css";
+@import "blocks/sending.css";

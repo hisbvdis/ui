@@ -1,0 +1,22 @@
+.sending__field {
+  margin: 0;
+  padding: 23px 30px;
+
+  border-block: 1px solid #D3D7D8;
+}
+
+.sending__input {
+  display: block;
+  inline-size: 100%;
+  block-size: 78px;
+
+  font: inherit;
+  
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 7px rgb(0 0 0 / 20%);
+}
+
+.sending__btn {
+  inline-size: 100%;
+}

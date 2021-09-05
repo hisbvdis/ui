@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="script/script.js" type="module"></script>
+  <title>Chat Dialog UI</title>
+</head>
+<body>
+<section class="chat">
+  <h2 class="chat__title">
+    <span class="srOnly">Окно чата с</span>SPDU
+  </h2>
+
+  <ul class="chat__messages" id="message-list">
+    <li class="msg">
+      <p class="userpic  msg__userpic">
+        <img class="userpic__img" src="img/userpic-1.jpg" alt="Your companion" width="350" height="350" />
+      </p>
+      <p class="msg__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    </li>
+    <li class="msg  msg--my">
+      <p class="userpic  msg__userpic">
+        <img class="userpic__img" src="img/userpic-2.jpg" alt="You" width="350" height="350" />
+      </p>
+      <p class="msg__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    </li>
+    <li class="msg">
+      <p class="userpic  msg__userpic">
+        <img class="userpic__img" src="img/userpic-1.jpg" alt="Your companion" width="350" height="350" />
+      </p>
+      <p class="msg__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    </li>
+  </ul>
+
+  <form class="sending" id="sending-form">
+    <h2 class="srOnly">Message sending block</h2>
+    <p class="sending__field">
+      <textarea class="sending__input" id="sending-input" name="message" rows="3" aria-label="Message text field" required></textarea>
+    </p>
+    <p class="sending__field">
+      <button class="btn  sending__btn" id="submit-btn" type="submit">Send message</button>
+    </p>
+  </form>
+</section>
+
+
+<template id="message-template" style="display: none">
+  <li class="msg  msg--my">
+    <p class="userpic  msg__userpic">
+      <img class="userpic__img" src="img/userpic-2.jpg" />
+    </p>
+    <p class="msg__text"></p>
+  </li>
+</template>
+
+</body>
+</html>

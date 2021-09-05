@@ -1,0 +1,36 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  inline-size: min(100%, 482px);
+  max-block-size: 788px;
+  
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  
+  background-color: #DDE1E2;
+  box-shadow: 0px 0px 7px rgb(0 0 0 / 50%);
+}
+
+.chat, .chat * {
+  box-sizing: border-box
+}
+
+.chat__title {
+  margin: 0;
+  padding: 28px;
+  
+  font-size: 50px;
+  font-weight: 600;
+  color: #fff;
+
+  background: url("../../img/title-background.jpg") center / cover no-repeat;
+  text-shadow: 3px 3px 2px rgb(0 0 0 / 50%);
+}
+
+.chat__messages {
+  margin: 0;
+  padding: 0;
+  
+  list-style: none;
+  overflow-y: auto;
+}
