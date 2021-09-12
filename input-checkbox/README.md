@@ -38,3 +38,6 @@
 **Состояние "disabled"**
 - Стилизовать можно по селектору атрибута `[disabled]`
 - Устанавливать курсор - "запрещено" (`cursor: not-allowed)
+
+## Источники
+- [ ] Sara Soueidan – "Inclusively Hiding & Styling Checkboxes and Radio Buttons" ([ссылка](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/))

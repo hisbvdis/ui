@@ -18,3 +18,7 @@
 ## CSS-стилизация
 **Состояния**
 - Стилизовать все основные состояния: обычное, отключённое, в фокусе, активное (при нажатии)
+
+
+## Источники
+- [ ] Sara Soueidan – "Inclusively Hiding & Styling Checkboxes and Radio Buttons" ([ссылка](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/))

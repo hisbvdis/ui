@@ -1,0 +1,21 @@
+button {
+  all: unset;
+}
+
+button:hover {
+  
+}
+
+/* Фокус при навигации с помощью клавиатуры */
+button:focus-visible {
+  
+}
+
+/* Фокус при навигации с помощью мыши, тача или стилуса */
+button:focus:not(:focus-visible) {
+  
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
