@@ -1,4 +1,4 @@
-# **Drag-n-Drop: Перемещение в области (с помощью Pointer Events)**
+# Drag-n-Drop: Перемещение в области (с помощью Pointer Events)
 
 ## Этап 0 - ожидание клика
 **1. Обработчик**
@@ -58,4 +58,4 @@
 
 
 ## Источники (литература)
-- [JS.ru – Drag'n'Drop через события мыши](https://learn.javascript.ru/mouse-drag-and-drop)
+- [x] [JS.ru – Drag'n'Drop через события мыши](https://learn.javascript.ru/mouse-drag-and-drop)

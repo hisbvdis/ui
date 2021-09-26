@@ -1,4 +1,4 @@
-# **Кнопка**
+# Кнопка
 
 ## HTML-разметка
 **Тип**
@@ -52,6 +52,4 @@
 
 
 ## Источники (литература)
-- [ ] [Чеклист отключённых кнопок](https://twitter.com/smashingmag/status/1422851562414673924)
 - [x] [Стилизация старого доброго элемента button](https://habr.com/ru/company/ruvds/blog/489820/)
-- [ ] [Frustrating Design Patterns: Disabled Buttons](https://www.smashingmagazine.com/2021/08/frustrating-design-patterns-disabled-buttons/)

@@ -1,4 +1,4 @@
-# **Ленивая загрузки изображений с помощью JavaScript**
+# Ленивая загрузки изображений с помощью JavaScript
 
 Источник: https://www.youtube.com/watch?v=WfzKd16LplI
 

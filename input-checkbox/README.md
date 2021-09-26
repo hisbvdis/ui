@@ -2,18 +2,18 @@
 
 ## Дерево тегов и классов
 #### HTML-разметка для элемента вне формы
-- **`div.checkbox`** – контейнер отдельной опции
-  - **`input.checkbox__input`** - сам "input"
-  - **`span.checkbox__mark`** - кастомный индикатор (если таковой есть)
-  - **`label.checkbox__label`** – название опции
+- `div.checkbox` — контейнер отдельной опции
+  - `input.checkbox__input` - сам "input"
+  - `span.checkbox__mark` - кастомный индикатор (если таковой есть)
+  - `label.checkbox__label` — название опции
 
 
 #### HTML-разметка для элемента в контексте формы
-- **`ul.form__options`** – список опций
-- **`li.checkbox  form__option`** – контейнер отдельной опции (класс "form__option" для стилизации в форме)
-  - **`input.checkbox__input`** - сам "input"
-  - **`span.checkbox__mark`** - кастомный индикатор (если таковой есть)
-  - **`label.checkbox__label`** – название опции
+- `ul.form__options` — список опций
+- `li.checkbox  form__option` — контейнер отдельной опции (класс "form__option" для стилизации в форме)
+  - `input.checkbox__input` - сам "input"
+  - `span.checkbox__mark` - кастомный индикатор (если таковой есть)
+  - `label.checkbox__label` — название опции
 
 
 ## HTML-разметка
@@ -40,4 +40,5 @@
 - Устанавливать курсор - "запрещено" (`cursor: not-allowed)
 
 ## Источники
-- [ ] Sara Soueidan – "Inclusively Hiding & Styling Checkboxes and Radio Buttons" ([ссылка](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/))
+- [ ] Sara Soueidan — "Inclusively Hiding & Styling Checkboxes and Radio Buttons" ([ссылка](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/))
+- [ ] Scott Ohara — One last time: custom styling radio buttons and checkboxes ([ссылка](https://www.scottohara.me/blog/2021/09/24/custom-radio-checkbox-again.html))

@@ -1,22 +1,22 @@
-# **Drag-n-Drop: Элементы списка (с помощью Drag and Drop API)**
+# Drag-n-Drop: Элементы списка (с помощью Drag and Drop API)
 
 ## Перетаскиваемые элементы
-**Атрибут `draggable`**
+**Атрибут `draggable`
 - Делает элемент доступным для перетаскивания
 - Для ссылок, изображений и выделенного текста данный атрибут не нужен - эти элементы доступны для перетаскивания по умолчанию
 - Пример: `draggable="true"`, `draggable="false"`
 
-**Атрибут `data-valid-dropzone`**
+**Атрибут `data-valid-dropzone`
 - Содержит идентификатор "зон сброса", в которые можно сбрасывать данный элемент
 - Пример: `data-valid-dropzone="dropzone"`
 
-**Атрибут `data-drag-group`**
+**Атрибут `data-drag-group`
 - Подобно атрибуту `name` у радио-кнопкок, логически объединяет перетаскиваемые элементы в группу
 - Пример: `data-drag-group="list"`
 
 
 ## Зона сброса
-**Атрибут `data-dropzone`**
+**Атрибут `data-dropzone`
 - Задаёт идентификатор элемента, являющегося "зоной сброса"
 - Пример: `data-dropzone="dropzone"`
 
@@ -68,4 +68,4 @@
 
 
 ## Источники (литература)
-- HTMLAcademy | Как реализовать drag&amp;drop на чистом JavaScript ([ссылка](https://habr.com/ru/company/htmlacademy/blog/541972/))
+- [x] HTMLAcademy | Как реализовать drag&amp;drop на чистом JavaScript ([ссылка](https://habr.com/ru/company/htmlacademy/blog/541972/))

@@ -1,10 +1,10 @@
-# **SVG-иконка**
+# SVG-иконка
 
 ## HTML-разметка
-**Атрибуты `width` и `height`**
+**Атрибуты `width` и `height`
 - Для svg-тега задавать желаемые размеры иконки: `<svg width="40" height="23">`
 
-**(НЕ УВЕРЕН) Атрибут `viewBox`**
+**(НЕ УВЕРЕН) Атрибут `viewBox`
 - Атрибут `viewBox` почему-то задан прямо в теге `svg` [источник](https://habr.com/ru/company/ruvds/blog/489820/#:~:text=viewBox)
 
 

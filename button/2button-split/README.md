@@ -1,5 +1,5 @@
-# **Split-кнопка**
+# Split-кнопка
 
 
 ## Источники (литература)
-- [ ] [Чеклист отключённых кнопок](https://twitter.com/smashingmag/status/1422851562414673924)
+- [ ] [Кнопка с разделителем](https://web.dev/building-a-split-button-component/)
