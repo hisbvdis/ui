@@ -2,17 +2,18 @@
 
 ## Дерево тегов и классов
 **Разметка вне формы**
-- `div.radio` – контейнер отдельной опции
-  - `input.radio__input` - сам "input"
-  - `span.radio__mark` - кастомный индикатор (если таковой есть)
-  - `label.radio__label` – название опции
+- `label.radio` — контейнер отдельной опции
+  - `input.radio__input` — сам "input"
+  - `span.radio__mark` — кастомный индикатор (если таковой есть)
+  - `span.radio__caption` — подпись элемента
 
-**Разметка в форме**
-- `ul.form__options` – список опций
-- `li.radio  form__option` – контейнер отдельной опции (класс "form__option" для стилизации в форме)
-  - `input.radio__input` - сам "input"
-  - `span.radio__mark` - кастомный индикатор (если таковой есть)
-  - `label.radio__label` – название опции
+**HTML-разметка для элемента в контексте формы**
+- `ul.form__options` — список опций
+  - `li.form__option` — элемент списка опций
+    - `label.radio` — контейнер отдельной опции
+      - `input.radio__input` — сам "input"
+      - `span.radio__mark` — кастомный индикатор (если таковой есть)
+      - `span.radio__caption` — подпись элемента
 
 
 ## CSS-стилизация

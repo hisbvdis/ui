@@ -9,18 +9,20 @@
 <body>
 
 <h2>Разметка вне формы</h2>
-<div class="field">
+<p class="field">
   <label class="field__label" for="field1">Название поля 1</label>
   <input class="field__input" id="field1" type="text" name="field" placeholder="placeholder" />
-</div>
+</p>
 
 <h2>Разметка в форме</h2>
-<div class="form__fields">
-  <div class="field  form__field">
-    <label class="field__label" for="field2">Название поля 2</label>
-    <input class="field__input" id="field2" type="text" name="field" placeholder="placeholder" />
-  </div>
-</div>
+<form>
+  <fieldset class="form__fields">
+    <p class="field  form__field">
+      <label class="field__label" for="field2">Название поля 2</label>
+      <input class="field__input" id="field2" type="text" name="field" placeholder="placeholder" />
+    </p>
+  </fieldset>
+</form>
 
 </body>
 </html>

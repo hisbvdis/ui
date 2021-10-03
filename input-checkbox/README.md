@@ -1,22 +1,25 @@
 # Checkbox
 
 ## Дерево тегов и классов
-#### HTML-разметка для элемента вне формы
-- `div.checkbox` — контейнер отдельной опции
-  - `input.checkbox__input` - сам "input"
-  - `span.checkbox__mark` - кастомный индикатор (если таковой есть)
-  - `label.checkbox__label` — название опции
+**HTML-разметка для элемента вне формы**
+- `label.checkbox` — контейнер отдельной опции
+  - `input.checkbox__input` — сам "input"
+  - `span.checkbox__mark` — кастомный индикатор (если таковой есть)
+  - `span.checkbox__caption` — подпись элемента
 
-
-#### HTML-разметка для элемента в контексте формы
+**HTML-разметка для элемента в контексте формы**
 - `ul.form__options` — список опций
-- `li.checkbox  form__option` — контейнер отдельной опции (класс "form__option" для стилизации в форме)
-  - `input.checkbox__input` - сам "input"
-  - `span.checkbox__mark` - кастомный индикатор (если таковой есть)
-  - `label.checkbox__label` — название опции
+  - `li.form__option` — элемент списка опций
+    - `label.checkbox` — контейнер отдельной опции
+      - `input.checkbox__input` — сам "input"
+      - `span.checkbox__mark` — кастомный индикатор (если таковой есть)
+      - `span.checkbox__caption` — подпись элемента
 
 
 ## HTML-разметка
+**Тип поля**
+- Использовуется `input` с типом `checkbox`3
+
 **Имя поля**
 - Полям формы в атрибуте `name` задавать имена (уникальные в пределах формы)
 - *Пример:* `<input type="text" name="login">`
@@ -26,18 +29,19 @@
 - Значения нужно сохранять в атрибуте "value"
 - *Пример:* хранение HEX-кода для цвета, выбранного в Colorpicker
 
-**Метка поля**
-- У полей формы должны быть метки `<label>`
-- Метки должны быть связанные с полем по ID или вложенностью элементов
+**Подпись поля**
+- У полей формы должны быть подписи `<label>`
+- Подписи должны быть связанные с полем по ID или вложенностью элементов
 
 
 ## CSS-стилизация: Элементы формы
 **Состояния**
-- Стилизовать все состояния: Обычное, Наведение (hover), Фокус (focus), Нажатие (active), Отключенное (disabled)
+- Стилизовать все состояния: Обычное, Наведение (hover), Фокус (focus), Нажатие (active), Отключенное (disabled), Промежуточное (indeterminate)
 
 **Состояние "disabled"**
 - Стилизовать можно по селектору атрибута `[disabled]`
 - Устанавливать курсор - "запрещено" (`cursor: not-allowed)
+
 
 ## Источники
 - [ ] Sara Soueidan — "Inclusively Hiding & Styling Checkboxes and Radio Buttons" ([ссылка](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/))

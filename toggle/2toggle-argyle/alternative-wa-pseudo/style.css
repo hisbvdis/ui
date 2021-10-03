@@ -1,0 +1,102 @@
+body {
+  inline-size: 300px;
+
+  border: 1px solid #000;
+}
+
+
+/* ========================================================================== */
+/* ============================ СЛУЖЕБНЫЕ =================================== */
+/* ========================================================================== */
+.srOnly {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+
+/* ========================================================================== */
+/* =============================== ПАРАМЕТРЫ ================================ */
+/* ========================================================================== */
+.toggle {
+  /* ПАРАМЕТРЫ ТРЭКА */
+  --trackSize: calc(var(--thumbSize) * 2);
+  --trackPadding: 2px;
+  --trackColor-inactive: #cccccc;
+  --trackColor-active: #8ab82e;
+
+  /* ПАРАМЕТРЫ ПОЛЗУНКА */
+  --thumbSize: 2rem;
+  --thumbBgColor: #fff;
+}
+
+
+/* ========================================================================== */
+/* ================================ СТИЛИ =================================== */
+/* ========================================================================== */
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle__track {
+  --thumbPosition: 0%;
+  flex-shrink: 0;
+
+  display: grid;
+  align-items: center;
+  grid: [track] 1fr / [track] 1fr;
+  inline-size: var(--trackSize);
+  block-size: var(--thumbSize);
+  padding: var(--trackPadding);
+
+  border: none;
+  border-radius: var(--trackSize);
+  outline-offset: 5px;
+  background: var(--trackColor-inactive);
+}
+
+.toggle__thumb {
+  grid-area: track;
+  inline-size: var(--thumbSize);
+  block-size: var(--thumbSize);
+  box-sizing: border-box;
+
+  background: var(--thumbBgColor);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px #fff;
+
+  transform: translateX(var(--thumbPosition));
+  transition: 0.25s;
+}
+
+.toggle__input:checked ~ .toggle__track {
+  --thumbPosition: calc(var(--trackSize) - 100%);
+
+  background: var(--trackColor-active);
+}
+
+.toggle__input:disabled ~ .toggle__track {
+  --thumbBgColor: transparent;
+
+  cursor: not-allowed;
+}
+
+.toggle__input:focus-visible ~ .toggle__track {
+  outline: 2px solid black;
+}
