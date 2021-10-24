@@ -9,3 +9,6 @@
 ## Шаблоны
 - CSSLayout - "Паттерны компонентов" ([ссылка](https://csslayout.io/patterns))
 - Component Gallery - "Компоненты дизайн-систем" ([ссылка](https://component.gallery/))
+
+## Приёмы
+- You don`t need JS ([ссылка](https://github.com/you-dont-need/You-Dont-Need-JavaScript))
