@@ -83,8 +83,9 @@ body {
   display: flex;
   padding: 10px;
 
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
   overflow-y: scroll;
+  transition: background 0.2s;
 }
 
 /* Стилизация блока с содержимым модального окна */
