@@ -5,7 +5,7 @@ let ctrlEnterBtn = null;
 let openActions = null;
 let closeActions = null;
 
-let modalElems = null;
+let modalInteractElems = null;
 let firstModalElem = null;
 let lastModalElem = null;
 let clickOnLayout = false;
@@ -40,10 +40,10 @@ export function openModal(modal, params) {
   modal.classList.add("modal--opened");
 
   // Работа с фокусом окна
-  modalElems = getModalElems(modal);
-  firstModalElem = modalElems[0];
-  lastModalElem = modalElems[modalElems.length - 1];
-  if (onlyButtons(modalElems)) {
+  modalInteractElems = getModalInteractElems(modal);
+  firstModalElem = modalInteractElems[0];
+  lastModalElem = modalInteractElems[modalInteractElems.length - 1];
+  if (onlyButtons(modalInteractElems)) {
     focusOn(modal.querySelector("[data-focus]"));
   } else {
     focusOn(firstModalElem);
@@ -56,8 +56,8 @@ export function openModal(modal, params) {
   modal.addEventListener("pointerdown", backdrop_Pointerdown_Handler);
   modal.addEventListener("click", backdrop_Click_Handler);
   modal.addEventListener("click", forCloseBtn_onModal_Click_Handler);
-  firstModalElem.addEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
-  lastModalElem.addEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
+  firstModalElem?.addEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
+  lastModalElem?.addEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
   document.addEventListener("keydown", document_Keydown_Escape_Handler);
   document.addEventListener("keydown", forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler);
 
@@ -102,14 +102,14 @@ function closeModal(modal) {
   openActions = null;
   closeActions = null;
 
-  modalElems = null;
+  modalInteractElems = null;
   firstModalElem = null;
   lastModalElem = null;
   clickOnLayout = false;
 }
 
 
-function getModalElems(modal) {
+function getModalInteractElems(modal) {
   let selectors = [
     'a[href]',
     'area[href]',
