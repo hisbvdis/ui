@@ -32,7 +32,7 @@ html {
   transition: inset-inline-start 0.2s;
 }
 
-.sidenavOpened .sidenav__list {
+.body--withModal .sidenav__list {
   inset-inline-start: 0;
 }
 
@@ -41,9 +41,4 @@ html {
   padding-block: 15px;
 
   text-decoration: none;
-}
-
-.sidenav__icon {
-  inline-size: 20px;
-  block-size: 20px;
 }

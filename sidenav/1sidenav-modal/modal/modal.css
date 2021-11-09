@@ -24,10 +24,10 @@ body {
   overflow-y: scroll;
 }
 
-/* При открытии модального окна, для устройств с точным указателем (Desktop) */
-/* ...скрывать полосу прокрутки, но добавлять padding = 17px (ширина полосы) */
+/* Полоса прокрутки показывается для пк с мышью. В этом случае скрывать 
+полосу прокрутки, но добавлять padding = 17px (ширина полосы) */
 @media (pointer: fine) {
-  .modalOpened {
+  .body--withModal {
     padding-inline-end: 17px;
     overflow: hidden;
   }
@@ -57,7 +57,7 @@ body {
 }
 
 /* Сброс стилей "Скрыть окно" (srOnly + visibility) к исходным значения */
-.modal--opened {
+.modal--isOpen {
   position: initial;
 
   width: initial;
@@ -75,7 +75,7 @@ body {
 }
 
 /* Стилизация открытого модального окна */
-.modal--opened {
+.modal--isOpen {
   position: fixed;
   inset: 0;
   z-index: 3;
@@ -89,8 +89,8 @@ body {
 
 /* Стилизация блока с содержимым модального окна */
 .modal__content {
-  inline-size: 100%;
-  max-inline-size: 600px;
+  /* inline-size: 100%;
+  max-inline-size: 600px; */
   padding: 20px;
   margin: auto;
 

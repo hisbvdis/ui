@@ -1,0 +1,20 @@
+/* ============================================ */
+/* === ТОЛЬКО ДЛЯ ТЕКУЩЕЙ ДЕМОНСТРАЦИИ ======== */
+/* ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Постоянная полоса прокрутки у <body> */
+body {
+  overflow-y: scroll;
+}
+
+.placeholder-70 {
+  padding-block-end: 70%;
+  margin-block-end: 20px;
+
+  background: #ccc;
+}
