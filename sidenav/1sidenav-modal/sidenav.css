@@ -1,26 +1,11 @@
 /* ============================================ */
-/* ================ СЛУЖЕБНОЕ ================= */
-/* ============================================ */
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-
-
-/* ============================================ */
 /* ============== БОКОВАЯ ПАНЕЛЬ ============== */
 /* ============================================ */
-.sidenav__list {
+.sidenav__content {
   position: fixed;
   inset-block-start: 0;
   inset-inline-start: -100%;
-
+  
   inline-size: 280px;
   block-size: 100vh;
   margin: 0;
@@ -32,13 +17,6 @@ html {
   transition: inset-inline-start 0.2s;
 }
 
-.body--withModal .sidenav__list {
+.body--withModal .sidenav__content {
   inset-inline-start: 0;
-}
-
-.sidenav__link {
-  display: block;
-  padding-block: 15px;
-
-  text-decoration: none;
 }
