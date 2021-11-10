@@ -9,7 +9,7 @@ body {
 /* Полоса прокрутки показывается для пк с мышью. В этом случае скрывать 
 полосу прокрутки, но добавлять padding = 17px (ширина полосы) */
 @media (pointer: fine) {
-  .body--withModal {
+  .body--withOpenedModal {
     padding-inline-end: 17px;
     overflow: hidden;
   }
