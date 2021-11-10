@@ -1,7 +1,7 @@
 /* ============================================ */
 /* ============== БОКОВАЯ ПАНЕЛЬ ============== */
 /* ============================================ */
-.sidenav__content {
+.sidebar__content {
   position: fixed;
   inset-block-start: 0;
   inset-inline-start: -100%;
@@ -17,6 +17,6 @@
   transition: inset-inline-start 0.2s;
 }
 
-.body--withModal .sidenav__content {
+.body--withOpenedModal .sidebar__content {
   inset-inline-start: 0;
 }

@@ -32,7 +32,7 @@ export function openModal(modal, params) {
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // У <body> задать класс модального окна (прокрутка и отступ)
-  document.body.classList.add("body--withModal");
+  document.body.classList.add("body--withOpenedModal");
 
   // Показать подальное окно
   modal.setAttribute("aria-hidden", "false");
@@ -69,7 +69,7 @@ export function openModal(modal, params) {
 // Закрыть модальное окно
 function closeModal(modal) {
   // У <body> удалить класс модального окна
-  document.body.classList.remove("body--withModal");
+  document.body.classList.remove("body--withOpenedModal");
 
   // Скрыть модальное окно
   modal.setAttribute("aria-hidden", "true");
