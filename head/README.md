@@ -2,21 +2,19 @@
 
 ## Последовательность подключения ресурсов
 [Источник](https://twitter.com/smashingmag/status/1440697011985018881)
-```html
-  <meta />
-  <title>
-  preconnect
-  <script async></script>
-  CSS with 
-  @imports
+- `<meta />`
+- `<title>`
+- `preconnect`
+- `<script async></script>`
+- `CSS with `
+- `@imports`
 
-  sync JS
-  sync CSS
-  preload
-  <script defer></script>
-  prefetch / prerender
-  Всё остальное (SEO, icons, open graph)
-```
+- `sync JS`
+- `sync CSS`
+- `preload`
+- `<script defer></script>`
+- `prefetch / prerender`
+- `Всё остальное (SEO, icons, open graph)`
 
 ## Подключение стилей
 **Подключение**

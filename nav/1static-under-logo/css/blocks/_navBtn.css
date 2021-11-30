@@ -1,0 +1,56 @@
+.navBtn {
+  position: relative;
+
+  inline-size: 26px;
+  block-size: 19px;
+  padding: 0;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.noJS .navBtn {
+  display: none;
+}
+
+.navBtn__line {
+  position: absolute;
+
+  display: block;
+  inline-size: 100%;
+  block-size: 3px;
+
+  background: #000;
+  transition: 0.25s;
+}
+
+.navBtn__line--1 {
+  inset-block-start: 0;
+}
+
+.navBtn__line--2 {
+  inset-block-start: 50%;
+  transform: translateY(calc(-50% - 0.5px));
+}
+
+.navBtn__line--3 {
+  inset-block-end: 0;
+}
+
+
+
+/* .navOpened */
+.navOpened .navBtn__line--1 {
+  inset-block-start: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.navOpened .navBtn__line--2 {
+  opacity: 0;
+}
+
+.navOpened .navBtn__line--3 {
+  inset-block-end: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
