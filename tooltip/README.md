@@ -5,4 +5,4 @@
 
 
 ## TODO
-- [  ] Показывать подсказку при фокусе с клавиатуры ([ссылка](https://twitter.com/hybrid_alex/status/1500114810989592576?t=BwcAgR3JFNXd79OMuWTnkQ&s=03))
+- [ ] Показывать подсказку при фокусе с клавиатуры ([ссылка](https://twitter.com/hybrid_alex/status/1500114810989592576?t=BwcAgR3JFNXd79OMuWTnkQ&s=03))
