@@ -2,19 +2,21 @@ import { useState } from "react";
 import "./App.css";
 
 const App = () => {
+  // 1. Состояние компонента
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [textarea, setTextarea] = useState("");
   const [checkbox1, setCheckbox1] = useState(false);
   const [checkbox2, setCheckbox2] = useState(false);
-  const [checkboxGroup, setCheckboxGroup] = useState({cb1: false, cb2: false});
+  const [checkboxGroup, setCheckboxGroup] = useState({});
+  const [inputGroup, setInputGroup] = useState({});
   const [radioGroup, setRadioGroup] = useState("first");
   const [select, setSelect] = useState("");
   const [multipleSelect, setMultipleSelect] = useState([]);
 
   return (
     <form>
-      <h4>Input — текстовое значение</h4>
+      <h4>Поля Input (отдельные свойства)</h4>
       <input
         type="text"
         name="input1"
@@ -28,14 +30,16 @@ const App = () => {
         onChange={(evt) => setInput2(evt.target.value)}
       />
 
-      <h4>Textarea — текстовое значение</h4>
+
+      <h4>Textarea (одно свойство)</h4>
       <textarea
         name="textarea"
         value={textarea}
         onChange={(evt) => setTextarea(evt.target.value)}
       />
 
-      <h4>Checkbox — отдельные текстовые значения</h4>
+
+      <h4>Checkbox (отдельные свойства)</h4>
       <input
         type="checkbox"
         name="checkbox1"
@@ -51,33 +55,56 @@ const App = () => {
         onChange={() => setCheckbox2(!checkbox2)}
       />
 
-      <h4>Checkbox — объект</h4>
+
+      <h4>Checkbox (объект)</h4>
       <input
         type="checkbox"
-        name="cb1"
+        name="checkboxGroup"
         value="cb1"
         checked={checkboxGroup["cb1"]}
         onChange={(evt) => {
           setCheckboxGroup({
             ...checkboxGroup,
-            [evt.target.name]: !checkboxGroup[evt.target.name]
+            [evt.target.value]: !checkboxGroup[evt.target.value]
           })
         }}
       />
       <input
         type="checkbox"
-        name="cb2"
+        name="checkboxGroup"
         value="cb2"
         checked={checkboxGroup["cb2"]}
         onChange={(evt) => {
           setCheckboxGroup({
             ...checkboxGroup,
-            [evt.target.name]: !checkboxGroup[evt.target.name]
+            [evt.target.value]: !checkboxGroup[evt.target.value]
           })
         }}
       />
 
-      <h4>Radio — одно текстовое значение</h4>
+
+      <h4>Текстовые поля (объект)</h4>
+      <input
+        type="text"
+        name="ig1"
+        value={inputGroup["ig1"]}
+        onChange={(evt) => setInputGroup({
+          ...inputGroup,
+          [evt.target.name]: evt.target.value
+        })}
+      />
+      <input
+        type="text"
+        name="ig2"
+        value={inputGroup["ig2"]}
+        onChange={(evt) => setInputGroup({
+          ...inputGroup,
+          [evt.target.name]: evt.target.value
+        })}
+      />
+
+
+      <h4>Группа Radio (одно свойство)</h4>
       <input
         type="radio"
         name="radioGroup"
@@ -93,12 +120,14 @@ const App = () => {
         onChange={(evt) => setRadioGroup(evt.target.value)}
       />
 
-      <h4>Select — одно текстовое значение</h4>
+
+      <h4>Select (одно свойство)</h4>
       <select name="select" value={select} onChange={(evt) => setSelect(evt.target.value)}>
         <option value=""></option>
         <option value="first">First</option>
         <option value="second">Second</option>
       </select>
+
 
       <h4>Select Multiple — массив</h4>
       <select
