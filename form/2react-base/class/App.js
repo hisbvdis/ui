@@ -79,7 +79,7 @@ class App extends React.Component {
         />
 
 
-        <h4>Checkbox (отдельные свойства)</h4>
+        <h4>Группа Checkbox (отдельные свойства)</h4>
         <input
           type="checkbox"
           name="checkbox1"
@@ -96,7 +96,7 @@ class App extends React.Component {
         />
 
 
-        <h4>Checkbox (объект)</h4>
+        <h4>Группа Checkbox (объект)</h4>
         <input
           type="checkbox"
           name="checkboxGroup"
@@ -113,7 +113,7 @@ class App extends React.Component {
         />
 
 
-        <h4>Текстовые поля (объект)</h4>
+        <h4>Группа текстовых полей (объект)</h4>
         <input
           type="text"
           name="ig1"

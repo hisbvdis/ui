@@ -39,7 +39,7 @@ const App = () => {
       />
 
 
-      <h4>Checkbox (отдельные свойства)</h4>
+      <h4>Группа Checkbox (отдельные свойства)</h4>
       <input
         type="checkbox"
         name="checkbox1"
@@ -56,7 +56,7 @@ const App = () => {
       />
 
 
-      <h4>Checkbox (объект)</h4>
+      <h4>Группа Checkbox (объект)</h4>
       <input
         type="checkbox"
         name="checkboxGroup"
@@ -83,7 +83,7 @@ const App = () => {
       />
 
 
-      <h4>Текстовые поля (объект)</h4>
+      <h4>Группа текстовых полей (объект)</h4>
       <input
         type="text"
         name="ig1"
