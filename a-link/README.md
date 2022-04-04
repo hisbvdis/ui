@@ -42,4 +42,4 @@
 
 
 ## Источники (статьи)
-- [x] [Тег a](https://www.youtube.com/watch?v=_UmMLsIeK9k&t=2325s)
+- [x] [Никита Дубко — Тег a](https://www.youtube.com/watch?v=_UmMLsIeK9k&t=2325s)
