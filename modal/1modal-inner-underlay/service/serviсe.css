@@ -13,3 +13,9 @@
 
   background: #ccc;
 }
+
+
+/* Постоянная полоса прокрутки у <body> */
+body {
+  overflow-y: scroll;
+}

@@ -10,6 +10,11 @@ let firstModalElem = null;
 let lastModalElem = null;
 let clickOnLayout = false;
 
+let scrollBarWidth = null;
+let bodyMarginRight = null;
+let bodyPaddingRight = null;
+let bodyOverflow = null;
+
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -31,8 +36,13 @@ export function openModal(modal, params) {
   closeActions = params?.closeActions;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
-  // У <body> задать класс модального окна (прокрутка и отступ)
-  document.body.classList.add("body--withOpenedModal");
+  // У <body> отключить прокрутку, вычислить и задать отступ
+  scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+  bodyPaddingRight = getComputedStyle(document.body).getPropertyValue("padding-inline-end");
+  bodyPaddingRight = Number.parseFloat(bodyPaddingRight);
+  document.body.style.paddingInlineEnd = bodyPaddingRight + scrollBarWidth + "px";
+  bodyOverflow = getComputedStyle(document.body).getPropertyValue("overflow");
+  document.body.style.overflow = "hidden";
 
   // Показать подальное окно
   modal.setAttribute("aria-hidden", "false");
@@ -67,9 +77,10 @@ export function openModal(modal, params) {
 
 
 // Закрыть модальное окно
-function closeModal(modal) {
-  // У <body> удалить класс модального окна
-  document.body.classList.remove("body--withOpenedModal");
+export function closeModal(modal) {
+  // Для <body> вернуть отступы и прокрутку, которые были до открытия модального окна
+  document.body.style.paddingInlineEnd = bodyPaddingRight + "px";
+  document.body.style.overflow = bodyOverflow;
 
   // Скрыть модальное окно
   modal.setAttribute("aria-hidden", "true");
