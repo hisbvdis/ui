@@ -8,5 +8,5 @@
 - Scott O'Hara ([ссылка](https://github.com/scottaohara))
 
 ## Шаблоны
-- CSSLayout - "Паттерны компонентов" ([ссылка](https://csslayout.io/patterns))
+- CSSLayout - "Паттерны компонентов" ([ссылка](https://csslayout.io/))
 - Component Gallery - "Компоненты дизайн-систем" ([ссылка](https://component.gallery/))
