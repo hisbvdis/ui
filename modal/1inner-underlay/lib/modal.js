@@ -1,3 +1,4 @@
+// Открытое окно
 let openedModal = null;
 
 let trigger = null;
@@ -10,8 +11,8 @@ let firstModalElem = null;
 let lastModalElem = null;
 let clickOnLayout = false;
 
+// Размеры и стили для настройки прокрутки
 let scrollBarWidth = null;
-let bodyMarginRight = null;
 let bodyPaddingRight = null;
 let bodyOverflow = null;
 
@@ -44,7 +45,7 @@ export function openModal(modal, params) {
   bodyOverflow = getComputedStyle(document.body).getPropertyValue("overflow");
   document.body.style.overflow = "hidden";
 
-  // Показать подальное окно
+  // Показать модальное окно
   modal.setAttribute("aria-hidden", "false");
   modal.setAttribute("tabindex", "0");
   modal.classList.add("modal--isOpen");
@@ -158,12 +159,12 @@ function onlyButtons(elems) {
 // Нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forOpeners_onDocument_Click_Handler(evt) {
-  if (!evt.target.closest("[data-modal-opener]")) return;
+  if (!evt.target.closest("[data-open-modal='true']")) return;
   evt.preventDefault();
 
   let modal = document.querySelector("#" + evt.target.dataset.targetModalId);
 
-  openModal(modal, evt);
+  openModal(modal);
 }
 
 

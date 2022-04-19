@@ -13,4 +13,4 @@
 - [ ] Creating An Accessible Dialog From Scratch ([ссылка](https://www.smashingmagazine.com/2021/07/accessible-dialog-from-scratch/))
 - [ ] Inclusive components: making modals accessible ([ссылка](https://dev.to/alenanik/inclusive-components-making-modals-accessible-1hn9))
 - [ ] React-компонент с функциональным и доступным модальным окном ([ссылка](https://github.com/davidtheclark/react-aria-modal))
-- [ ] CTA Modal ([ссылка](https://github.com/nathansmith/cta-modal))
+- [ ] CTA Modal ([ссылка](https://github.com/nathansmith/cta-modal)){}
