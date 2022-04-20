@@ -159,10 +159,10 @@ function onlyButtons(elems) {
 // Нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forOpeners_onDocument_Click_Handler(evt) {
-  if (!evt.target.closest("[data-open-modal='true']")) return;
+  if (!evt.target.closest("[data-modal-opener='true']")) return;
   evt.preventDefault();
 
-  let modal = document.querySelector("#" + evt.target.dataset.targetModalId);
+  let modal = document.querySelector("#" + evt.target.dataset.targetModal);
 
   openModal(modal);
 }
