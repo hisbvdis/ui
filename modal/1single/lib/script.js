@@ -1,21 +1,22 @@
-// Открытое окно
-let openedModal = null;
+// Статус нажатия на подложку
+let clickOnLayout = false;
 
-let trigger = null;
-let ctrlEnterBtn = null;
-let openActions = null;
-let closeActions = null;
-
+// Интерактивные элементы окна
 let modalInteractElems = null;
 let firstModalElem = null;
 let lastModalElem = null;
-let clickOnLayout = false;
 
 // Размеры и стили для настройки прокрутки
 let scrollBarWidth = null;
 let bodyPaddingRight = null;
 let bodyOverflow = null;
 
+// Действия при открытии/закрытии окна
+let openActions = null;
+let closeActions = null;
+
+// Особые кнопки действий (фокус, Ctrl+Enter)
+let ctrlEnterBtn = null;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -24,41 +25,38 @@ document.addEventListener("click", forOpeners_onDocument_Click_Handler);
 window.addEventListener("popstate", forModal_onWindow_Popstate_Handler);
 
 
-
 // =================================================================
 // ФУНКЦИИ
 // =================================================================
 // Открыть модальное окно
 export function openModal(modal, params) {
+  // Показать модальное окно
+  // modal.showModal()
+  modal.open = true;
+
+  // Настроить атрибуты доступности
+  modal.setAttribute("aria-hidden", "false");
+  
   // Разобрать параметры и назначить глобальные переменные
-  openedModal = modal;
-  trigger = document.activeElement;
   openActions = params?.openActions;
   closeActions = params?.closeActions;
   ctrlEnterBtn = modal.querySelector("[data-ctrl-enter-btn]");
 
   // У <body> отключить прокрутку, вычислить и задать отступ
   scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-  bodyPaddingRight = getComputedStyle(document.body).getPropertyValue("padding-inline-end");
-  bodyPaddingRight = Number.parseFloat(bodyPaddingRight);
+  bodyPaddingRight = Number.parseFloat(getComputedStyle(document.body).paddingInlineEnd);
   document.body.style.paddingInlineEnd = bodyPaddingRight + scrollBarWidth + "px";
-  bodyOverflow = getComputedStyle(document.body).getPropertyValue("overflow");
+  bodyOverflow = getComputedStyle(document.body).overflow;
   document.body.style.overflow = "hidden";
 
-  // Показать модальное окно
-  modal.setAttribute("aria-hidden", "false");
-  modal.setAttribute("tabindex", "0");
-  modal.classList.add("modal--isOpen");
-
-  // Работа с фокусом окна
+  // Получить все интерактивные элементы внутри окна
   modalInteractElems = getModalInteractElems(modal);
   firstModalElem = modalInteractElems[0];
-  lastModalElem = modalInteractElems[modalInteractElems.length - 1];
-  if (onlyButtons(modalInteractElems)) {
-    focusOn(modal.querySelector("[data-focus]"));
-  } else {
-    focusOn(firstModalElem);
-  }
+  lastModalElem = modalInteractElems.at(-1);
+
+  // Фокус на 1 интерактивный элемент (если есть "data-focus", фокус на него)
+  focusOn(firstModalElem);
+  focusOn(modal.querySelector("[data-focus]"));
 
   // Добавить в историю браузера новую запись с определённым названием
   history.pushState("fromSite", "");
@@ -66,61 +64,59 @@ export function openModal(modal, params) {
   // Добавление обработчиков модального окна
   modal.addEventListener("pointerdown", backdrop_Pointerdown_Handler);
   modal.addEventListener("click", backdrop_Click_Handler);
-  modal.addEventListener("click", forCloseBtn_onModal_Click_Handler);
+  document.addEventListener("keydown", document_Keydown_Escape_Handler);
   firstModalElem?.addEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
   lastModalElem?.addEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
-  document.addEventListener("keydown", document_Keydown_Escape_Handler);
+  modal.addEventListener("click", forCloseBtn_onModal_Click_Handler);
   document.addEventListener("keydown", forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler);
 
-  // Выполнение команд открытия окна, которые были переданы при его открытии
+  // Выполнить команды открытия окна, если есть (передаются при открытии)
   if (openActions) openActions();
 }
 
 
 // Закрыть модальное окно
-export function closeModal(modal) {
+export function closeModal() {
+  // Найти открытое модальное окно
+  const modal = document.querySelector(".modal[open]");
+
+  // Закрыть модальное окно
+  modal.close();
+
+  // Настроить атрибуты доступности
+  modal.setAttribute("aria-hidden", "true");
+  
   // Для <body> вернуть отступы и прокрутку, которые были до открытия модального окна
   document.body.style.paddingInlineEnd = bodyPaddingRight + "px";
   document.body.style.overflow = bodyOverflow;
 
-  // Скрыть модальное окно
-  modal.setAttribute("aria-hidden", "true");
-  modal.setAttribute("tabindex", "-1");
-  modal.classList.remove("modal--isOpen");
-
-  // Переход "назад" в истории так, чтобы не создавать дубликаты в истории
+  // Перейти "назад" в браузере (обычно или с заменой записи в истории)
   history.state ? history.back() : history.replaceState(null, "");
 
-  // Фокус на элементе, вызвавшем модальное окно
-  trigger.focus();
-
-  // Удаление обработчиков модального окна
+  // Удалить обработчики модального окна
   modal.removeEventListener("pointerdown", backdrop_Pointerdown_Handler);
   modal.removeEventListener("click", backdrop_Click_Handler);
-  modal.removeEventListener("click", forCloseBtn_onModal_Click_Handler);
   firstModalElem.removeEventListener("keydown", firstModalElem_Keydown_Tab_Handler);
   lastModalElem.removeEventListener("keydown", lastModalElem_Keydown_ShiftTab_Handler);
   document.removeEventListener("keydown", document_Keydown_Escape_Handler);
+  modal.removeEventListener("click", forCloseBtn_onModal_Click_Handler);
   document.removeEventListener("keydown", forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler);
 
-  // Выполнение команд закрытия окна, которые были переданы при его открытии
+  // Выполнить команды закрытия окна, если есть (передаются при открытии)
   if (closeActions) closeActions();
 
-  // Удалить глобальные переменные
-  openedModal = null;
-
-  trigger = null;
-  ctrlEnterBtn = null;
+  // Сбросить значения глобальных переменных
   openActions = null;
   closeActions = null;
-
   modalInteractElems = null;
   firstModalElem = null;
   lastModalElem = null;
   clickOnLayout = false;
+  ctrlEnterBtn = null;
 }
 
 
+// Получить все интерактивные элементы модального окна
 function getModalInteractElems(modal) {
   let selectors = [
     'a[href]',
@@ -141,16 +137,10 @@ function getModalInteractElems(modal) {
   return Array.from(elems);
 }
 
-
+// Установить фокус на элементе (без прокрутки экрана до этого элемента)
 function focusOn(elem) {
   elem?.focus({preventScroll:true});
 }
-
-
-function onlyButtons(elems) {
-  return elems.every(elem => elem.tagName === "BUTTON");
-}
-
 
 
 // =================================================================
@@ -159,21 +149,23 @@ function onlyButtons(elems) {
 // Нажали на кнопку открытия модального окна
 //    =>  Открыть модальное окно
 function forOpeners_onDocument_Click_Handler(evt) {
-  if (!evt.target.closest("[data-modal-opener='true']")) return;
+  if (!evt.target.closest('[data-modal]')) return;
+  if (evt.target.closest('[data-manual-open]')) return;
   evt.preventDefault();
 
-  let modal = document.querySelector("#" + evt.target.dataset.targetModal);
+  let modal = document.querySelector("#" + evt.target.dataset.modal);
 
   openModal(modal);
 }
 
 
-// Нажали "Назад" в браузере
-//    =>  Закрыть модальное окно
-function forModal_onWindow_Popstate_Handler() {
-  if (openedModal === null) return;
+// При открытом модальном окне нажали "Escape"
+//   =>  Закрыть модальное окно
+function document_Keydown_Escape_Handler(evt) {
+  if (evt.code !== "Escape") return;
+  evt.preventDefault();
 
-  closeModal(openedModal);
+  closeModal();
 }
 
 
@@ -193,36 +185,7 @@ function backdrop_Click_Handler(evt) {
   if (clickOnLayout === false) return;
   if (!evt.target.classList.contains("modal")) return;
 
-  closeModal(openedModal);
-}
-
-
-// В открытом модальном окне кликнули на кнопку "Закрыть"
-//    =>  Закрыть модальное окно
-function forCloseBtn_onModal_Click_Handler(evt) {
-  if (evt.target.dataset.closeBtn === undefined) return;
-
-  closeModal(openedModal);
-}
-
-
-// При открытом модальном окне нажали "Escape"
-//   =>  Закрыть модальное окно
-function document_Keydown_Escape_Handler(evt) {
-  if (evt.code !== "Escape") return;
-
-  closeModal(openedModal);
-}
-
-
-// В открытом модальном окне нажали "Ctrl+Enter"
-//    =>  Нажать кнопку "Ctrl+Enter Button"
-function forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler(evt) {
-  if (!evt.ctrlKey) return;
-  if (evt.code !== "Enter" && evt.code !== "NumpadEnter") return;
-
-  evt.preventDefault();
-  ctrlEnterBtn?.click();
+  closeModal();
 }
 
 
@@ -245,4 +208,34 @@ function lastModalElem_Keydown_ShiftTab_Handler(evt) {
   evt.preventDefault();
 
   focusOn(firstModalElem);
+}
+
+// В открытом модальном окне кликнули на кнопку "Закрыть"
+//    =>  Закрыть модальное окно
+function forCloseBtn_onModal_Click_Handler(evt) {
+  if (evt.target.dataset.closeBtn === undefined) return;
+  evt.preventDefault();
+
+  closeModal();
+}
+
+
+// В открытом модальном окне нажали "Ctrl+Enter"
+//    =>  Нажать кнопку "Ctrl+Enter Button"
+function forCtrlEnterBtn_onDocument_Keydown_CtrlEnter_Handler(evt) {
+  if (!evt.ctrlKey) return;
+  if (evt.code !== "Enter" && evt.code !== "NumpadEnter") return;
+  evt.preventDefault();
+
+  ctrlEnterBtn?.click();
+}
+
+
+// Нажали "Назад" в браузере
+//    =>  Закрыть модальное окно
+function forModal_onWindow_Popstate_Handler() {
+  const openedModal = document.querySelector(".modal[open]");
+  if (openedModal === null) return;
+
+  closeModal();
 }

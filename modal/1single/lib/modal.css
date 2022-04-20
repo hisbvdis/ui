@@ -1,0 +1,47 @@
+/* Стили скрытого окна */
+.modal {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  visibility: hidden;
+}
+
+/* Стандартная подложка тега <dialog> */
+.modal::backdrop {
+  background-color: transparent;
+}
+
+/* Открытое окно */
+.modal[open] {
+  all: initial;
+  
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+
+  display: grid;
+  place-items: center;
+  padding: 10px;
+
+  background: rgba(0, 0, 0, 0.6);
+  overflow-y: scroll;
+}
+
+/* Блок с содержимым */
+.modal__content {
+  /* inline-size: 100%;
+  max-inline-size: 600px; */
+  padding: 20px;
+
+  background: #fff;
+}

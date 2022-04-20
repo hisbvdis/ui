@@ -2,27 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./service/serviсe.css" rel="stylesheet" />
-  <link href="./lib/modal.css" rel="stylesheet" />
-  <script src="./lib/modal.js" type="module"></script>
+  <link rel="stylesheet" href="service/serviсe.css" />
+  <link rel="stylesheet" href="lib/modal.css" />
+  <script src="lib/script.js" type="module"></script>
   <title>Document</title>
 </head>
 <body>
 
-<div class="placeholder-70"></div>
+<button type="button" data-modal="modal1" aria-haspopup="true">Окно №1 (маленькое)</button>
+<br />
+<br />
+<button type="button" data-modal="modal2" aria-haspopup="true">Окно №2 (маленькое)</button>
+<br />
+<br />
+<a href="modal.html" data-modal="modal3">Окно №3 (большое)</a>
 
-<button type="button" data-modal-opener="true" data-target-modal="modal1" aria-haspopup="true">Окно №1 (маленькое)</button>
-<br />
-<br />
-<button type="button" data-modal-opener="true" data-target-modal="modal2" aria-haspopup="true">Окно №2 (маленькое)</button>
-<br />
-<br />
-<a href="modal.html" data-modal-opener="true" data-target-modal="modal3" aria-haspopup="true">Окно №3 (большое)</a>
-
-<div class="placeholder-70"></div>
-
-<section class="modal" id="modal1" aria-modal="true" role="dialog" aria-labelledby="modal1__title" aria-describedby="modal1__desc">
+<dialog class="modal" id="modal1" aria-modal="true" role="dialog" aria-labelledby="modal1__title" aria-describedby="modal1__desc">
   <div class="modal__content">
     <h3 class="modal__title" id="modal1__title">Modal №1</h3>
     <p class="modal__desc" id="modal1__desc">Без интерактивных элементов – в фокусе кнопка "Ok"</p>
@@ -30,9 +27,9 @@
     <button type="button" data-focus>ОК (Focus)</button>
     <a href="#">Ссылка</a>
   </div>
-</section>
+</dialog>
 
-<section class="modal" id="modal2" aria-modal="true" role="dialog" aria-labelledby="modal2__title" aria-describedby="modal2__desc">
+<dialog class="modal" id="modal2" aria-modal="true" role="dialog" aria-labelledby="modal2__title" aria-describedby="modal2__desc">
   <div class="modal__content">
     <h3 class="modal__title" id="modal2__title">Modal №2</h3>
     <p class="modal__desc" id="modal2__desc">В фокусе кнопка чекбокс</p>
@@ -40,20 +37,20 @@
     <button type="button">ОК</button>
     <button type="button" data-close-btn>Закрыть</button>
   </div>
-</section>
+</dialog>
 
-<section class="modal" id="modal3" aria-modal="true" role="dialog" aria-labelledby="modal3__title" aria-describedby="modal3__desc">
+<dialog class="modal" id="modal3" aria-modal="true" role="dialog" aria-labelledby="modal3__title" aria-describedby="modal3__desc">
   <div class="modal__content">
     <h3 class="modal__title" id="modal3__title">Modal №3</h3>
     <p class="modal__desc" id="modal3__desc">Modal №3 description</p>
-    <div class="placeholder-70"></div>
-    <div class="placeholder-70"></div>
+    <div class="placeholder-50"></div>
+    <div class="placeholder-50"></div>
     <p>В окне нет кнопки для "Enter"</p>
     <p><textarea></textarea></p>
     <a class="js-modalActionBtn" href="http://google.com" data-ctrl-enter-btn>Кнопка для Ctrl+Enter</a>
     <button type="button" data-close-btn>Закрыть</button>
   </div>
-</section>
+</dialog>
 
 </body>
 </html>
