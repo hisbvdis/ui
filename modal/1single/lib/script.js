@@ -31,8 +31,7 @@ window.addEventListener("popstate", forModal_onWindow_Popstate_Handler);
 // Открыть модальное окно
 export function openModal(modal, params) {
   // Показать модальное окно
-  // modal.showModal()
-  modal.open = true;
+  modal.showModal()
 
   // Настроить атрибуты доступности
   modal.setAttribute("aria-hidden", "false");
