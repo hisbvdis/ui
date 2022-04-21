@@ -11,15 +11,20 @@
 </head>
 <body>
 
+<div class="placeholder-40"></div>
+<div class="placeholder-40"></div>
 <button type="button" data-modal="modal1" aria-haspopup="true">Окно №1 (маленькое)</button>
 <br />
 <br />
 <button type="button" data-modal="modal2" aria-haspopup="true">Окно №2 (маленькое)</button>
 <br />
 <br />
-<a href="modal.html" data-modal="modal3">Окно №3 (большое)</a>
+<a href="./service/modal.html" data-modal="modal3">Окно №3 (большое)</a>
+<div class="placeholder-40"></div>
+<div class="placeholder-40"></div>
 
-<dialog class="modal" id="modal1" aria-modal="true" role="dialog" aria-labelledby="modal1-title" aria-describedby="modal1-desc">
+
+<dialog class="modal" id="modal1" aria-modal="true" role="dialog" aria-labelledby="modal1-title" aria-describedby="modal1-desc" aria-hidden="true">
   <div class="modal__content">
     <h3 class="modal__title" id="modal1-title">Modal №1</h3>
     <p class="modal__desc" id="modal1-desc">Без интерактивных элементов – в фокусе кнопка "Ok"</p>
@@ -29,11 +34,11 @@
     <hr/>
     <button type="button" data-modal="modal2" aria-haspopup="true">Окно №2 (маленькое)</button>
     <br /><br />
-    <a href="modal.html" data-modal="modal3">Окно №3 (большое)</a>
+    <a href="./service/modal.html" data-modal="modal3">Окно №3 (большое)</a>
   </div>
 </dialog>
 
-<dialog class="modal" id="modal2" aria-modal="true" role="dialog" aria-labelledby="modal2-title" aria-describedby="modal2-desc">
+<dialog class="modal" id="modal2" aria-modal="true" role="dialog" aria-labelledby="modal2-title" aria-describedby="modal2-desc" aria-hidden="true">
   <div class="modal__content">
     <h3 class="modal__title" id="modal2-title">Modal №2</h3>
     <p class="modal__desc" id="modal2-desc">В фокусе кнопка чекбокс</p>
@@ -43,16 +48,16 @@
     <hr/>
     <button type="button" data-modal="modal1" aria-haspopup="true">Окно №1 (маленькое)</button>
     <br /><br />
-    <a href="modal.html" data-modal="modal3">Окно №3 (большое)</a>
+    <a href="./service/modal.html" data-modal="modal3">Окно №3 (большое)</a>
   </div>
 </dialog>
 
-<dialog class="modal" id="modal3" aria-modal="true" role="dialog" aria-labelledby="modal3-title" aria-describedby="modal3-desc">
+<dialog class="modal" id="modal3" aria-modal="true" role="dialog" aria-labelledby="modal3-title" aria-describedby="modal3-desc" aria-hidden="true">
   <div class="modal__content">
     <h3 class="modal__title" id="modal3-title">Modal №3</h3>
     <p class="modal__desc" id="modal3-desc">Modal №3 description</p>
-    <div class="placeholder-50"></div>
-    <div class="placeholder-50"></div>
+    <div class="placeholder-40"></div>
+    <div class="placeholder-40"></div>
     <p>В окне нет кнопки для "Enter"</p>
     <p><textarea></textarea></p>
     <a class="js-modalActionBtn" href="http://google.com" data-ctrl-enter-btn>Кнопка для Ctrl+Enter</a>

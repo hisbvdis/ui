@@ -7,8 +7,8 @@
   box-sizing: border-box;
 }
 
-.placeholder-50 {
-  block-size: 50vh;
+.placeholder-40 {
+  block-size: 40vh;
   margin-block: 20px;
 
   background: #ccc;

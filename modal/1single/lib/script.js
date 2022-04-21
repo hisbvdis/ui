@@ -1,22 +1,29 @@
-// Статус нажатия на подложку
-let clickOnLayout = false;
+// Размеры и стили для настройки прокрутки
+let scrollBarWidth = null;
+let bodyPaddingRight = null;
+let bodyOverflow = null;
 
 // Интерактивные элементы окна
 let modalInteractElems = null;
 let firstModalElem = null;
 let lastModalElem = null;
 
-// Размеры и стили для настройки прокрутки
-let scrollBarWidth = null;
-let bodyPaddingRight = null;
-let bodyOverflow = null;
+// Особые кнопки действий (фокус, Ctrl+Enter)
+let ctrlEnterBtn = null;
 
 // Действия при открытии/закрытии окна
 let openActions = null;
 let closeActions = null;
 
-// Особые кнопки действий (фокус, Ctrl+Enter)
-let ctrlEnterBtn = null;
+// Подложка
+// Создать
+const node = document.createElement("div");
+node.classList.add("modalBackdrop");
+document.body.append(node);
+// Переменная для подложки
+const backdrop = document.querySelector(".modalBackdrop");
+// Статус нажатия на подложку
+let clickOnLayout = false;
 
 // Обработчики для функционирования модального окна:
 // - нажатие на кнопки, открывающие модальное окно
@@ -30,8 +37,9 @@ window.addEventListener("popstate", forModal_onWindow_Popstate_Handler);
 // =================================================================
 // Открыть модальное окно
 export function openModal(modal, params) {
-  // Показать модальное окно
-  modal.open = true;
+  // Показать модальное окно и подложку
+  modal.classList.add("modal--isOpen");
+  backdrop.classList.add("modalBackdrop--isOpen");
   
   // Настроить атрибуты доступности
   modal.setAttribute("aria-hidden", "false");
@@ -77,10 +85,11 @@ export function openModal(modal, params) {
 // Закрыть модальное окно
 export function closeModal() {
   // Найти открытое модальное окно
-  const modal = document.querySelector(".modal[open]");
+  const modal = document.querySelector(".modal--isOpen");
 
   // Закрыть модальное окно
-  modal.close();
+  modal.classList.remove("modal--isOpen");
+  backdrop.classList.remove("modalBackdrop--isOpen");
 
   // Настроить атрибуты доступности
   modal.setAttribute("aria-hidden", "true");
@@ -89,7 +98,7 @@ export function closeModal() {
   document.body.style.paddingInlineEnd = bodyPaddingRight + "px";
   document.body.style.overflow = bodyOverflow;
 
-  // Перейти "назад" в браузере (обычно или с заменой записи в истории)
+  // Разные варианты перехода "назад" в браузере (обычно или с заменой записи в истории)
   history.state ? history.back() : history.replaceState(null, "");
 
   // Удалить обработчики модального окна

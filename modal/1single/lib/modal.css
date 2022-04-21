@@ -22,7 +22,7 @@
 }
 
 /* Открытое окно */
-.modal[open] {
+.modal--isOpen {
   all: initial;
   
   position: fixed;
@@ -33,7 +33,6 @@
   place-items: center;
   padding: 10px;
 
-  background: rgba(0, 0, 0, 0.6);
   overflow-y: scroll;
 }
 
@@ -44,4 +43,17 @@
   padding: 20px;
 
   background: #fff;
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  
+  display: none;
+
+  background: rgb(0 0 0 / 0.6);
+}
+
+.modalBackdrop--isOpen {
+  display: block;
 }
