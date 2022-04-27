@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./service.css" />
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" type="module"></script>
   <title>Document</title>
@@ -10,10 +11,11 @@
 <body>
 
 <div class="field" data-js="field">
+  <!-- Важен порядок элементов: input -> label -> fieldset -->
   <input class="field__input" id="email-input" type="email" data-js="float-input" />
-  <label class="field__label" for="email-input">Text</label>
+  <label class="field__label" for="email-input">Label</label>
   <fieldset class="field__fieldset">
-    <legend class="field__legend">Text</legend>
+    <legend class="field__legend">Label</legend>
   </fieldset>
 </div>
 
