@@ -1,4 +1,4 @@
 # Чекбокс — волна при нажатии
 
 ## Источники
-- [ ] mui.com ([ссылка](https://mui.com/ru/components/checkboxes/))
+- [x] mui.com ([ссылка](https://mui.com/ru/components/checkboxes/))

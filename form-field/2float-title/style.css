@@ -2,8 +2,9 @@
   --fontSize: 16px;
   --lineHeight: 26px;
 
-  --labelColor-big: black;
-  --labelColor-small: #1976d2;
+  --labelColor-big: #000;
+  --labelColor-small: #464646;
+  --labelColor-smallFocused: #1976d2;
   --labelColor-disabled: #ddd;
   --labelFontSize-small: 0.875em;
   --labelInset: 1em;
@@ -13,6 +14,7 @@
   --borderColor-initial: rgb(0 0 0 / 0.23);
   --borderColor-hover: rgb(0 0 0 / 0.87);
   --borderColor-focus: #1976d2;
+  --borderColor-disabled: #ddd;
   --borderRadius: 4px;
 }
 
@@ -49,21 +51,22 @@
   pointer-events: none;
 }
 
-.field__input:focus ~ .field__label,
+.field:focus-within .field__label,
 .field--filled .field__label {
   inset-block-start: 0;
   inset-inline-start: var(--labelInset);
 
   font-size: var(--labelFontSize-small);
-}
-
-.field__input:disabled ~ .field__label {
-  color: var(--labelColor-disabled);
-}
-
-.field__input:focus ~ .field__label,
-.field--filled .field__label {
   color: var(--labelColor-small);
+}
+
+.field:focus-within .field__label {
+  color: var(--labelColor-smallFocused);
+}
+
+.field--disabled .field__input,
+.field--disabled .field__label {
+  color: var(--labelColor-disabled);
 }
 
 .field__fieldset {
@@ -78,12 +81,12 @@
   pointer-events: none;
 }
 
-.field__input:not(:disabled):hover ~ .field__fieldset {
+.field:not(.field--disabled):hover .field__fieldset {
   border-color: var(--borderColor-hover);
 }
 
-.field__input:focus ~ .field__fieldset,
-.field__input:focus:hover ~ .field__fieldset {
+.field:focus-within .field__fieldset,
+.field:focus-within:hover .field__fieldset {
   border: var(--borderWidth-focus) solid var(--borderColor-focus);
 }
 

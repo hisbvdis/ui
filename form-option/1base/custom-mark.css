@@ -1,0 +1,55 @@
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+/* srOnly props */
+.option__input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+.option__mark {
+  position: relative;
+  
+  inline-size: 1em;
+  block-size: 1em;
+
+  border: 1px solid #000;
+  border-radius: 2px;
+
+  box-sizing: border-box;
+}
+
+.option__input:checked ~ .option__mark {
+  background: #1B79CE;
+  border-color: #1B79CE;
+}
+
+.option__input:checked ~ .option__mark::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -80%) rotate(-45deg);
+
+  inline-size: 65%;
+  block-size: 25%;
+
+  border-inline-start: 3px solid #fff;
+  border-block-end: 3px solid #fff;
+}

@@ -1,0 +1,43 @@
+.option__mark {
+  z-index: 0;
+}
+
+.option__shadow {
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+
+  inline-size: 200%;
+  block-size: 200%;
+
+  border-radius: 50%;
+}
+
+.option__shadow::before,
+.option__shadow::after {
+  content: "";
+  position: absolute;
+
+  inline-size: 100%;
+  block-size: 100%;
+
+  transform: scale(0, 0);
+  background: rgb(27 121 206 / 0.1);;
+  border-radius: 50%;
+}
+
+.option:hover .option__shadow {
+  background: rgb(0 0 0 / 0.05);
+}
+
+.option__input:checked ~ .option__shadow::before,
+.option__input:not(:checked) ~ .option__shadow::after {
+  transform: scale(1, 1);
+  opacity: 0;
+
+  transition:
+    transform 0.1s,
+    opacity 0.25s 0.1s;
+}

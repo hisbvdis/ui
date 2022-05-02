@@ -1,4 +1,6 @@
-.checkbox {
+.option {
+  position: relative;
+  
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -6,8 +8,15 @@
   cursor: pointer;
 }
 
+.option__mark {
+  position: relative;
+  
+  inline-size: 1em;
+  block-size: 1em;
+}
+
 /* srOnly props */
-.checkbox__input {
+.option__input {
   position: absolute;
 
   width: 1px;
@@ -23,24 +32,20 @@
   clip-path: inset(100%);
 }
 
-.checkbox__customMark {
-  position: relative;
-  
-  inline-size: 1em;
-  block-size: 1em;
+.option__customMark {
+  position: absolute;
+  inset: 0;
 
   border: 1px solid #000;
   border-radius: 2px;
-
-  box-sizing: border-box;
 }
 
-.checkbox__input:checked ~ .checkbox__customMark {
+.option__input:checked ~ .option__customMark {
   background: #1B79CE;
   border-color: #1B79CE;
 }
 
-.checkbox__input:checked ~ .checkbox__customMark::before {
+.option__input:checked ~ .option__customMark::before {
   content: "";
   position: absolute;
   inset-block-start: 50%;
