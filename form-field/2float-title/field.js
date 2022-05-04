@@ -1,4 +1,4 @@
-window.addEventListener("load", forFloatInput_onWindow_Load_Handler)
+window.addEventListener("load", forFloatInput_onWindow_Load_Handler);
 document.addEventListener("focusout", forFloatInput_onDocument_Focusout_Handler);
 
 

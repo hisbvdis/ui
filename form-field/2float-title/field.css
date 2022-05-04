@@ -1,0 +1,118 @@
+.field {
+  /* Font */
+  --fontSize: 16px;
+  --lineHeight: 26px;
+
+  /* Label */
+  --labelColor-default: #999;
+  --labelColor-focused: var(--brandColor);
+  --labelColor-disabled: #898989;
+  --labelFontSize-small: calc(var(--fontSize) * 0.75);
+
+  /* Border */
+  --borderWidth-default: 1px;
+  --borderColor-default: rgb(0 0 0 / 0.23);
+
+  --borderWidth-hover: 1px;
+  --borderColor-hover: rgb(0 0 0 / 0.87);
+
+  --borderWidth-focus: 2px;
+  --borderColor-focus: #1976d2;
+
+  --borderColor-disabled: #ddd;
+  --borderRadius: 4px;
+
+  /* Miscellaneous */
+  --inset: 1em;
+  --brandColor: #1976d2;
+}
+
+.field {
+  position: relative;
+
+  font-family: sans-serif;
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+}
+
+.field__fieldset {
+  position: absolute;
+  inset: 0;
+  inset-block-start: calc(var(--lineHeight) / 2 * -1);
+
+  margin: 0;
+  padding: 0;
+
+  border: var(--borderWidth-default) solid var(--borderColor-default);
+  border-radius: var(--borderRadius);
+  pointer-events: none;
+}
+
+.field:hover .field__fieldset {
+  border: var(--borderWidth-hover) solid var(--borderColor-hover);
+}
+
+.field:focus-within .field__fieldset {
+  border: var(--borderWidth-focus) solid var(--borderColor-focus);
+}
+
+.field.field--disabled .field__fieldset {
+  border: var(--borderWidth-default) solid var(--borderColor-disabled);
+}
+
+.field__legend {
+  inline-size: 0px;
+  margin-inline-start: var(--inset);
+  padding: 0;
+
+  font-size: var(--labelFontSize-small);
+
+  visibility: hidden;
+}
+
+.field:focus-within .field__legend,
+.field--filled .field__legend {
+  inline-size: auto;
+  padding-inline: calc(1em / 3);
+}
+
+.field__label {
+  position: absolute;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  inset-inline-start: var(--inset);
+
+  color: var(--labelColor-default);
+
+  transition: 0.1s;
+  pointer-events: none;
+}
+
+.field:focus-within .field__label,
+.field--filled .field__label {
+  inset-block-start: 0;
+  inset-inline-start: var(--inset);
+  padding-inline: calc(1em / 3);
+
+  font-size: var(--labelFontSize-small);
+}
+
+.field:focus-within .field__label{
+  color: var(--labelColor-focused);
+}
+
+.field__input {
+  inline-size: 100%;
+  padding: var(--inset);
+
+  font: inherit;
+
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.field--disabled .field__input {
+  color: var(--labelColor-disabled);
+}
