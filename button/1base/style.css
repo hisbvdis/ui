@@ -1,21 +1,13 @@
-button {
-  all: unset;
-}
+.button {}
+.button:hover {}
+.button:focus-visible {}
+.button:focus:not(:focus-visible) {}
+.button:active {}
+.button:disabled {}
 
-button:hover {
-  
-}
-
-/* Фокус при навигации с помощью клавиатуры */
-button:focus-visible {
-  
-}
-
-/* Фокус при навигации с помощью мыши, тача или стилуса */
-button:focus:not(:focus-visible) {
-  
-}
-
-button:disabled {
-  cursor: not-allowed;
-}
+.button--woBg {}
+.button--woBg:hover {}
+.button--woBg:focus-visible {}
+.button--woBg:focus:not(:focus-visible) {}
+.button--woBg:active {}
+.button--woBg:disabled {}
