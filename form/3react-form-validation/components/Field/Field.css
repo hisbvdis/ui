@@ -1,0 +1,18 @@
+.field__input {
+  border: 1px solid #000;
+}
+
+.field--invalid .field__input {
+  border: 1px solid #ff0000;
+}
+
+.field__inputWrapper {
+  margin-block: 0;
+}
+
+.field__errorMsg {
+  margin-block: 0;
+
+  font-size: 0.9em;
+  color: #ff0000;
+}

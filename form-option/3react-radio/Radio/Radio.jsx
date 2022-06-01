@@ -1,6 +1,6 @@
-const Radio = ({children, name, value, state:[stateValue, setState]}) => {
+const Radio = ({className="", label="", name, value, state:[stateValue, setState]}) => {
   return (<>
-    <label className="radio">
+    <label className={`radio  ${className}`}>
       <input
         className="radio__input"
         type="radio"
@@ -8,7 +8,7 @@ const Radio = ({children, name, value, state:[stateValue, setState]}) => {
         value={value}
         checked={stateValue === value}
         onChange={() => setState(value)}/>
-      <span>{children}</span>
+      {label && <span>{label}</span>}
     </label>
   </>)
 }

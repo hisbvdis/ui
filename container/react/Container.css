@@ -1,5 +1,6 @@
 .container {
-  max-inline-size: 960px;
+  display: flow-root;
+  max-inline-size: 900px;
   margin-inline: auto;
   padding-inline: 10px;
 }
