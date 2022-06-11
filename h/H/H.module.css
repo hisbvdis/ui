@@ -1,0 +1,22 @@
+:is(h1, h2, h3, h4, h5, h6) {
+  all: unset;
+  display: block;
+}
+
+.h1 {
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.h2 {
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.h3 {
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 600;
+}

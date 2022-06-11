@@ -1,0 +1,49 @@
+.rating {
+  all: unset;
+}
+
+.rating__legend {
+  all: unset;
+}
+
+.rating__options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  
+  list-style: none;
+}
+
+.option {
+  cursor: pointer;
+}
+
+.option__input:focus-visible ~ .option__icon {
+  outline: 2px solid black;
+}
+
+.option__icon {
+  fill: #ccc;
+}
+
+.option__icon--selected {
+  fill: darkorange;
+}
+
+.srOnly {
+  position: absolute;
+
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}

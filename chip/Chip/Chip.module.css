@@ -1,0 +1,51 @@
+.chip {
+  display: inline-block;
+  padding: 0.5em 1em;
+
+  line-height: 1;
+  font-weight: 500;
+  text-decoration: none;
+
+  border: 1px solid transparent;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.chip--fontSize_s {
+  font-size: 12px;
+}
+
+.chip--fontSize_m {
+  font-size: 14px;
+}
+
+.chip--theme_ghost {
+  border-color: var(--color-gray);
+}
+
+.chip--theme_green {
+  color: var(--color-green);
+  font-weight: 600;
+  
+  background: var(--color-green-light);
+}
+
+.chip--theme_red {
+  color: var(--color-white);
+  font-weight: 600;
+  
+  background: var(--color-red);
+}
+
+.chip--theme_gray {
+  color: var(--color-white);
+  font-weight: 600;
+  
+  background: var(--color-gray-dark);
+}
+
+.chip--theme_primary {
+  color: var(--color-primary);
+
+  border-color: var(--color-primary);
+}

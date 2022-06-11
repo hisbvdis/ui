@@ -1,0 +1,19 @@
+.p {
+  all: unset;
+  display: block;
+}
+
+.p--s {
+  font-size: 14pz;
+  line-height: 1.7;
+}
+
+.p--m {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.p--l {
+  font-size: 18px;
+  line-height: 1.6;
+}
