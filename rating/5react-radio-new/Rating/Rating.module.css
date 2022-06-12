@@ -1,5 +1,5 @@
 .rating {
-  display: flex;
+  display: inline-flex;
   gap: 10px;
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
   border: none;
 }
 
-.option {
+.rating--isEditable .option {
   cursor: pointer;
 }
 

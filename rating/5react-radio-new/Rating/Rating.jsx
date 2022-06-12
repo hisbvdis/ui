@@ -1,12 +1,14 @@
 import { useId, useState } from "react";
 import RatingOption from "./RatingOption";
 import styles from "./Rating.module.css";
+import clsx from "clsx";
 
 const Rating = ({
-  title = "Mark",
+  title = "Rating",
   options = 5,
   isEditable = true,
   activeOption = -1,
+  setRating=f=>f,
 }) => {
   const groupName = useId();
   // ID выбранного элемента
@@ -16,7 +18,9 @@ const Rating = ({
 
   return (
     <fieldset
-      className={styles["rating"]}
+      className={clsx(styles["rating"], {
+        [styles["rating--isEditable"]]: isEditable
+      })}
       aria-label={title}
       // Увели курсор — записать ID, до которого выделить элементы:
       // ..до ранее выбранного элемента "selected", а не "displayed"
@@ -34,6 +38,7 @@ const Rating = ({
             if (!isEditable) return;
             setSelected(i);
             setDisplayed(i);
+            setRating(i + 1);
           }}
           // Навели курсор — записать ID, до которого выделить элементы
           onMouseEnter={() => {
