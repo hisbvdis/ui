@@ -1,0 +1,14 @@
+.logo {
+  display: inline-flex;
+}
+
+.logo__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo__img {
+  inline-size: 106px;
+  block-size: 24px;
+}
