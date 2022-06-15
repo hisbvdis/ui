@@ -1,0 +1,108 @@
+@import "../../assets/styles/base/variables.scss";
+
+.field {
+  --fontSize: 16px;
+  --lineHeight: 26px;
+
+  --labelColor-big: #{$grey};
+  --labelColor-small: #{$grey};
+  --labelColor-disabled: #{$lightGrey};
+  --labelFontSize-small: 0.75em;
+  --labelInset: 1em;
+
+  --borderWidth-initial: 1px;
+  --borderWidth-focus: 1px;
+  --borderColor-initial: #{$lightGrey};
+  --borderColor-hover: #{$lightGrey};
+  --borderColor-focus: #{$lightGrey};
+  --borderRadius: 4px;
+}
+
+.field {
+  position: relative;
+
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+
+  display: flex;
+}
+
+.field__input {
+  flex-basis: 100%;
+  padding: 0.875em 1em;
+
+  font: inherit;
+  
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: var(--borderRadius);
+}
+
+.field__label {
+  position: absolute;
+  inset-inline-start: var(--labelInset);
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+
+  color: var(--labelColor-big);
+
+  transition: 0.1s;
+  pointer-events: none;
+}
+
+.field__input:focus ~ .field__label,
+.field--filled .field__label {
+  inset-block-start: 0;
+  inset-inline-start: var(--labelInset);
+
+  font-size: var(--labelFontSize-small);
+}
+
+.field__input:disabled ~ .field__label {
+  color: var(--labelColor-disabled);
+}
+
+.field__input:focus ~ .field__label,
+.field--filled .field__label {
+  color: var(--labelColor-small);
+}
+
+.field__fieldset {
+  position: absolute;
+  inset: calc(var(--lineHeight) / 2 * -1) 0 0;
+
+  margin: 0;
+  padding: 0;
+
+  border: var(--borderWidth-initial) solid var(--borderColor-initial);
+  border-radius: var(--borderRadius);
+  pointer-events: none;
+}
+
+.field__input:not(:disabled):hover ~ .field__fieldset {
+  border-color: var(--borderColor-hover);
+}
+
+.field__input:focus ~ .field__fieldset,
+.field__input:focus:hover ~ .field__fieldset {
+  border: var(--borderWidth-focus) solid var(--borderColor-focus);
+}
+
+.field__legend {
+  inline-size: 0.01px;
+  padding: 0;
+
+  font-size: var(--labelFontSize-small);
+  text-align: start;
+  white-space: nowrap;
+  
+  visibility: hidden;
+}
+
+.field:focus-within .field__legend,
+.field--filled .field__legend {
+  inline-size: auto;
+  margin-inline-start: calc(var(--labelInset) * 0.6);
+  padding: 0 5px;
+}

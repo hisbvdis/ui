@@ -1,0 +1,30 @@
+@import "../../assets/styles/base/variables.scss";
+
+.optionGroup {
+  margin-inline: 0;
+  margin-block-end: 40px;
+  padding: 0;
+  
+  text-align: start;
+
+  border: none;
+}
+
+.optionGroup__heading {
+  margin-block: 0 10px;
+  
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: 400;
+}
+
+.optionGroup__list {
+  margin: 0;
+  padding: 0;
+  
+  list-style: none;
+}
+
+.optionGroup__item {
+  margin-block-end: 2px;
+}

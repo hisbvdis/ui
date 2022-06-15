@@ -1,0 +1,42 @@
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+.radio__input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+.radio__customMark {
+  position: relative;
+  
+  inline-size: 20px;
+  block-size: 20px;
+
+  border: 1px solid #00BDD3;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.radio__input:focus-visible ~ .radio__customMark {
+  outline: 1px solid black;
+}
+
+.radio__input:checked ~ .radio__customMark {
+  background: radial-gradient(#00BDD3 5px, #fff 5px);
+}

@@ -1,0 +1,71 @@
+@import "../../assets/styles/base/variables.scss";
+
+.file {
+  --nameColor-placeholder: #{$grey};
+  --nameColor-selected: #{$black-87};
+  
+  --borderWidth: 1px;
+  --borderColor-button: #{$black-87};
+  --borderColor-name: #{$lightGrey};
+  --borderRadius: 4px;
+}
+
+.file {
+  display: flex;
+
+  font-size: $fontSize;
+  line-height: $lineHeight;  
+  
+  cursor: pointer;
+}
+
+.file__btn {
+  padding: 0.8125em 1em;
+  
+  font: inherit;
+  
+  background: none;
+  border: var(--borderWidth) solid var(--borderColor-button);
+  border-start-start-radius: var(--borderRadius);
+  border-end-start-radius: var(--borderRadius);
+}
+
+.file__name {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  padding: 0.8125em 1em;
+
+  font: inherit;
+  color: var(--nameColor-placeholder);
+  
+  border: var(--borderWidth) solid var(--borderColor-name);
+  border-inline-start: none;
+  border-start-end-radius: var(--borderRadius);
+  border-end-end-radius: var(--borderRadius);
+}
+
+.file__name--selected {
+  color: var(--nameColor-selected);
+}
+
+/* srOnly */
+.file__input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+.file:focus-within {
+  outline: 1px solid black;
+}
