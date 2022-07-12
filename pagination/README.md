@@ -1,6 +1,29 @@
 # Пагинация
 
+## Общее
+**Структура компонентов**
+- Pagination — главный компонент
+- PageButtons — дочерний компонент для кнопок пагинации
+- LoadMoreButton — дочерний компонент для кнопки "Загрузить ещё"
+
+
+## Компонент "Pagination"
+**Не отображать, если страница одна**
+- Если страница только одна, компонент пагинации не отображать вообще
+
+
+## Компонент "PageButtons"
+- 
+
+
+## Компонент "LoadMoreButton"
+**Подсветка кнопок**
+- При нажатии "Загрузить ещё" подсвечивать кнопки для всех страниц, чьи данные отображены
+
+**Не отображать, если страница последняя**
+- Если текущая страница — последняя, не отображать кнопку "Загрузить ещё"
+
+
 ## Источники
-- Генератор чисел пагинации
-  - Статья Bramus ([ссылка](https://www.bram.us/2022/02/22/generate-a-pagination-number-sequence-with-bramus-pagination-sequence/))
-  - How to design better pagination ([ссылка1](https://twitter.com/Brightmacdsg/status/1494757259188092933?t=XDuPhmKGM0rLn-fJFcVmag&s=03))
+- Статья Bramus ([ссылка](https://www.bram.us/2022/02/22/generate-a-pagination-number-sequence-with-bramus-pagination-sequence/))
+- How to design better pagination ([ссылка1](https://twitter.com/Brightmacdsg/status/1494757259188092933?t=XDuPhmKGM0rLn-fJFcVmag&s=03))

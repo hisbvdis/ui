@@ -1,20 +1,18 @@
-@import "../../assets/styles/base/variables.scss";
-
 .field {
   --fontSize: 16px;
   --lineHeight: 26px;
 
-  --labelColor-big: #{$grey};
-  --labelColor-small: #{$grey};
-  --labelColor-disabled: #{$lightGrey};
+  --labelColor-big: #7E7E7E;
+  --labelColor-small: #7E7E7E;
+  --labelColor-disabled: #D0CFCF;
   --labelFontSize-small: 0.75em;
   --labelInset: 1em;
 
   --borderWidth-initial: 1px;
   --borderWidth-focus: 1px;
-  --borderColor-initial: #{$lightGrey};
-  --borderColor-hover: #{$lightGrey};
-  --borderColor-focus: #{$lightGrey};
+  --borderColor-initial: #D0CFCF;
+  --borderColor-hover: #D0CFCF;
+  --borderColor-focus: #D0CFCF;
   --borderRadius: 4px;
 }
 

@@ -8,7 +8,7 @@ const App = () => {
   // 1.2. Переменная смещения
   const [offset, setOffset] = useState(0)
   // 1.3. Количество элементов на странице
-  const [itemsCountOnPage, setPageItemsCount] = useState(10);
+  const [pageSize, setPageSize] = useState(10);
   // 1.4. Общее количество элементов
   const [total, setTotal] = useState(0);
   // 1.5. Статус загрузки
@@ -18,7 +18,7 @@ const App = () => {
   // 2. Функции
   // 2.1. Общаяя функция загрузки данных через API
   const loadData = async (index) => {
-    const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?limit=${itemsCountOnPage}&offset=${index}&apikey=fa048bd5ea2cf04c794f49fdb2d0415a`);
+    const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?limit=${pageSize}&offset=${index}&apikey=fa048bd5ea2cf04c794f49fdb2d0415a`);
     const data = await response.json();
     return data;
   }
@@ -34,7 +34,7 @@ const App = () => {
         // ДОПОЛНИТЬ массив пользователей
         setUsers( users.concat(data.data.results) );
         // УВЕЛИЧИТЬ переменную смещения
-        setOffset(index + itemsCountOnPage);
+        setOffset(index + pageSize);
         setLoading(false);
       })
   }
@@ -46,7 +46,7 @@ const App = () => {
       // ЗАМЕНИТЬ массив пользователей
       setUsers( data.data.results );
       // УВЕЛИЧИТЬ переменную смещения
-      setOffset(index + itemsCountOnPage);
+      setOffset(index + pageSize);
       setLoading(false);
     })
   }
@@ -69,7 +69,7 @@ const App = () => {
     </ul>
     <Pagination
       offset={offset}
-      itemsCountOnPage={itemsCountOnPage}
+      pageSize={pageSize}
       total={total}
       loadMore={loadMore}
       loadNew={loadNew}

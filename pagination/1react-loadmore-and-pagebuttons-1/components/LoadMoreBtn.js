@@ -1,7 +1,7 @@
-const LoadMoreBtn = ({offset, itemsCountOnPage, total, loadMore, loading}) => {
+const LoadMoreBtn = ({offset, pageSize, total, loadMore, loading}) => {
   // Скрывать кнопку, если смещение + количество элементов на странице
   // ..превышает общее их количество
-  if (offset + itemsCountOnPage > total) return null;
+  if (offset + pageSize > total) return null;
   
   return (<>
     <p>
